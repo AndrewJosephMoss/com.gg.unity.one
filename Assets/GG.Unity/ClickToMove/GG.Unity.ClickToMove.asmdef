@@ -1,0 +1,16 @@
+{
+    "name": "GG.Unity.ClickToMove",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9cd2033118cc53440b7156d694e7d4a8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
