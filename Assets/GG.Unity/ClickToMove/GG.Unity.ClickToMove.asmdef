@@ -2,7 +2,8 @@
     "name": "GG.Unity.ClickToMove",
     "rootNamespace": "",
     "references": [
-        "GUID:9cd2033118cc53440b7156d694e7d4a8"
+        "GUID:9cd2033118cc53440b7156d694e7d4a8",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

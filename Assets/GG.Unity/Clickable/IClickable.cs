@@ -4,6 +4,6 @@ namespace GG.Unity.Clickable
 {
     public interface IClickable
     {
-        void Clicked(IClickContext context);
+        void Clicked(RaycastHit hit, IClickablesContext clickablesContext);
     }
 }

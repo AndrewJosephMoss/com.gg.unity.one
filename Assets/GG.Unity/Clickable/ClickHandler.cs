@@ -14,10 +14,13 @@ namespace GG.Unity.Clickable
         private InputAction clickAction;
         private InputAction pointerAction;
 
-        private ClickContext ClickContext { get; } = new ClickContext();
+        private Camera mainCamera;
+
+        private ClickablesContext ClickablesContext { get; } = new ClickablesContext();
 
         private void Awake()
         {
+            mainCamera = Camera.main;
             clickAction = inputActions.FindActionMap(ClickActionMap)
                 .FindAction(ClickActionName);
             pointerAction = inputActions.FindActionMap(ClickActionMap)
@@ -27,20 +30,22 @@ namespace GG.Unity.Clickable
         private void OnEnable()
         {
             clickAction.Enable();
+            pointerAction.Enable();
             clickAction.performed += OnClick;
         }
 
         private void OnDisable()
         {
-            clickAction.Disable();
             clickAction.performed -= OnClick;
+            clickAction.Disable();
+            pointerAction.Disable();
         }
 
-        private void OnClick(InputAction.CallbackContext context)
+        private void OnClick(InputAction.CallbackContext callbackContext)
         {
             Vector2 screenPosition = pointerAction.ReadValue<Vector2>();
 
-            Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+            Ray ray = mainCamera.ScreenPointToRay(screenPosition);
 
             if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, clickableMask))
                 return; // Reset context? - requires play test
@@ -50,7 +55,7 @@ namespace GG.Unity.Clickable
             if (!obj.TryGetComponent<IClickable>(out IClickable clickable))
                 return; // Reset context? - requires play test
 
-            clickable.Clicked(ClickContext);
+            clickable.Clicked(hit, ClickablesContext);
         }
     }
 }
