@@ -1,6 +1,5 @@
-using UnityEngine;
-using GG.Unity.Advertisement;
 using GG.Unity.Serialization;
+using UnityEngine;
 using UnityEngine.Events;
 using LP = Unity.Services.LevelPlay;
 using Unity.Services.LevelPlay;
@@ -16,42 +15,54 @@ namespace GG.Unity.Advertisement.LevelPlay
         [SerializeField]
         private bool isTest = false;
 
-        public override void Initialise()
+        protected override void InitialiseProvider()
         {
+            // Subscribed once - retries only call Initialise(), so this never double-subscribes.
             LP.LevelPlay.OnInitSuccess += OnInitialisationComplete;
             LP.LevelPlay.OnInitFailed += OnInitialisationFailed;
+        }
 
+        protected override void Initialise()
+        {
             LevelPlayPrivacySettings.SetGDPRConsent(false);
             LevelPlayPrivacySettings.SetCOPPA(false);
             LevelPlayPrivacySettings.SetCCPA(false);
 
             string appId = appIdProvider.Ref.AppId;
-            Debug.Log($"LP.LevelPlay. Intialising with appId: {appId}");
+            Debug.Log($"LevelPlay Initialising with appId: {appId}");
 
             if (isTest)
             {
                 LP.LevelPlay.SetMetaData("is_test_suite", "enable");
             }
+
             LP.LevelPlay.Init(appId);
             LP.LevelPlay.ValidateIntegration();
         }
 
         private void OnInitialisationComplete(LP.LevelPlayConfiguration configuration)
         {
-            Debug.Log($"LP.initialisation complete: {configuration}");
+            Debug.Log($"LevelPlay initialisation complete: {configuration}");
             LevelPlayInitialisationComplete?.Invoke(configuration);
-            base.InitialisationComplete?.Invoke(this);
+            NotifyInitialisationSucceeded();
+
             if (isTest)
             {
-                Debug.Log("LP. Launching test suite");
+                Debug.Log("LevelPlay Launching test suite");
                 LP.LevelPlay.LaunchTestSuite();
             }
         }
 
         private void OnInitialisationFailed(LP.LevelPlayInitError error)
         {
-            base.InitialisationFailed?.Invoke(this);
-            Debug.LogWarning($"LevelPlay initialiseation failed: {error}");
+            Debug.LogWarning($"LevelPlay initialisation failed: {error}");
+            NotifyInitialisationFailed();
+        }
+
+        protected override void DisposeProvider()
+        {
+            LP.LevelPlay.OnInitSuccess -= OnInitialisationComplete;
+            LP.LevelPlay.OnInitFailed -= OnInitialisationFailed;
         }
 
         #region Validation
@@ -63,7 +74,5 @@ namespace GG.Unity.Advertisement.LevelPlay
             }
         }
         #endregion
-
     }
 }
-
