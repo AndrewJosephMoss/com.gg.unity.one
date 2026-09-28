@@ -39,10 +39,10 @@ namespace GG.Unity.Advertisement.LevelPlay
             switch (placement)
             {
                 case Placement.Top:
-                    topBanner.HideAd();
+                    topBanner?.HideAd();
                     break;
                 case Placement.Bottom:
-                    bottomBanner.HideAd();
+                    bottomBanner?.HideAd();
                     break;
             }
         }
@@ -52,10 +52,10 @@ namespace GG.Unity.Advertisement.LevelPlay
             switch (placement)
             {
                 case Placement.Top:
-                    topBanner.ShowAd();
+                    topBanner?.ShowAd();
                     break;
                 case Placement.Bottom:
-                    bottomBanner.ShowAd();
+                    bottomBanner?.ShowAd();
                     break;
             }
         }
