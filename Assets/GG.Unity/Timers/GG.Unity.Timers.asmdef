@@ -1,9 +1,7 @@
 {
-    "name": "GG.Unity.Advertisement",
+    "name": "GG.Unity.Timers",
     "rootNamespace": "",
-    "references": [
-        "GUID:8d56708ff9df9b94a900222478f4abfb"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

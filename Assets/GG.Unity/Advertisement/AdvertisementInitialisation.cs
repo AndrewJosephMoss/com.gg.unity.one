@@ -8,26 +8,9 @@ namespace GG.Unity.Advertisement
         public UnityEvent<AdvertisementInitialisation> InitialisationComplete;
         public UnityEvent<AdvertisementInitialisation> InitialisationFailed;
 
-        public static AdvertisementInitialisation Instance = null;
-
-        /// <summary>
-        /// There should be one Advertisement Initialisation object in existence.
-        /// </summary>
-        private void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(Instance);
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
-        }
-
         void Start()
         {
+            //TODO, if initialisation fails keep trying to initialise with a back off timer
             Initialise();
         }
 
