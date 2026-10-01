@@ -308,11 +308,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7353849003574888693, guid: 764b392a00ebc3441bd1b41f5cee7a28, type: 3}
+      propertyPath: interstitialAdsController
+      value: 
+      objectReference: {fileID: 8116084683890755220}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 764b392a00ebc3441bd1b41f5cee7a28, type: 3}
+--- !u!114 &8116084683890755220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7736148947964106939, guid: 764b392a00ebc3441bd1b41f5cee7a28, type: 3}
+  m_PrefabInstance: {fileID: 8116084683890755219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2ceaf385bebf44e94cd876681fdb79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GG.Unity.Advertisement::GG.Unity.Advertisement.InterstitialAdsController
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

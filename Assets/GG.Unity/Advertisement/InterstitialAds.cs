@@ -1,5 +1,6 @@
 using GG.Unity.Timers;
 using UnityEngine;
+using System;
 
 namespace GG.Unity.Advertisement
 {
@@ -9,6 +10,8 @@ namespace GG.Unity.Advertisement
         [SerializeField] private float baseRetryDelaySeconds = 2f;
         [SerializeField] private float maxRetryDelaySeconds = 60f;
         [SerializeField, Range(0f, 0.5f)] private float jitterFraction = 0.2f;
+
+        public event Action AdDisplayed;
 
         private BackOffTimer loadRetryTimer;
         private bool isLoading;
@@ -82,6 +85,23 @@ namespace GG.Unity.Advertisement
             // The ad was consumed or invalid; get a fresh one.
             isLoading = false;
             LoadInterstitialAd();
+        }
+
+        protected void NotifyAdDisplayed()
+        {
+            SafeInvoke(AdDisplayed);
+        }
+
+        private static void SafeInvoke(Action handlers)
+        {
+            if (handlers == null)
+                return;
+
+            foreach (Delegate handler in handlers.GetInvocationList())
+            {
+                try { ((Action)handler)(); }
+                catch (Exception e) { Debug.LogException(e); }
+            }
         }
 
         protected void NotifyAdClosed()

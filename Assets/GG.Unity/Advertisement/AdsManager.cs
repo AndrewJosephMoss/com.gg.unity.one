@@ -19,6 +19,10 @@ namespace GG.Unity.Advertisement
         public InterstitialAds InterstitialAds => interstitialAds;
 
         [SerializeField]
+        private InterstitialAdsController interstitialAdsController;
+        public InterstitialAdsController InterstitialAdsController => InterstitialAdsController;
+
+        [SerializeField]
         private RewardAds rewardAds;
         public RewardAds RewardAds => rewardAds;
 
@@ -53,6 +57,11 @@ namespace GG.Unity.Advertisement
             {
                 Debug.LogWarning($"{gameObject.name}:{GetType()} has null rewardAds, attempting to assign it.", this);
                 rewardAds = GetComponent<RewardAds>();
+            }
+            if (interstitialAdsController == null)
+            {
+                Debug.LogWarning($"{gameObject.name}:{GetType()} has null interstitialAdsController, attempting to assign it.", this);
+                interstitialAdsController = GetComponent<InterstitialAdsController>();
             }
         }
         #endregion

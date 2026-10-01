@@ -23,6 +23,7 @@ namespace GG.Unity.Advertisement.LevelPlay
             interstitialAd.OnAdLoadFailed += HandleAdLoadFailed;
             interstitialAd.OnAdDisplayFailed += HandleAdDisplayFailed;
             interstitialAd.OnAdClosed += HandleAdClosed;
+            interstitialAd.OnAdDisplayed += HandleAdDisplayed;
         }
 
         protected override void LoadAd() => interstitialAd.LoadAd();
@@ -33,6 +34,7 @@ namespace GG.Unity.Advertisement.LevelPlay
         private void HandleAdLoadFailed(LevelPlayAdError _) => NotifyLoadFailed();
         private void HandleAdDisplayFailed(LevelPlayAdInfo _, LevelPlayAdError __) => NotifyShowFailed();
         private void HandleAdClosed(LevelPlayAdInfo _) => NotifyAdClosed();
+        private void HandleAdDisplayed(LevelPlayAdInfo _) => NotifyAdDisplayed();
 
         protected override void DisposeProvider()
         {
