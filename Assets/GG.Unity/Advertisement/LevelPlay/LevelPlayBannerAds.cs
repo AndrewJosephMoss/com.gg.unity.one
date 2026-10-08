@@ -31,6 +31,7 @@ namespace GG.Unity.Advertisement.LevelPlay
                 .Build();
             ILevelPlayBannerAd bannerAd = new LevelPlayBannerAd(bannerId, adConfig);
             bannerAd.LoadAd();
+            bannerAd.HideAd(); // Prevent auto show of loaded ad
             return bannerAd;
         }
 

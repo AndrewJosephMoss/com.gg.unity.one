@@ -1,0 +1,84 @@
+﻿#include "pch-c.h"
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mFAB5B521EF439356F87993976F1664EC614534B6 (void);
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_m4A13C5294AEF3AC5B204CC566CE18FEDA98131B4 (void);
+extern void BackOffTimer_get_IsPending_m617054C5A434358A1FDA9DC6BAFF3DC7EBA93E03 (void);
+extern void BackOffTimer_get_AttemptCount_m1FFA3C5E8828E5650DC8D897350350B94E5A38F0 (void);
+extern void BackOffTimer__ctor_m57CE83FC4230D1892396469EBA7028801F2FC4FA (void);
+extern void BackOffTimer_Schedule_m708F4FDA4094455F6C9B502768024FB495852CA0 (void);
+extern void BackOffTimer_Cancel_mB6C6D5E29804A33F8BB6E2C9347D2F50A2ECB606 (void);
+extern void BackOffTimer_Reset_mABB63B8B4F829144A6109CF52396C85549EF5C4B (void);
+extern void BackOffTimer_WaitAndInvoke_m7E1F5B52BC1618A95EA22A7CBF64984770201885 (void);
+extern void BackOffTimer_GetBackoffDelay_m75FBD34B2899858C9CB7A5FC86CE7C30F80EA607 (void);
+extern void U3CWaitAndInvokeU3Ed__15__ctor_mF3E8BC3CC68134AB4DE41DB39668FBF9C658914F (void);
+extern void U3CWaitAndInvokeU3Ed__15_System_IDisposable_Dispose_mAF386D92B9D1A4A72CC4343E52BF6AD89A702496 (void);
+extern void U3CWaitAndInvokeU3Ed__15_MoveNext_mA42E519FA9BA2373E9D7FD107488E96288690E81 (void);
+extern void U3CWaitAndInvokeU3Ed__15_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mBFD0B886C19925B77256CBE2D1922ECF46BC07DF (void);
+extern void U3CWaitAndInvokeU3Ed__15_System_Collections_IEnumerator_Reset_m341693EDF1E91782C6EFA854438FF6853FE91F49 (void);
+extern void U3CWaitAndInvokeU3Ed__15_System_Collections_IEnumerator_get_Current_m7C8652A0A199897E051C169924472B9AD87B5103 (void);
+static Il2CppMethodPointer s_methodPointers[16] = 
+{
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mFAB5B521EF439356F87993976F1664EC614534B6,
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_m4A13C5294AEF3AC5B204CC566CE18FEDA98131B4,
+	BackOffTimer_get_IsPending_m617054C5A434358A1FDA9DC6BAFF3DC7EBA93E03,
+	BackOffTimer_get_AttemptCount_m1FFA3C5E8828E5650DC8D897350350B94E5A38F0,
+	BackOffTimer__ctor_m57CE83FC4230D1892396469EBA7028801F2FC4FA,
+	BackOffTimer_Schedule_m708F4FDA4094455F6C9B502768024FB495852CA0,
+	BackOffTimer_Cancel_mB6C6D5E29804A33F8BB6E2C9347D2F50A2ECB606,
+	BackOffTimer_Reset_mABB63B8B4F829144A6109CF52396C85549EF5C4B,
+	BackOffTimer_WaitAndInvoke_m7E1F5B52BC1618A95EA22A7CBF64984770201885,
+	BackOffTimer_GetBackoffDelay_m75FBD34B2899858C9CB7A5FC86CE7C30F80EA607,
+	U3CWaitAndInvokeU3Ed__15__ctor_mF3E8BC3CC68134AB4DE41DB39668FBF9C658914F,
+	U3CWaitAndInvokeU3Ed__15_System_IDisposable_Dispose_mAF386D92B9D1A4A72CC4343E52BF6AD89A702496,
+	U3CWaitAndInvokeU3Ed__15_MoveNext_mA42E519FA9BA2373E9D7FD107488E96288690E81,
+	U3CWaitAndInvokeU3Ed__15_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mBFD0B886C19925B77256CBE2D1922ECF46BC07DF,
+	U3CWaitAndInvokeU3Ed__15_System_Collections_IEnumerator_Reset_m341693EDF1E91782C6EFA854438FF6853FE91F49,
+	U3CWaitAndInvokeU3Ed__15_System_Collections_IEnumerator_get_Current_m7C8652A0A199897E051C169924472B9AD87B5103,
+};
+static const int32_t s_InvokerIndices[16] = 
+{
+	15722,
+	10256,
+	9825,
+	9963,
+	687,
+	10256,
+	10256,
+	10256,
+	4701,
+	6910,
+	7686,
+	10256,
+	9825,
+	9797,
+	10256,
+	9797,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_GG_Unity_Timers_CodeGenModule;
+const Il2CppCodeGenModule g_GG_Unity_Timers_CodeGenModule = 
+{
+	"GG.Unity.Timers.dll",
+	16,
+	s_methodPointers,
+	0,
+	NULL,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};

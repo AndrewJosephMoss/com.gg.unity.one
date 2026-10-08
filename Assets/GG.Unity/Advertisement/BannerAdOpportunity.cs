@@ -9,14 +9,19 @@ namespace GG.Unity.Advertisement
         public BannerAds.Placement[] Placements => placements;
 
         [SerializeField]
-        private bool declareOnAwake = true;
+        private bool declareOnEnable = true;
 
-        void Awake()
+        void OnEnable()
         {
-            if (declareOnAwake)
+            if (declareOnEnable)
             {
                 DeclareOpportunity();
             }
+        }
+
+        void OnDisable()
+        {
+            RescindOpportunity();
         }
 
         public void DeclareOpportunity()
@@ -37,11 +42,6 @@ namespace GG.Unity.Advertisement
                 return;
             }
             BannerAds.Instance.RescindOpportunity(this);
-        }
-
-        void OnDestory()
-        {
-            RescindOpportunity();
         }
     }
 }

@@ -1,0 +1,175 @@
+﻿#include "pch-c.h"
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mE46B0F2354B604E6F61817AE47F8B23F0D35F20A (void);
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_m4CBFBB5953EFBCBEC1F0D04EC8568846E5650B18 (void);
+extern void LevelPlayBannerAds_InitialiseBannerAds_m180A433D26FF8A98C02F0A24B5B9F96D60A2C852 (void);
+extern void LevelPlayBannerAds_InitialiseBanner_m6C585937ADF95D4F711C6F3A3221105B33F5A81A (void);
+extern void LevelPlayBannerAds_HideBanner_mD1DA46CA153839BB56B0E784946B2B223853CA4C (void);
+extern void LevelPlayBannerAds_ShowBanner_mE5AFA812364C5BA9690820A5AFC8B8DB687553FF (void);
+extern void LevelPlayBannerAds_OnDestroy_m1062C31CC4F82FEBCC923D3A514EA4BC5E2D8B9E (void);
+extern void LevelPlayBannerAds__ctor_mC682AE8E8AB09B595A9E7216936FCDFCEB03C1FF (void);
+extern void LevelPlayIdsProvider_get_AppId_mF37778D288486080A0AAB4FF6A643E25554E69B4 (void);
+extern void LevelPlayIdsProvider_get_TopBannerAdUnitId_m0147D4A4D9A63A88041F73C73455D3C50E302219 (void);
+extern void LevelPlayIdsProvider_get_BottomBannerAdUnitId_m35334FFD61DD9F99F4ABAA32207864F81B62F5A5 (void);
+extern void LevelPlayIdsProvider_get_InterstitialAdUnitId_mCA2AF1A3D6C9DC925187C2373887414D1ADE9958 (void);
+extern void LevelPlayIdsProvider_get_RewardedAdUnitId_mCB1632D3A6F110D38CF131FE03C70B6165B8709F (void);
+extern void LevelPlayIdsProvider__ctor_mBBA98209DAAA2D62A6FABDDE37987C440A7B6258 (void);
+extern void LevelPlayInitialisation_InitialiseProvider_mD1D52703C2B3A80A23710F95F983B5923B5BFE60 (void);
+extern void LevelPlayInitialisation_Initialise_mFE8DAE02A966BAB3E54333E2B610843E75C79098 (void);
+extern void LevelPlayInitialisation_OnInitialisationComplete_m1EABD32BCCE7E50D9861DB3699DD498DA1F5838C (void);
+extern void LevelPlayInitialisation_OnInitialisationFailed_m5E077AA454322519950B3BBA6A99C730592D0E66 (void);
+extern void LevelPlayInitialisation_DisposeProvider_m5268E6A17170D08C1FD029A3DCECE673972B407C (void);
+extern void LevelPlayInitialisation_OnValidate_m109E0C0AE2ECFFDFB799F669D5ABA18AD236266F (void);
+extern void LevelPlayInitialisation__ctor_mB629D752E11A48D55841BA23FB44B2FC9AAB604F (void);
+extern void LevelPlayInterstitialAds_get_IsReady_m16C49DA6A6BDAD62EDBCB9DF986B85BF27A19777 (void);
+extern void LevelPlayInterstitialAds_InitialiseProvider_m4DAF29F30AE12332310A7B6A1BE17E5F13F06713 (void);
+extern void LevelPlayInterstitialAds_LoadAd_m55B673DFCEC5B600BFB5AA008D464B453F658B3A (void);
+extern void LevelPlayInterstitialAds_ShowAd_m34C88D61E0ECB514CB7E4F2322FB6079957805F0 (void);
+extern void LevelPlayInterstitialAds_HandleAdLoaded_m73262D3ACC67AA950DAB5616A9A67577077D50FE (void);
+extern void LevelPlayInterstitialAds_HandleAdLoadFailed_mEFB78AEED12D0806877697673E920FFE1F928CD2 (void);
+extern void LevelPlayInterstitialAds_HandleAdDisplayFailed_m74CA7098F79EEB8275838AFB70E3F532D851DD1E (void);
+extern void LevelPlayInterstitialAds_HandleAdClosed_m796A1725569E878B7348B7C260977ED711626552 (void);
+extern void LevelPlayInterstitialAds_HandleAdDisplayed_m98066D6B9B9C5970FE57E400A979F7D40111A125 (void);
+extern void LevelPlayInterstitialAds_DisposeProvider_mFB08C581A906ED2AD4A41C94E1FFBF676AECFFF0 (void);
+extern void LevelPlayInterstitialAds__ctor_m2B0A0833B32B89895E87B70EFC80B780E4F5CA15 (void);
+extern void LevelPlayRewardAds_get_IsReady_m4C43B0D7C8C79050581373FBCA794E5DD6E543E7 (void);
+extern void LevelPlayRewardAds_InitialiseProvider_m0C467BAD0BF160FB4228AEEFF1938FFE18C9044E (void);
+extern void LevelPlayRewardAds_LoadAd_m3871B2EB18E464D74158E94D8C2D3D4DEAEDEA2B (void);
+extern void LevelPlayRewardAds_ShowAd_mD7F37FB75BCA4E56A91155A9D92FD4350458F6C5 (void);
+extern void LevelPlayRewardAds_HandleAdLoaded_mAC7361CD7E13022210D7448A411050238DFE300F (void);
+extern void LevelPlayRewardAds_HandleAdLoadFailed_m9C260E986D9142B7E2CB3EDB68FB9BA92F35A76D (void);
+extern void LevelPlayRewardAds_HandleAdDisplayFailed_m1EE7D328F16B52C2DF40923B7E9C849611675C8E (void);
+extern void LevelPlayRewardAds_HandleAdClosed_m405508D5F6F44DF250F60D08E45C65129E82714B (void);
+extern void LevelPlayRewardAds_HandleAdRewarded_m08EAFE49DA89C1D73272B845376A1B597C6F0E0D (void);
+extern void LevelPlayRewardAds_DisposeProvider_mB7B2E3C8F7D7C08B98599CD3050986416817109F (void);
+extern void LevelPlayRewardAds__ctor_mF6E1114BA31A06906D34C93DC0BF9901172AD995 (void);
+static Il2CppMethodPointer s_methodPointers[48] = 
+{
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mE46B0F2354B604E6F61817AE47F8B23F0D35F20A,
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_m4CBFBB5953EFBCBEC1F0D04EC8568846E5650B18,
+	LevelPlayBannerAds_InitialiseBannerAds_m180A433D26FF8A98C02F0A24B5B9F96D60A2C852,
+	LevelPlayBannerAds_InitialiseBanner_m6C585937ADF95D4F711C6F3A3221105B33F5A81A,
+	LevelPlayBannerAds_HideBanner_mD1DA46CA153839BB56B0E784946B2B223853CA4C,
+	LevelPlayBannerAds_ShowBanner_mE5AFA812364C5BA9690820A5AFC8B8DB687553FF,
+	LevelPlayBannerAds_OnDestroy_m1062C31CC4F82FEBCC923D3A514EA4BC5E2D8B9E,
+	LevelPlayBannerAds__ctor_mC682AE8E8AB09B595A9E7216936FCDFCEB03C1FF,
+	LevelPlayIdsProvider_get_AppId_mF37778D288486080A0AAB4FF6A643E25554E69B4,
+	LevelPlayIdsProvider_get_TopBannerAdUnitId_m0147D4A4D9A63A88041F73C73455D3C50E302219,
+	LevelPlayIdsProvider_get_BottomBannerAdUnitId_m35334FFD61DD9F99F4ABAA32207864F81B62F5A5,
+	LevelPlayIdsProvider_get_InterstitialAdUnitId_mCA2AF1A3D6C9DC925187C2373887414D1ADE9958,
+	LevelPlayIdsProvider_get_RewardedAdUnitId_mCB1632D3A6F110D38CF131FE03C70B6165B8709F,
+	LevelPlayIdsProvider__ctor_mBBA98209DAAA2D62A6FABDDE37987C440A7B6258,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	LevelPlayInitialisation_InitialiseProvider_mD1D52703C2B3A80A23710F95F983B5923B5BFE60,
+	LevelPlayInitialisation_Initialise_mFE8DAE02A966BAB3E54333E2B610843E75C79098,
+	LevelPlayInitialisation_OnInitialisationComplete_m1EABD32BCCE7E50D9861DB3699DD498DA1F5838C,
+	LevelPlayInitialisation_OnInitialisationFailed_m5E077AA454322519950B3BBA6A99C730592D0E66,
+	LevelPlayInitialisation_DisposeProvider_m5268E6A17170D08C1FD029A3DCECE673972B407C,
+	LevelPlayInitialisation_OnValidate_m109E0C0AE2ECFFDFB799F669D5ABA18AD236266F,
+	LevelPlayInitialisation__ctor_mB629D752E11A48D55841BA23FB44B2FC9AAB604F,
+	LevelPlayInterstitialAds_get_IsReady_m16C49DA6A6BDAD62EDBCB9DF986B85BF27A19777,
+	LevelPlayInterstitialAds_InitialiseProvider_m4DAF29F30AE12332310A7B6A1BE17E5F13F06713,
+	LevelPlayInterstitialAds_LoadAd_m55B673DFCEC5B600BFB5AA008D464B453F658B3A,
+	LevelPlayInterstitialAds_ShowAd_m34C88D61E0ECB514CB7E4F2322FB6079957805F0,
+	LevelPlayInterstitialAds_HandleAdLoaded_m73262D3ACC67AA950DAB5616A9A67577077D50FE,
+	LevelPlayInterstitialAds_HandleAdLoadFailed_mEFB78AEED12D0806877697673E920FFE1F928CD2,
+	LevelPlayInterstitialAds_HandleAdDisplayFailed_m74CA7098F79EEB8275838AFB70E3F532D851DD1E,
+	LevelPlayInterstitialAds_HandleAdClosed_m796A1725569E878B7348B7C260977ED711626552,
+	LevelPlayInterstitialAds_HandleAdDisplayed_m98066D6B9B9C5970FE57E400A979F7D40111A125,
+	LevelPlayInterstitialAds_DisposeProvider_mFB08C581A906ED2AD4A41C94E1FFBF676AECFFF0,
+	LevelPlayInterstitialAds__ctor_m2B0A0833B32B89895E87B70EFC80B780E4F5CA15,
+	LevelPlayRewardAds_get_IsReady_m4C43B0D7C8C79050581373FBCA794E5DD6E543E7,
+	LevelPlayRewardAds_InitialiseProvider_m0C467BAD0BF160FB4228AEEFF1938FFE18C9044E,
+	LevelPlayRewardAds_LoadAd_m3871B2EB18E464D74158E94D8C2D3D4DEAEDEA2B,
+	LevelPlayRewardAds_ShowAd_mD7F37FB75BCA4E56A91155A9D92FD4350458F6C5,
+	LevelPlayRewardAds_HandleAdLoaded_mAC7361CD7E13022210D7448A411050238DFE300F,
+	LevelPlayRewardAds_HandleAdLoadFailed_m9C260E986D9142B7E2CB3EDB68FB9BA92F35A76D,
+	LevelPlayRewardAds_HandleAdDisplayFailed_m1EE7D328F16B52C2DF40923B7E9C849611675C8E,
+	LevelPlayRewardAds_HandleAdClosed_m405508D5F6F44DF250F60D08E45C65129E82714B,
+	LevelPlayRewardAds_HandleAdRewarded_m08EAFE49DA89C1D73272B845376A1B597C6F0E0D,
+	LevelPlayRewardAds_DisposeProvider_mB7B2E3C8F7D7C08B98599CD3050986416817109F,
+	LevelPlayRewardAds__ctor_mF6E1114BA31A06906D34C93DC0BF9901172AD995,
+};
+static const int32_t s_InvokerIndices[48] = 
+{
+	15718,
+	10256,
+	10256,
+	1551,
+	7686,
+	7686,
+	10256,
+	10256,
+	9797,
+	9797,
+	9797,
+	9797,
+	9797,
+	10256,
+	-1,
+	-1,
+	-1,
+	-1,
+	-1,
+	10256,
+	10256,
+	7517,
+	7517,
+	10256,
+	10256,
+	10256,
+	9825,
+	10256,
+	10256,
+	10256,
+	7517,
+	7517,
+	3174,
+	7517,
+	7517,
+	10256,
+	10256,
+	9825,
+	10256,
+	10256,
+	10256,
+	7517,
+	7517,
+	3174,
+	7517,
+	3174,
+	10256,
+	10256,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_GG_Unity_Advertisement_LevelPlay_CodeGenModule;
+const Il2CppCodeGenModule g_GG_Unity_Advertisement_LevelPlay_CodeGenModule = 
+{
+	"GG.Unity.Advertisement.LevelPlay.dll",
+	48,
+	s_methodPointers,
+	0,
+	NULL,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
