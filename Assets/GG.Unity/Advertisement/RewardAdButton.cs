@@ -26,10 +26,13 @@ namespace GG.Unity.Advertisement
         [SerializeField]
         private bool grantRewardIfAdUnavailable = true;
 
+        // RewardAdButtons storing to the same path will jointly accumulate attempt counts
+        [SerializeField]
+        private string attemptsBasePath = "attempts_";
+
         protected bool IsWaitingForAd {  get; private set; }
         private Coroutine waitTimeoutCoroutine;
 
-        private const string attemptsBasePath = "attempts_";
         private string AttemptsPath
         {
             get
