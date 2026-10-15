@@ -7,15 +7,8 @@ namespace GG.Unity.Advertisement
     public abstract class RewardAdButton : MonoBehaviour
     {
         public UnityEvent RewardGranted;
-
-        [SerializeField]
-        private GameObject InternetUnreachablePopup;
-
-        [SerializeField]
-        private GameObject RewardGrantedDueToAdFailure;
-
-        [SerializeField]
-        private GameObject AdFailedPopup;
+        public UnityEvent InternetAvailabilityNotDetected;
+        public UnityEvent AdFailed;
 
         [SerializeField]
         private int attemptsRequiredForReward = 3;
@@ -141,7 +134,7 @@ namespace GG.Unity.Advertisement
 
         protected virtual void HandleInternetNotReachable()
         {
-            Instantiate(InternetUnreachablePopup);
+            InternetAvailabilityNotDetected?.Invoke();
         }
 
         protected virtual void HandleAdUnavailable()
@@ -154,13 +147,12 @@ namespace GG.Unity.Advertisement
             if (grantRewardIfAdUnavailable && attempts >= attemptsRequiredForReward)
             {
                 ResetAttemptsIfNeeded();
-                Instantiate(RewardGrantedDueToAdFailure);
                 RewardGranted?.Invoke();
             }
             else
             {
                 Attempts = attempts;
-                Instantiate(AdFailedPopup);
+                AdFailed?.Invoke();
             }
         }
 

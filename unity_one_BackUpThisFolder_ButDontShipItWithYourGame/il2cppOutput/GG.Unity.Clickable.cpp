@@ -721,7 +721,7 @@ inline void HashSet_1__ctor_m6B9C3405D27AF80CAC9861D13F8D5202465ADDB6 (HashSet_1
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 59881
+// Method Definition Index: 59890
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_tCC232F08CC8731646CE1F4C296555AA4CFC1806C UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mCBDAA7407B2FA4DF6AA66CAFA9FCC54CEDD06EC3 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -756,7 +756,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_tCC232F08CC8731646CE1F4C296555
 		return L_6;
 	}
 }
-// Method Definition Index: 59882
+// Method Definition Index: 59891
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_m034731275EC67DD2115DE49EE555E95F468A24D2 (UnitySourceGeneratedAssemblyMonoScriptTypes_v1_tC5DFB36D5A9307CE1147807E30E2D543D16E8D31* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -843,7 +843,7 @@ IL2CPP_EXTERN_C void MonoScriptData_tCC232F08CC8731646CE1F4C296555AA4CFC1806C_ma
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 59883
+// Method Definition Index: 59892
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ClickablesContext_t5F4B218E0E850F07B45D160732A47AC2632B2133* ClickHandler_get_ClickablesContext_m43AA805584BDAF3BE2B67FEAD4A23FB0AE0B0BE8 (ClickHandler_tB4B64920B0C3E172AB3B68FE5D01BDBE8E00F00D* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -852,7 +852,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ClickablesContext_t5F4B218E0E850F07B45D160732
 		return L_0;
 	}
 }
-// Method Definition Index: 59884
+// Method Definition Index: 59893
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickHandler_Awake_m7B94C07E842F41A8F42130D5ABE7F1594B917538 (ClickHandler_tB4B64920B0C3E172AB3B68FE5D01BDBE8E00F00D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -890,7 +890,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickHandler_Awake_m7B94C07E842F41A8F421
 		return;
 	}
 }
-// Method Definition Index: 59885
+// Method Definition Index: 59894
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickHandler_OnEnable_mCE764133F8ED8E8239D4492642205A370EA3C5DA (ClickHandler_tB4B64920B0C3E172AB3B68FE5D01BDBE8E00F00D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -916,7 +916,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickHandler_OnEnable_mCE764133F8ED8E823
 		return;
 	}
 }
-// Method Definition Index: 59886
+// Method Definition Index: 59895
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickHandler_OnDisable_mDC38846E1979742F07DFE888DBF676609BDB7BC7 (ClickHandler_tB4B64920B0C3E172AB3B68FE5D01BDBE8E00F00D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -942,7 +942,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickHandler_OnDisable_mDC38846E1979742F
 		return;
 	}
 }
-// Method Definition Index: 59887
+// Method Definition Index: 59896
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickHandler_OnClick_m4AFA454480BECB263DC0F6B5A3935292C5789F96 (ClickHandler_tB4B64920B0C3E172AB3B68FE5D01BDBE8E00F00D* __this, CallbackContext_tB251EE41F509C6E8A6B05EC97C029A45DF4F5FA8 ___0_callbackContext, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1018,7 +1018,7 @@ IL_004d:
 		return;
 	}
 }
-// Method Definition Index: 59888
+// Method Definition Index: 59897
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickHandler__ctor_mF7D2FCC4E79551DD26ECA3D85CBE86C47EEA08B4 (ClickHandler_tB4B64920B0C3E172AB3B68FE5D01BDBE8E00F00D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1045,7 +1045,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickHandler__ctor_mF7D2FCC4E79551DD26EC
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 59889
+// Method Definition Index: 59898
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* ClickablesContext_get_ContextClickables_mFB0757BAF51BC1100410D205878A00289E133EED (ClickablesContext_t5F4B218E0E850F07B45D160732A47AC2632B2133* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1054,7 +1054,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* ClickablesContext_get_ContextC
 		return L_0;
 	}
 }
-// Method Definition Index: 59890
+// Method Definition Index: 59899
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ClickablesContext_get_HasSelection_mBAF5D200DE9AA0C778E92DCE1DB8C7906B047730 (ClickablesContext_t5F4B218E0E850F07B45D160732A47AC2632B2133* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1072,7 +1072,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool ClickablesContext_get_HasSelection_mBAF5
 		return (bool)((((int32_t)L_1) > ((int32_t)0))? 1 : 0);
 	}
 }
-// Method Definition Index: 59891
+// Method Definition Index: 59900
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickablesContext_AddClickableToContext_m888F935BCE7C0714354A8DC265EEE8127F724309 (ClickablesContext_t5F4B218E0E850F07B45D160732A47AC2632B2133* __this, RuntimeObject* ___0_clickable, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1098,7 +1098,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickablesContext_AddClickableToContext_
 		return;
 	}
 }
-// Method Definition Index: 59892
+// Method Definition Index: 59901
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickablesContext_RemoveClickableFromContext_mC86142F6F9C57736EF208E8FF7F6E1B34EBA1414 (ClickablesContext_t5F4B218E0E850F07B45D160732A47AC2632B2133* __this, RuntimeObject* ___0_clickable, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1124,7 +1124,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickablesContext_RemoveClickableFromCon
 		return;
 	}
 }
-// Method Definition Index: 59893
+// Method Definition Index: 59902
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ClickablesContext__ctor_mB4AD5C826BE665ED77C9D1B544C2D83E7A222532 (ClickablesContext_t5F4B218E0E850F07B45D160732A47AC2632B2133* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1190,7 +1190,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 		return L_4;
 	}
 }
-// Method Definition Index: 36778
+// Method Definition Index: 36780
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t LayerMask_op_Implicit_m7F5A5B9D079281AC445ED39DEE1FCFA9D795810D_inline (LayerMask_t97CB6BDADEDC3D6423C7BCFEA7F86DA2EC6241DB ___0_mask, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1200,7 +1200,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t LayerMask_op_Implicit_m7F
 		return L_1;
 	}
 }
-// Method Definition Index: 59883
+// Method Definition Index: 59892
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ClickablesContext_t5F4B218E0E850F07B45D160732A47AC2632B2133* ClickHandler_get_ClickablesContext_m43AA805584BDAF3BE2B67FEAD4A23FB0AE0B0BE8_inline (ClickHandler_tB4B64920B0C3E172AB3B68FE5D01BDBE8E00F00D* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1209,7 +1209,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ClickablesContext_t5F4B218E0E850F
 		return L_0;
 	}
 }
-// Method Definition Index: 57707
+// Method Definition Index: 57716
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t HashSet_1_get_Count_mC262B93896E7CDADC552C86423D1F6249DB57997_gshared_inline (HashSet_1_tBCF0302A9E9E74ECC464F4B0C6A09F22E5114AFD* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>

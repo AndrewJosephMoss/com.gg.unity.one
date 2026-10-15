@@ -12125,6 +12125,30 @@ struct MonoScriptData_tD27C03BD7FB03D5497E326D4AFD32427BB1AEEFF_marshaled_com
 	int32_t ___TotalFiles;
 	int32_t ___IsEditorOnly;
 };
+struct MonoScriptData_t8B5CECE929098A1B01F0051B6626C631E4A96D01 
+{
+	ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___FilePathsData;
+	ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___TypesData;
+	int32_t ___TotalTypes;
+	int32_t ___TotalFiles;
+	bool ___IsEditorOnly;
+};
+struct MonoScriptData_t8B5CECE929098A1B01F0051B6626C631E4A96D01_marshaled_pinvoke
+{
+	Il2CppSafeArray* ___FilePathsData;
+	Il2CppSafeArray* ___TypesData;
+	int32_t ___TotalTypes;
+	int32_t ___TotalFiles;
+	int32_t ___IsEditorOnly;
+};
+struct MonoScriptData_t8B5CECE929098A1B01F0051B6626C631E4A96D01_marshaled_com
+{
+	Il2CppSafeArray* ___FilePathsData;
+	Il2CppSafeArray* ___TypesData;
+	int32_t ___TotalTypes;
+	int32_t ___TotalFiles;
+	int32_t ___IsEditorOnly;
+};
 struct MonoScriptData_t9FE40F8A50A6C374FD4C5CB3542BAD4F406CA0CB 
 {
 	ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___FilePathsData;
@@ -152784,6 +152808,12 @@ void RuntimeInvoker_StaticMonoScriptData_tD27C03BD7FB03D5497E326D4AFD32427BB1AEE
 	*((MonoScriptData_tD27C03BD7FB03D5497E326D4AFD32427BB1AEEFF*)returnAddress) = ((Func)methodPointer)(methodMetadata);
 }
 
+void RuntimeInvoker_StaticMonoScriptData_t8B5CECE929098A1B01F0051B6626C631E4A96D01 (Il2CppMethodPointer methodPointer, const RuntimeMethod* methodMetadata, void* obj, void** args, void* returnAddress)
+{
+	typedef MonoScriptData_t8B5CECE929098A1B01F0051B6626C631E4A96D01 (*Func)(const RuntimeMethod* method);
+	*((MonoScriptData_t8B5CECE929098A1B01F0051B6626C631E4A96D01*)returnAddress) = ((Func)methodPointer)(methodMetadata);
+}
+
 void RuntimeInvoker_StaticMonoScriptData_t9FE40F8A50A6C374FD4C5CB3542BAD4F406CA0CB (Il2CppMethodPointer methodPointer, const RuntimeMethod* methodMetadata, void* obj, void** args, void* returnAddress)
 {
 	typedef MonoScriptData_t9FE40F8A50A6C374FD4C5CB3542BAD4F406CA0CB (*Func)(const RuntimeMethod* method);
@@ -152875,7 +152905,7 @@ void RuntimeInvoker_StaticMonoScriptData_t7C1EFF89409588A65507FDF01648DD5646A1DA
 }
 
 IL2CPP_EXTERN_C const InvokerMethod g_Il2CppInvokerPointers[];
-const InvokerMethod g_Il2CppInvokerPointers[15738] = 
+const InvokerMethod g_Il2CppInvokerPointers[15739] = 
 {
 	RuntimeInvoker_D477A88AAE104405032B2FB5C20F9DC7358F9A6C,
 	RuntimeInvoker_2839C6A60C54F1BF6F0BFF0DB199CEBD01026AD0,
@@ -168600,6 +168630,7 @@ const InvokerMethod g_Il2CppInvokerPointers[15738] =
 	RuntimeInvoker_StaticMonoScriptData_tCC232F08CC8731646CE1F4C296555AA4CFC1806C,
 	RuntimeInvoker_StaticMonoScriptData_t1C2268B3BE168C644689AD8F71ED11E51EFB8567,
 	RuntimeInvoker_StaticMonoScriptData_tD27C03BD7FB03D5497E326D4AFD32427BB1AEEFF,
+	RuntimeInvoker_StaticMonoScriptData_t8B5CECE929098A1B01F0051B6626C631E4A96D01,
 	RuntimeInvoker_StaticMonoScriptData_t9FE40F8A50A6C374FD4C5CB3542BAD4F406CA0CB,
 	RuntimeInvoker_StaticMonoScriptData_t4F2AB24BC02A7052E6B9EED48D1A83B0A2F7F97F,
 	RuntimeInvoker_StaticMonoScriptData_tE8CE27F1B50A55060EDAD9796B65329E68490400,

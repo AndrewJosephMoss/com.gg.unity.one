@@ -879,7 +879,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RewardAds__ctor_m52036F9547DB0B1154B0242
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 59759
+// Method Definition Index: 59768
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t0EA1FA108EE08BE059F021A13A515B1135E9E026 UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mE46B0F2354B604E6F61817AE47F8B23F0D35F20A (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -914,7 +914,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t0EA1FA108EE08BE059F021A13A515
 		return L_6;
 	}
 }
-// Method Definition Index: 59760
+// Method Definition Index: 59769
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_m4CBFBB5953EFBCBEC1F0D04EC8568846E5650B18 (UnitySourceGeneratedAssemblyMonoScriptTypes_v1_t18E026FB52CB731E22AFA9A7386BFB168549D6C0* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1001,7 +1001,7 @@ IL2CPP_EXTERN_C void MonoScriptData_t0EA1FA108EE08BE059F021A13A515B1135E9E026_ma
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 59761
+// Method Definition Index: 59770
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayBannerAds_InitialiseBannerAds_m180A433D26FF8A98C02F0A24B5B9F96D60A2C852 (LevelPlayBannerAds_t1ACE742187C0E40C8EEE851B2F98711DD0E3B97F* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1056,7 +1056,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayBannerAds_InitialiseBannerAds_m
 		return;
 	}
 }
-// Method Definition Index: 59762
+// Method Definition Index: 59771
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* LevelPlayBannerAds_InitialiseBanner_m6C585937ADF95D4F711C6F3A3221105B33F5A81A (LevelPlayBannerAds_t1ACE742187C0E40C8EEE851B2F98711DD0E3B97F* __this, String_t* ___0_bannerId, LevelPlayAdSize_tA73998F62BAB4CA67C61F02E625EEDAA90DBC146* ___1_size, LevelPlayBannerPosition_tF5B19CEBCFD016A1F8E7B0310F33665AC5A630B8* ___2_position, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1103,7 +1103,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* LevelPlayBannerAds_InitialiseB
 		return L_12;
 	}
 }
-// Method Definition Index: 59763
+// Method Definition Index: 59772
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayBannerAds_HideBanner_mD1DA46CA153839BB56B0E784946B2B223853CA4C (LevelPlayBannerAds_t1ACE742187C0E40C8EEE851B2F98711DD0E3B97F* __this, int32_t ___0_placement, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1179,7 +1179,7 @@ IL_0024:
 		return;
 	}
 }
-// Method Definition Index: 59764
+// Method Definition Index: 59773
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayBannerAds_ShowBanner_mE5AFA812364C5BA9690820A5AFC8B8DB687553FF (LevelPlayBannerAds_t1ACE742187C0E40C8EEE851B2F98711DD0E3B97F* __this, int32_t ___0_placement, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1255,7 +1255,7 @@ IL_0024:
 		return;
 	}
 }
-// Method Definition Index: 59765
+// Method Definition Index: 59774
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayBannerAds_OnDestroy_m1062C31CC4F82FEBCC923D3A514EA4BC5E2D8B9E (LevelPlayBannerAds_t1ACE742187C0E40C8EEE851B2F98711DD0E3B97F* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1265,7 +1265,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayBannerAds_OnDestroy_m1062C31CC4
 		return;
 	}
 }
-// Method Definition Index: 59766
+// Method Definition Index: 59775
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayBannerAds__ctor_mC682AE8E8AB09B595A9E7216936FCDFCEB03C1FF (LevelPlayBannerAds_t1ACE742187C0E40C8EEE851B2F98711DD0E3B97F* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1282,7 +1282,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayBannerAds__ctor_mC682AE8E8AB09B
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 59767
+// Method Definition Index: 59776
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* LevelPlayIdsProvider_get_AppId_mF37778D288486080A0AAB4FF6A643E25554E69B4 (LevelPlayIdsProvider_t5BE80E6EEE2F219586CF8A374652E4C615218E33* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1291,7 +1291,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* LevelPlayIdsProvider_get_AppId_mF37
 		return L_0;
 	}
 }
-// Method Definition Index: 59768
+// Method Definition Index: 59777
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* LevelPlayIdsProvider_get_TopBannerAdUnitId_m0147D4A4D9A63A88041F73C73455D3C50E302219 (LevelPlayIdsProvider_t5BE80E6EEE2F219586CF8A374652E4C615218E33* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1300,7 +1300,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* LevelPlayIdsProvider_get_TopBannerA
 		return L_0;
 	}
 }
-// Method Definition Index: 59769
+// Method Definition Index: 59778
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* LevelPlayIdsProvider_get_BottomBannerAdUnitId_m35334FFD61DD9F99F4ABAA32207864F81B62F5A5 (LevelPlayIdsProvider_t5BE80E6EEE2F219586CF8A374652E4C615218E33* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1309,7 +1309,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* LevelPlayIdsProvider_get_BottomBann
 		return L_0;
 	}
 }
-// Method Definition Index: 59770
+// Method Definition Index: 59779
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* LevelPlayIdsProvider_get_InterstitialAdUnitId_mCA2AF1A3D6C9DC925187C2373887414D1ADE9958 (LevelPlayIdsProvider_t5BE80E6EEE2F219586CF8A374652E4C615218E33* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1318,7 +1318,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* LevelPlayIdsProvider_get_Interstiti
 		return L_0;
 	}
 }
-// Method Definition Index: 59771
+// Method Definition Index: 59780
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* LevelPlayIdsProvider_get_RewardedAdUnitId_mCB1632D3A6F110D38CF131FE03C70B6165B8709F (LevelPlayIdsProvider_t5BE80E6EEE2F219586CF8A374652E4C615218E33* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1327,7 +1327,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* LevelPlayIdsProvider_get_RewardedAd
 		return L_0;
 	}
 }
-// Method Definition Index: 59772
+// Method Definition Index: 59781
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayIdsProvider__ctor_mBBA98209DAAA2D62A6FABDDE37987C440A7B6258 (LevelPlayIdsProvider_t5BE80E6EEE2F219586CF8A374652E4C615218E33* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1364,7 +1364,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayIdsProvider__ctor_mBBA98209DAAA
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 59778
+// Method Definition Index: 59787
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInitialisation_InitialiseProvider_mD1D52703C2B3A80A23710F95F983B5923B5BFE60 (LevelPlayInitialisation_tEB7939F5C368F3D2DCB39ADFB0D07A95AC9F7636* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1389,7 +1389,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInitialisation_InitialiseProvid
 		return;
 	}
 }
-// Method Definition Index: 59779
+// Method Definition Index: 59788
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInitialisation_Initialise_mFE8DAE02A966BAB3E54333E2B610843E75C79098 (LevelPlayInitialisation_tEB7939F5C368F3D2DCB39ADFB0D07A95AC9F7636* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1443,7 +1443,7 @@ IL_004a:
 		return;
 	}
 }
-// Method Definition Index: 59780
+// Method Definition Index: 59789
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInitialisation_OnInitialisationComplete_m1EABD32BCCE7E50D9861DB3699DD498DA1F5838C (LevelPlayInitialisation_tEB7939F5C368F3D2DCB39ADFB0D07A95AC9F7636* __this, LevelPlayConfiguration_t98005A9447ACE3DBCD8B1E92A8E1A55A4436A4C4* ___0_configuration, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1506,7 +1506,7 @@ IL_003f:
 		return;
 	}
 }
-// Method Definition Index: 59781
+// Method Definition Index: 59790
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInitialisation_OnInitialisationFailed_m5E077AA454322519950B3BBA6A99C730592D0E66 (LevelPlayInitialisation_tEB7939F5C368F3D2DCB39ADFB0D07A95AC9F7636* __this, LevelPlayInitError_t8985554C2A7851780672887602EAC05A835A4BC5* ___0_error, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1527,7 +1527,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInitialisation_OnInitialisation
 		return;
 	}
 }
-// Method Definition Index: 59782
+// Method Definition Index: 59791
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInitialisation_DisposeProvider_m5268E6A17170D08C1FD029A3DCECE673972B407C (LevelPlayInitialisation_tEB7939F5C368F3D2DCB39ADFB0D07A95AC9F7636* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1552,7 +1552,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInitialisation_DisposeProvider_
 		return;
 	}
 }
-// Method Definition Index: 59783
+// Method Definition Index: 59792
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInitialisation_OnValidate_m109E0C0AE2ECFFDFB799F669D5ABA18AD236266F (LevelPlayInitialisation_tEB7939F5C368F3D2DCB39ADFB0D07A95AC9F7636* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1591,7 +1591,7 @@ IL_0028:
 		return;
 	}
 }
-// Method Definition Index: 59784
+// Method Definition Index: 59793
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInitialisation__ctor_mB629D752E11A48D55841BA23FB44B2FC9AAB604F (LevelPlayInitialisation_tEB7939F5C368F3D2DCB39ADFB0D07A95AC9F7636* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1608,7 +1608,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInitialisation__ctor_mB629D752E
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 59785
+// Method Definition Index: 59794
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool LevelPlayInterstitialAds_get_IsReady_m16C49DA6A6BDAD62EDBCB9DF986B85BF27A19777 (LevelPlayInterstitialAds_tB5D2B011700CDC1497733DE5A25486DAE8C78F1D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1638,7 +1638,7 @@ IL_0014:
 		return (bool)0;
 	}
 }
-// Method Definition Index: 59786
+// Method Definition Index: 59795
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_InitialiseProvider_m4DAF29F30AE12332310A7B6A1BE17E5F13F06713 (LevelPlayInterstitialAds_tB5D2B011700CDC1497733DE5A25486DAE8C78F1D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1714,7 +1714,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_InitialiseProvi
 		return;
 	}
 }
-// Method Definition Index: 59787
+// Method Definition Index: 59796
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_LoadAd_m55B673DFCEC5B600BFB5AA008D464B453F658B3A (LevelPlayInterstitialAds_tB5D2B011700CDC1497733DE5A25486DAE8C78F1D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1731,7 +1731,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_LoadAd_m55B673D
 		return;
 	}
 }
-// Method Definition Index: 59788
+// Method Definition Index: 59797
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_ShowAd_m34C88D61E0ECB514CB7E4F2322FB6079957805F0 (LevelPlayInterstitialAds_tB5D2B011700CDC1497733DE5A25486DAE8C78F1D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1748,7 +1748,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_ShowAd_m34C88D6
 		return;
 	}
 }
-// Method Definition Index: 59789
+// Method Definition Index: 59798
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_HandleAdLoaded_m73262D3ACC67AA950DAB5616A9A67577077D50FE (LevelPlayInterstitialAds_tB5D2B011700CDC1497733DE5A25486DAE8C78F1D* __this, LevelPlayAdInfo_t61413A632EB984E68251D76C27BCA2318D7A9F9C* ___0__, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1757,7 +1757,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_HandleAdLoaded_
 		return;
 	}
 }
-// Method Definition Index: 59790
+// Method Definition Index: 59799
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_HandleAdLoadFailed_mEFB78AEED12D0806877697673E920FFE1F928CD2 (LevelPlayInterstitialAds_tB5D2B011700CDC1497733DE5A25486DAE8C78F1D* __this, LevelPlayAdError_t839B39B1D3D7B1F82E28E4C92FD4BF28F6AACE5A* ___0__, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1766,7 +1766,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_HandleAdLoadFai
 		return;
 	}
 }
-// Method Definition Index: 59791
+// Method Definition Index: 59800
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_HandleAdDisplayFailed_m74CA7098F79EEB8275838AFB70E3F532D851DD1E (LevelPlayInterstitialAds_tB5D2B011700CDC1497733DE5A25486DAE8C78F1D* __this, LevelPlayAdInfo_t61413A632EB984E68251D76C27BCA2318D7A9F9C* ___0__, LevelPlayAdError_t839B39B1D3D7B1F82E28E4C92FD4BF28F6AACE5A* ___1___, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1775,7 +1775,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_HandleAdDisplay
 		return;
 	}
 }
-// Method Definition Index: 59792
+// Method Definition Index: 59801
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_HandleAdClosed_m796A1725569E878B7348B7C260977ED711626552 (LevelPlayInterstitialAds_tB5D2B011700CDC1497733DE5A25486DAE8C78F1D* __this, LevelPlayAdInfo_t61413A632EB984E68251D76C27BCA2318D7A9F9C* ___0__, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1784,7 +1784,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_HandleAdClosed_
 		return;
 	}
 }
-// Method Definition Index: 59793
+// Method Definition Index: 59802
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_HandleAdDisplayed_m98066D6B9B9C5970FE57E400A979F7D40111A125 (LevelPlayInterstitialAds_tB5D2B011700CDC1497733DE5A25486DAE8C78F1D* __this, LevelPlayAdInfo_t61413A632EB984E68251D76C27BCA2318D7A9F9C* ___0__, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1793,7 +1793,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_HandleAdDisplay
 		return;
 	}
 }
-// Method Definition Index: 59794
+// Method Definition Index: 59803
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds_DisposeProvider_mFB08C581A906ED2AD4A41C94E1FFBF676AECFFF0 (LevelPlayInterstitialAds_tB5D2B011700CDC1497733DE5A25486DAE8C78F1D* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1849,7 +1849,7 @@ IL_0009:
 		return;
 	}
 }
-// Method Definition Index: 59795
+// Method Definition Index: 59804
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds__ctor_m2B0A0833B32B89895E87B70EFC80B780E4F5CA15 (LevelPlayInterstitialAds_tB5D2B011700CDC1497733DE5A25486DAE8C78F1D* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -1866,7 +1866,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayInterstitialAds__ctor_m2B0A0833
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 59796
+// Method Definition Index: 59805
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool LevelPlayRewardAds_get_IsReady_m4C43B0D7C8C79050581373FBCA794E5DD6E543E7 (LevelPlayRewardAds_t5905D917128AFD38CB6F294D9965AAE53AC99677* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1896,7 +1896,7 @@ IL_0014:
 		return (bool)0;
 	}
 }
-// Method Definition Index: 59797
+// Method Definition Index: 59806
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_InitialiseProvider_m0C467BAD0BF160FB4228AEEFF1938FFE18C9044E (LevelPlayRewardAds_t5905D917128AFD38CB6F294D9965AAE53AC99677* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1973,7 +1973,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_InitialiseProvider_m0
 		return;
 	}
 }
-// Method Definition Index: 59798
+// Method Definition Index: 59807
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_LoadAd_m3871B2EB18E464D74158E94D8C2D3D4DEAEDEA2B (LevelPlayRewardAds_t5905D917128AFD38CB6F294D9965AAE53AC99677* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -1990,7 +1990,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_LoadAd_m3871B2EB18E46
 		return;
 	}
 }
-// Method Definition Index: 59799
+// Method Definition Index: 59808
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_ShowAd_mD7F37FB75BCA4E56A91155A9D92FD4350458F6C5 (LevelPlayRewardAds_t5905D917128AFD38CB6F294D9965AAE53AC99677* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2007,7 +2007,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_ShowAd_mD7F37FB75BCA4
 		return;
 	}
 }
-// Method Definition Index: 59800
+// Method Definition Index: 59809
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_HandleAdLoaded_mAC7361CD7E13022210D7448A411050238DFE300F (LevelPlayRewardAds_t5905D917128AFD38CB6F294D9965AAE53AC99677* __this, LevelPlayAdInfo_t61413A632EB984E68251D76C27BCA2318D7A9F9C* ___0__, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -2016,7 +2016,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_HandleAdLoaded_mAC736
 		return;
 	}
 }
-// Method Definition Index: 59801
+// Method Definition Index: 59810
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_HandleAdLoadFailed_m9C260E986D9142B7E2CB3EDB68FB9BA92F35A76D (LevelPlayRewardAds_t5905D917128AFD38CB6F294D9965AAE53AC99677* __this, LevelPlayAdError_t839B39B1D3D7B1F82E28E4C92FD4BF28F6AACE5A* ___0__, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -2025,7 +2025,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_HandleAdLoadFailed_m9
 		return;
 	}
 }
-// Method Definition Index: 59802
+// Method Definition Index: 59811
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_HandleAdDisplayFailed_m1EE7D328F16B52C2DF40923B7E9C849611675C8E (LevelPlayRewardAds_t5905D917128AFD38CB6F294D9965AAE53AC99677* __this, LevelPlayAdInfo_t61413A632EB984E68251D76C27BCA2318D7A9F9C* ___0__, LevelPlayAdError_t839B39B1D3D7B1F82E28E4C92FD4BF28F6AACE5A* ___1___, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -2034,7 +2034,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_HandleAdDisplayFailed
 		return;
 	}
 }
-// Method Definition Index: 59803
+// Method Definition Index: 59812
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_HandleAdClosed_m405508D5F6F44DF250F60D08E45C65129E82714B (LevelPlayRewardAds_t5905D917128AFD38CB6F294D9965AAE53AC99677* __this, LevelPlayAdInfo_t61413A632EB984E68251D76C27BCA2318D7A9F9C* ___0__, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -2043,7 +2043,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_HandleAdClosed_m40550
 		return;
 	}
 }
-// Method Definition Index: 59804
+// Method Definition Index: 59813
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_HandleAdRewarded_m08EAFE49DA89C1D73272B845376A1B597C6F0E0D (LevelPlayRewardAds_t5905D917128AFD38CB6F294D9965AAE53AC99677* __this, LevelPlayAdInfo_t61413A632EB984E68251D76C27BCA2318D7A9F9C* ___0_info, LevelPlayReward_tEABC872201D8F537E6E9199984FC085001946AD9* ___1_reward, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -2052,7 +2052,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_HandleAdRewarded_m08E
 		return;
 	}
 }
-// Method Definition Index: 59805
+// Method Definition Index: 59814
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds_DisposeProvider_mB7B2E3C8F7D7C08B98599CD3050986416817109F (LevelPlayRewardAds_t5905D917128AFD38CB6F294D9965AAE53AC99677* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2115,7 +2115,7 @@ IL_0009:
 		return;
 	}
 }
-// Method Definition Index: 59806
+// Method Definition Index: 59815
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelPlayRewardAds__ctor_mF6E1114BA31A06906D34C93DC0BF9901172AD995 (LevelPlayRewardAds_t5905D917128AFD38CB6F294D9965AAE53AC99677* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
