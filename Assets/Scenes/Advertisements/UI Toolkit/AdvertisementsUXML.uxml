@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scenes/Advertisements/UI%20Toolkit/AdvertisementsUSS.uss?fileID=7433441132597879392&amp;guid=fe3403fa6b72ed845a025aec2abb12bf&amp;type=3#AdvertisementsUSS"/>
+    <ui:VisualElement class="menu">
+        <ui:Button text="Show Interstitial Ad" name="Button-InterstitialAd" class="menu-button menu-button-size"/>
+        <ui:Toggle label="Banner: Top Opportunity" name="Toggle-TopBanner" class="menu-toggle menu-button"/>
+        <ui:Toggle label="Banner: Bottom Opportunity" name="Toggle-BottomBanner" class="menu-toggle menu-button"/>
+        <ui:Toggle label="Banner: Both Opportunity" name="Toggle-BothBanner" class="menu-toggle menu-button"/>
+    </ui:VisualElement>
+</ui:UXML>

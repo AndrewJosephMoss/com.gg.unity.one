@@ -1,0 +1,14 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="GG.Unity.Advertisement.LevelPlay.csproj" />
+  <Project Path="GG.Unity.Advertisement.csproj" />
+  <Project Path="GG.Unity.UserInterface.Panels.csproj" />
+  <Project Path="GG.Unity.Timers.csproj" />
+  <Project Path="GG.Unity.Serialization.csproj" />
+  <Project Path="GG.Unity.Clickable.csproj" />
+  <Project Path="GG.Unity.UserInterface.Editor.csproj" />
+  <Project Path="GG.Unity.ClickToMove.csproj" />
+  <Project Path="GG.Unity.Serialization.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="GG.Unity.UserInterface.csproj" />
+</Solution>
