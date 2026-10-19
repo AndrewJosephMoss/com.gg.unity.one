@@ -79,7 +79,7 @@ namespace GG.Unity.UserInterfacer.Editor
             _uxmlToggles.Clear();
 
             var root = asset.Instantiate();
-            Collect(root.Query<Button>().ToList(), _uxmlButtons);
+            Collect(root.Query<Button>().Where(b => b.GetType() == typeof(Button)).ToList(), _uxmlButtons);
             Collect(root.Query<Toggle>().ToList(), _uxmlToggles);
         }
 

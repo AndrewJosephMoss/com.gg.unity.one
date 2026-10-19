@@ -1,3 +1,16 @@
 {
-	"name": "GG.Unity.UserInterface.Buttons"
+    "name": "GG.Unity.UserInterface.Buttons",
+    "rootNamespace": "",
+    "references": [
+        "GUID:01dd7964bedcefa408a0fd3e3f097067"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

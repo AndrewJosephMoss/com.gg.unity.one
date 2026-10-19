@@ -13,6 +13,10 @@
     --color-surface-disabled: rgb(38, 40, 46);
     --color-accent: rgb(90, 160, 255);
     --color-border: rgb(110, 116, 130);
+    --color-accent: rgb(90, 160, 255);
+    --color-spinner-track: rgba(90, 160, 255, 0.25);
+    --color-border: rgb(110, 116, 130);
+    --loading-indent: 100px; /* control-padding-h (32) + spinner size (48) + gap (20) - replace with calc if supported */
 }
 
 .menu {
@@ -21,6 +25,8 @@
     justify-content: center;
     align-items: center;
 }
+
+/* Button */
 
 .menu-button {
     width: 80%;
@@ -54,6 +60,8 @@
     color: var(--color-text-disabled);
     background-color: var(--color-surface-disabled);
 }
+
+/* Toggle */
 
 .menu-toggle {
     flex-direction: row;

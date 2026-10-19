@@ -1,9 +1,12 @@
-<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Scenes/Advertisements/UI%20Toolkit/AdvertisementsUSS.uss?fileID=7433441132597879392&amp;guid=fe3403fa6b72ed845a025aec2abb12bf&amp;type=3#AdvertisementsUSS"/>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xmlns:spinner="GG.Unity.UserInterface.Buttons.Spinner" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/DefaultUSS.uss?fileID=7433441132597879392&amp;guid=fe3403fa6b72ed845a025aec2abb12bf&amp;type=3#DefaultUSS"/>
+    <Style src="project://database/Assets/GG.Unity/UserInterface/Buttons/LoadingButton.uss?fileID=7433441132597879392&amp;guid=b7613e6dbe9a1a6418f6f3d1047c42b8&amp;type=3#LoadingButton"/>
+    <Style src="project://database/Assets/GG.Unity/UserInterface/Buttons/Spinner/Spinner.uss?fileID=7433441132597879392&amp;guid=1f18d786605f94643b1289bb7bfd324e&amp;type=3#Spinner"/>
     <ui:VisualElement class="menu">
-        <ui:Button text="Show Interstitial Ad" name="Button-InterstitialAd" class="menu-button menu-button-size"/>
+        <ui:Button text="Show Interstitial Ad" name="Button-InterstitialAd" class="menu-button"/>
         <ui:Toggle label="Banner: Top Opportunity" name="Toggle-TopBanner" class="menu-toggle menu-button"/>
         <ui:Toggle label="Banner: Bottom Opportunity" name="Toggle-BottomBanner" class="menu-toggle menu-button"/>
         <ui:Toggle label="Banner: Both Opportunity" name="Toggle-BothBanner" class="menu-toggle menu-button"/>
+        <spinner:SpinnerLoadingButton text="Show Reward Ad" name="Button-RewardAd" class="menu-button"/>
     </ui:VisualElement>
 </ui:UXML>

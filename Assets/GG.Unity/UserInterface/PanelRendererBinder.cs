@@ -30,30 +30,6 @@ namespace GG.Unity.UserInterface
     }
 
     [Serializable]
-    public class ButtonBinding : ElementBinding
-    {
-        public UnityEvent onClick;
-
-        public Button Element { get; private set; }
-
-        public override void Bind(VisualElement root, UnityEngine.Object context)
-        {
-            Element = Find<Button>(root, context);
-            if (Element != null)
-                Element.clicked += OnClicked;
-        }
-
-        public override void Unbind()
-        {
-            if (Element != null)
-                Element.clicked -= OnClicked;
-            Element = null;
-        }
-
-        private void OnClicked() => onClick?.Invoke();
-    }
-
-    [Serializable]
     public class ToggleBinding : ElementBinding
     {
         public UnityEvent<bool> onValueChanged;

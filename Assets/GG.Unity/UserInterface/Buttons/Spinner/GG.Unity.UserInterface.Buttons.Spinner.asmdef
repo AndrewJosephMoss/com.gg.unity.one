@@ -1,0 +1,16 @@
+{
+    "name": "GG.Unity.UserInterface.Buttons.Spinner",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8a56b53a32bff63459ab4acfc700a986"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
