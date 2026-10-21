@@ -4,37 +4,46 @@ namespace GG.Unity.UserInterface.Panels
 {
     public class PanelOpener : MonoBehaviour
     {
-        private PanelService service;
+        [SerializeField] private PanelService service;
+        [SerializeField] private PanelDefinition panelDefinition;
 
         private void Awake()
         {
-            service = GetComponentInParent<PanelService>();
+            if (service == null)
+                service = GetComponentInParent<PanelService>();
         }
+
+        public void OpenPanel() => OpenPanel(panelDefinition);
 
         public void OpenPanel(PanelDefinition definition)
         {
-            if (service == null)
+            if (definition == null)
             {
-                Debug.LogError($"{name}: PanelService not found in parent hierarchy.", this);
+                Debug.LogError($"{name}: no PanelDefinition to open.", this);
+                return;
+            }
+            if (service == null || service.Manager == null)
+            {
+                Debug.LogError($"{name}: PanelService not found or not initialised.", this);
                 return;
             }
             service.Manager.Open(definition);
         }
 
-        #region Validation
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            // Skip if in prefab editing mode or if this is part of a prefab asset
-            if (UnityEditor.PrefabUtility.IsPartOfPrefabAsset(this)) 
+            if (UnityEditor.PrefabUtility.IsPartOfPrefabAsset(this))
                 return;
-            if (UnityEditor.SceneManagement.PrefabStageUtility.GetPrefabStage(gameObject) != null) 
+            if (UnityEditor.SceneManagement.PrefabStageUtility.GetPrefabStage(gameObject) != null)
                 return;
 
-            if (GetComponentInParent<PanelService>(true) == null)
-                Debug.LogWarning($"{name}: no PanelService found in parents.", this);
+            if (service == null)
+                service = GetComponentInParent<PanelService>(true);
+
+            if (service == null)
+                Debug.LogWarning($"{name}: no PanelService assigned or found in parents.", this);
         }
 #endif
-        #endregion
     }
 }

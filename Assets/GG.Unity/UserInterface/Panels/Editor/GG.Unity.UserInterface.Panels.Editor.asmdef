@@ -1,0 +1,18 @@
+{
+    "name": "GG.Unity.UserInterface.Panels.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1b758dca32f108e4cb516e7f265a7377"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

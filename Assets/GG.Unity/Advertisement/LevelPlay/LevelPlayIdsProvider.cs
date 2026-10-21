@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GG.Unity.Advertisement.LevelPlay
 {
-    [CreateAssetMenu(fileName = "LevelPlayIdsProvider", menuName = "Advertisement/LevelPlay/LevelPlayIdsProvider")]
+    [CreateAssetMenu(fileName = "LevelPlayIdsProvider", menuName = "GG.Unity/Advertisement/LevelPlay/LevelPlayIdsProvider")]
     public class LevelPlayIdsProvider : ScriptableObject, 
         ILevelPlayAppIdProvider, ILevelPlayBannerAdUnitIdProvider, ILevelPlayInterstitialAdUnitIdProvider, ILevelPlayRewardedAdUnitIdProvider
     {
