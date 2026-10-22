@@ -129,10 +129,9 @@ GameObject:
   m_Component:
   - component: {fileID: 240850389}
   - component: {fileID: 240850388}
-  - component: {fileID: 240850390}
-  - component: {fileID: 240850391}
   - component: {fileID: 240850392}
   - component: {fileID: 240850393}
+  - component: {fileID: 240850394}
   m_Layer: 5
   m_Name: PanelRenderer
   m_TagString: Untagged
@@ -213,102 +212,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &240850390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240850387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 439aad04c2fa51c43b470a396c77d67f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GG.Unity.UserInterface::GG.UserInterface.PanelRendererBinder
-  buttonBindings:
-  - elementName: Button-InterstitialAd
-    onClick:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: GG.Unity.Advertisement.LevelPlay.LevelPlayInterstitialAds,
-            GG.Unity.Advertisement.LevelPlay
-          m_MethodName: ShowInterstitialAd
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  toggleBindings:
-  - elementName: Toggle-TopBanner
-    onValueChanged:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - elementName: Toggle-BottomBanner
-    onValueChanged:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - elementName: Toggle-BothBanner
-    onValueChanged:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &240850391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240850387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a92418e014f41cf43879c5e917bf3e0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GG.Unity.UserInterface.Buttons::GG.Unity.UserInterface.Buttons.LoadingButtonBinder
-  bindings:
-  - elementName: Button-RewardAd
-    onClick:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!114 &240850392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,6 +239,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: GG.Unity.UserInterface.Panels::GG.Unity.UserInterface.Panels.PanelOpener
   service: {fileID: 240850392}
   panelDefinition: {fileID: 11400000, guid: 727f063f50af03843a79f9c1ab8c613d, type: 2}
+--- !u!114 &240850394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240850387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947b06cbc5fa4314d8fa7e1d39091d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GG.Unity.UserInterface.Panels::GG.Unity.UserInterface.Panels.PanelOpener
+  service: {fileID: 240850392}
+  panelDefinition: {fileID: 11400000, guid: d171c73bd05ac7d4e879b633473bead5, type: 2}
 --- !u!1 &1580443493
 GameObject:
   m_ObjectHideFlags: 0

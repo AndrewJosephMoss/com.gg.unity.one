@@ -1,9 +1,9 @@
 ﻿<Solution>
   <Project Path="GG.Unity.UserInterface.Buttons.csproj" />
+  <Project Path="GG.Unity.UserInterface.Panels.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="GG.Unity.Advertisement.LevelPlay.csproj" />
   <Project Path="GG.Unity.Advertisement.csproj" />
-  <Project Path="GG.Unity.UserInterface.Panels.csproj" />
   <Project Path="GG.Unity.UserInterface.Buttons.Editor.csproj" />
   <Project Path="GG.Unity.Timers.csproj" />
   <Project Path="GG.Unity.Serialization.csproj" />

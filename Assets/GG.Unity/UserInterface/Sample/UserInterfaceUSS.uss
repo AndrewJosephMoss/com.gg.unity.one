@@ -28,7 +28,7 @@
 
 /* Button */
 
-.menu-button {
+.button {
     width: 80%;
     min-width: 300px;
     max-width: 960px;
@@ -47,23 +47,23 @@
     transition-duration: 0.1s;
 }
 
-.menu-button:active {
+.button:active {
     background-color: var(--color-surface-active);
     scale: 0.98 0.98;
 }
 
-.menu-button:focus {
+.button:focus {
     border-color: var(--color-accent);
 }
 
-.menu-button:disabled {
+.button:disabled {
     color: var(--color-text-disabled);
     background-color: var(--color-surface-disabled);
 }
 
 /* Toggle */
 
-.menu-toggle {
+.toggle {
     flex-direction: row;
     align-items: center;
     width: 80%;
@@ -74,7 +74,7 @@
     padding: 0 var(--control-padding-h);
 }
 
-.menu-toggle > .unity-label {
+.toggle > .unity-label {
     flex-grow: 1;
     flex-shrink: 1;
     width: auto;
@@ -87,7 +87,7 @@
     white-space: normal;
 }
 
-.menu-toggle > .unity-toggle__input {
+.toggle > .unity-toggle__input {
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: auto;
@@ -101,7 +101,7 @@
     padding: 0;
 }
 
-.menu-toggle .unity-toggle__checkmark {
+.toggle .unity-toggle__checkmark {
     width: var(--checkbox-size);
     height: var(--checkbox-size);
     flex-shrink: 0;
@@ -116,19 +116,19 @@
     border-radius: 12px;
 }
 
-.menu-toggle .unity-toggle__input:checked > .unity-toggle__checkmark {
+.toggle .unity-toggle__input:checked > .unity-toggle__checkmark {
     border-color: var(--color-accent);
 }
 
-.menu-toggle .unity-toggle__input:focus > .unity-toggle__checkmark {
+.toggle .unity-toggle__input:focus > .unity-toggle__checkmark {
     border-color: var(--color-accent);
 }
 
-.menu-toggle:disabled .unity-toggle__checkmark {
+.toggle:disabled .unity-toggle__checkmark {
     background-color: var(--color-surface-disabled);
     border-color: var(--color-surface-disabled);
 }
 
-.menu-toggle:disabled > .unity-label {
+.toggle:disabled > .unity-label {
     color: var(--color-text-disabled);
 }

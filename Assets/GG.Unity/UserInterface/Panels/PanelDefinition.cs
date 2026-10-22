@@ -18,7 +18,7 @@ namespace GG.Unity.UserInterface.Panels
         [SerializeField] private bool closeOnBack = true; // Close on cancel/escape
         public bool CloseOnBack => closeOnBack;
 
-        private void OnValidate()
+        protected virtual void OnValidate()
         {
             if (tree == null)
                 Debug.LogWarning($"PanelDefinition '{name}' has no VisualTreeAsset assigned.", this);

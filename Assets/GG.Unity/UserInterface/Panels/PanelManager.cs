@@ -56,6 +56,9 @@ namespace GG.Unity.UserInterface.Panels
             if (def.Singleton)
                 singletons[def] = panel;
 
+            if (def is IInitialisablePanel initialisable)
+                initialisable.Initialise(panel);
+
             onOpened?.Invoke(panel);
             PanelOpened?.Invoke(panel);
 

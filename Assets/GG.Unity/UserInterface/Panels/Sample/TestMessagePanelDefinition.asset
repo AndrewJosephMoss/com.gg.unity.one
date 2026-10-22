@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f701afbb4a4c440bc37f49dd1ada9f, type: 3}
+  m_Name: TestMessagePanelDefinition
+  m_EditorClassIdentifier: GG.Unity.UserInterface.Panels::GG.Unity.UserInterface.Panels.MessagePanelDefinition
+  tree: {fileID: 9197481963319205126, guid: aa9ad1fdbf4b91847b30025ae4367992, type: 3}
+  singleton: 1
+  modal: 1
+  closeOnBack: 1
+  title: Test title
+  message: This is a test message....
