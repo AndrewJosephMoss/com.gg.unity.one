@@ -1,0 +1,15 @@
+.menu-button.menu-button--loading {
+    padding-left: var(--loading-indent, 100px);
+    color: var(--color-text-disabled, rgb(130, 130, 130));
+    background-color: var(--color-surface, rgb(52, 56, 66));
+    border-color: var(--color-border, rgb(110, 116, 130));
+}
+
+.menu-button.menu-button--loading:active {
+    scale: 1 1;
+    background-color: var(--color-surface, rgb(52, 56, 66));
+}
+
+.menu-button.menu-button--loading:focus {
+    border-color: var(--color-border, rgb(110, 116, 130));
+}

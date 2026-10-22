@@ -1,0 +1,17 @@
+.menu-button__spinner {
+    display: none;
+    position: absolute;
+    left: var(--control-padding-h, 32px);
+    top: 50%;
+    width: var(--font-size, 48px);
+    height: var(--font-size, 48px);
+    translate: 0 -50%;
+    border-width: 6px;
+    border-radius: 50%;
+    border-color: var(--color-spinner-track, rgba(90, 160, 255, 0.25));
+    border-top-color: var(--color-accent, rgb(90, 160, 255));
+}
+
+.menu-button--loading > .menu-button__spinner {
+    display: flex;
+}

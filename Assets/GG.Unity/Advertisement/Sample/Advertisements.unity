@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 240850388}
   - component: {fileID: 240850390}
   - component: {fileID: 240850391}
+  - component: {fileID: 240850392}
   m_Layer: 5
   m_Name: PanelRenderer
   m_TagString: Untagged
@@ -307,6 +308,19 @@ MonoBehaviour:
     onClick:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &240850392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240850387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f2013df9bb5a04dbe25fb0e76d6426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GG.Unity.UserInterface.Panels::GG.Unity.UserInterface.Panels.PanelService
+  panelRenderer: {fileID: 240850388}
 --- !u!1 &512084423
 GameObject:
   m_ObjectHideFlags: 0

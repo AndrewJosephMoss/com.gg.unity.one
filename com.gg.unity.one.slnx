@@ -10,6 +10,7 @@
   <Project Path="GG.Unity.Clickable.csproj" />
   <Project Path="GG.Unity.UserInterface.csproj" />
   <Project Path="GG.Unity.UserInterface.Editor.csproj" />
+  <Project Path="GG.Unity.UserInterface.Panels.Editor.csproj" />
   <Project Path="GG.Unity.ClickToMove.csproj" />
   <Project Path="GG.Unity.Serialization.Editor.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
