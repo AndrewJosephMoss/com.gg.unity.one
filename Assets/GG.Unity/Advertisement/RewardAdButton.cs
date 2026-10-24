@@ -7,6 +7,7 @@ namespace GG.Unity.Advertisement
     public abstract class RewardAdButton : MonoBehaviour
     {
         public UnityEvent RewardGranted;
+        public UnityEvent RewardGrantedDueToFailedAttempts;
         public UnityEvent InternetAvailabilityNotDetected;
         public UnityEvent AdFailed;
 
@@ -45,12 +46,12 @@ namespace GG.Unity.Advertisement
             }
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             AttachToRewardAdEvents();
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             DetachFromRewardAdEvents();
             CancelWait();
@@ -58,6 +59,7 @@ namespace GG.Unity.Advertisement
 
         private void AttachToRewardAdEvents()
         {
+            Debug.Log($"{AdsManager.Instance}");
             if (AdsManager.Instance == null)
                 return;
 
@@ -85,6 +87,8 @@ namespace GG.Unity.Advertisement
 
         public void ShowRewardAd()
         {
+            Debug.Log($"{name}:{GetType()}: ShowRewardAD - IsWaitingForAd:{IsWaitingForAd}");
+
             if (AdsManager.Instance == null || IsWaitingForAd)
                 return;
 
@@ -148,6 +152,7 @@ namespace GG.Unity.Advertisement
             {
                 ResetAttemptsIfNeeded();
                 RewardGranted?.Invoke();
+                RewardGrantedDueToFailedAttempts?.Invoke();
             }
             else
             {
@@ -158,6 +163,7 @@ namespace GG.Unity.Advertisement
 
         protected virtual void OnAdLoaded()
         {
+            Debug.Log($"{name}:{GetType()}:OnAdLoaded");
             if (!IsWaitingForAd)
                 return;
 
@@ -177,6 +183,7 @@ namespace GG.Unity.Advertisement
         
         protected virtual void OnAdShowFailed()
         {
+            Debug.Log($"{name}:{GetType()}:OnAdShowFailed");
             if (!IsWaitingForAd)
                 return;
 
@@ -185,12 +192,14 @@ namespace GG.Unity.Advertisement
 
         protected virtual void OnAdRewarded()
         {
+            Debug.Log($"{name}:{GetType()}:OnAdRewarded");
             CancelWait();
             RewardGranted?.Invoke();
         }
 
         protected virtual void OnAdClosed()
         {
+            Debug.Log($"{name}:{GetType()}:OnAdClosed");
             if (IsWaitingForAd)
                 CancelWait();
             SetAdLoadingState(false);

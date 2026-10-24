@@ -1,4 +1,5 @@
 using GG.Unity.Serialization;
+using System.Diagnostics;
 using Unity.Services.LevelPlay;
 
 namespace GG.Unity.Advertisement.LevelPlay
@@ -12,6 +13,7 @@ namespace GG.Unity.Advertisement.LevelPlay
 
         protected override void InitialiseProvider()
         {
+            UnityEngine.Debug.Log($"{this.GetType()}:Initialise Provider");
             string rewardAdId = interstitialIdsProvider.Ref.RewardedAdUnitId;
             var config = new LevelPlayRewardedAd.Config.Builder()
                 .SetBidFloor(0.4)

@@ -8,8 +8,6 @@ namespace GG.Unity.Advertisement
     /// </summary>
     public class AdsManager : MonoBehaviour
     {
-        public static AdsManager Instance = null;
-
         [SerializeField]
         private BannerAds bannerAds;
         public BannerAds BannerAds => bannerAds;
@@ -27,17 +25,27 @@ namespace GG.Unity.Advertisement
         public RewardAds RewardAds => rewardAds;
 
 
+        private static AdsManager _instance;
+        public static AdsManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = FindAnyObjectByType<AdsManager>();
+                return _instance;
+            }
+        }
+
         private void Awake()
         {
-            if (Instance == null)
+            if (_instance != null && _instance != this)
             {
-                Instance = this;
-                DontDestroyOnLoad(Instance);
+                Destroy(gameObject);
+                return;
             }
-            else
-            {
-                Destroy(this.gameObject);
-            }
+
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
         #region Validation

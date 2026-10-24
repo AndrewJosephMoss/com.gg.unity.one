@@ -22,10 +22,25 @@ namespace GG.Unity.UserInterface.Panels
             panelRenderer.RegisterUIReloadCallback(OnUIReload);
         }
 
+        public void OpenPanel(PanelDefinition definition)
+        {
+            if (definition == null)
+            {
+                Debug.LogError($"{name}: no PanelDefinition to open.", this);
+                return;
+            }
+            if (Manager == null)
+            {
+                Debug.LogError($"{name}: PanelService not found or not initialised.", this);
+                return;
+            }
+            Manager.Open(definition);
+        }
+
         private void OnDisable()
         {
             panelRenderer.UnregisterUIReloadCallback(OnUIReload);
-            Manager.Detach();
+            Manager?.Detach();
         }
 
         private void OnDestroy()

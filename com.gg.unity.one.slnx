@@ -7,6 +7,7 @@
   <Project Path="GG.Unity.UserInterface.Buttons.Editor.csproj" />
   <Project Path="GG.Unity.Timers.csproj" />
   <Project Path="GG.Unity.Serialization.csproj" />
+  <Project Path="GG.Unity.Advertisement.UIToolkit.csproj" />
   <Project Path="GG.Unity.Clickable.csproj" />
   <Project Path="GG.Unity.UserInterface.csproj" />
   <Project Path="GG.Unity.UserInterface.Editor.csproj" />

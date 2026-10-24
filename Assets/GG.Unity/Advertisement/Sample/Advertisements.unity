@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 240850390}
   - component: {fileID: 240850391}
   - component: {fileID: 240850392}
+  - component: {fileID: 240850393}
   m_Layer: 5
   m_Name: PanelRenderer
   m_TagString: Untagged
@@ -321,6 +322,87 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GG.Unity.UserInterface.Panels::GG.Unity.UserInterface.Panels.PanelService
   panelRenderer: {fileID: 240850388}
+--- !u!114 &240850393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240850387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f79e3b967b767bb4d97606c975d2b97a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GG.Unity.Advertisement.UIToolkit::GG.Unity.Advertisement.UIToolkit.PanelRendererRewardAdButton
+  RewardGranted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 240850392}
+        m_TargetAssemblyTypeName: GG.Unity.UserInterface.Panels.PanelService, GG.Unity.UserInterface.Panels
+        m_MethodName: OpenPanel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 4ee30658a5365a349b49b3be5a9b73d8, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GG.Unity.UserInterface.Panels.PanelDefinition,
+            GG.Unity.UserInterface.Panels
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  RewardGrantedDueToFailedAttempts:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 240850392}
+        m_TargetAssemblyTypeName: GG.Unity.UserInterface.Panels.PanelService, GG.Unity.UserInterface.Panels
+        m_MethodName: OpenPanel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: af23ba9f94939a04db22982e316edd3c, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GG.Unity.UserInterface.Panels.PanelDefinition,
+            GG.Unity.UserInterface.Panels
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  InternetAvailabilityNotDetected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 240850392}
+        m_TargetAssemblyTypeName: GG.Unity.UserInterface.Panels.PanelService, GG.Unity.UserInterface.Panels
+        m_MethodName: OpenPanel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 5e53e80ab3cd4284d959f5fb790bf401, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GG.Unity.UserInterface.Panels.PanelDefinition,
+            GG.Unity.UserInterface.Panels
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  AdFailed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 240850392}
+        m_TargetAssemblyTypeName: GG.Unity.UserInterface.Panels.PanelService, GG.Unity.UserInterface.Panels
+        m_MethodName: OpenPanel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 45daf8f09d44e4d42a84a7ace23addee, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GG.Unity.UserInterface.Panels.PanelDefinition,
+            GG.Unity.UserInterface.Panels
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  attemptsRequiredForReward: 3
+  maxWaitSeconds: 10
+  grantRewardIfAdUnavailable: 1
+  attemptsBasePath: attempts_
+  buttonName: Button-RewardAd
 --- !u!1 &512084423
 GameObject:
   m_ObjectHideFlags: 0

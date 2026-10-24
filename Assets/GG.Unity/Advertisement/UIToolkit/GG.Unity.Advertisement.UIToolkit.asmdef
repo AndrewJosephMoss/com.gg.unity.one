@@ -1,0 +1,17 @@
+{
+    "name": "GG.Unity.Advertisement.UIToolkit",
+    "rootNamespace": "",
+    "references": [
+        "GUID:47b55f24b0996da4f91d759a03331c30",
+        "GUID:8a56b53a32bff63459ab4acfc700a986"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

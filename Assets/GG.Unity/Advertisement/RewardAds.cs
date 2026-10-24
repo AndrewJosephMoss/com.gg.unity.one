@@ -80,6 +80,7 @@ namespace GG.Unity.Advertisement
 
         protected void NotifyLoadSucceeded()
         {
+            Debug.Log($"{GetType()}:NotifyLoadSucceeded");
             isLoading = false;
             loadRetryTimer.Reset();
             SafeInvoke(AdLoaded);
@@ -87,6 +88,7 @@ namespace GG.Unity.Advertisement
 
         protected void NotifyLoadFailed()
         {
+            Debug.Log($"{GetType()}:NotifyLoadFailed");
             isLoading = false;
             loadRetryTimer.Schedule();
             SafeInvoke(LoadFailed);
@@ -94,6 +96,7 @@ namespace GG.Unity.Advertisement
 
         protected void NotifyShowFailed()
         {
+            Debug.Log($"{GetType()}:NotifyShowFailed");
             isLoading = false;
             LoadRewardAd();
             SafeInvoke(ShowFailed);
@@ -101,6 +104,7 @@ namespace GG.Unity.Advertisement
 
         protected void NotifyAdClosed()
         {
+            Debug.Log($"{GetType()}:NotifyAdClosed");
             loadRetryTimer.Reset();
             LoadRewardAd();
             SafeInvoke(AdClosed);
@@ -108,6 +112,7 @@ namespace GG.Unity.Advertisement
 
         protected void NotifyAdRewarded()
         {
+            Debug.Log($"{GetType()}:NotifyAdRewarded");
             SafeInvoke(AdRewarded);
         }
 

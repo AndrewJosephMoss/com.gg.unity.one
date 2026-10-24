@@ -1,0 +1,26 @@
+.message {
+    width: 80%;
+    padding: 24px;
+    background-color: rgb(30, 32, 38);
+    border-radius: 12px;
+    -unity-text-align: upper-left;
+    align-self: center;
+    align-items: center;
+}
+
+.message__title {
+    font-size: 56px;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.message__body {
+    white-space: normal;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 48px;
+}
+
+.message__button {
+    align-self: flex-end;
+}
