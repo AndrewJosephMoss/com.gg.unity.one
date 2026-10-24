@@ -1,0 +1,20 @@
+
+{
+  "name": "com.golderagames.userinterface",
+  "version": "1.0.0",
+  "displayName": "GG Unity UserInterface",
+  "description": "UserInterface solutions for Unity.",
+  "unity": "6000.0",
+  "samples": [
+    {
+      "BasicPanels": "Basic Example",
+      "description": "Demonstrates of basic panels implementation.",
+      "path": "Samples~/BasicPanels"
+    },
+    {
+      "SpinnerLoadingButtonUSS": "Spinner loading button USS",
+      "description": "Demonstrates of basic spinner loading button USS.",
+      "path": "Samples~/SpinnerLoadingButtonUSS"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+    "name": "com.golderagames.clickable",
+    "version": "1.0.0",
+    "displayName": "GG Unity Clickable",
+    "description": "Clickable and selection context",
+    "unity": "2022.3"
+}

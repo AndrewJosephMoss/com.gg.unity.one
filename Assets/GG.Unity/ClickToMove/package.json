@@ -1,0 +1,7 @@
+{
+    "name": "com.golderagames.clicktomove",
+    "version": "1.0.0",
+    "displayName": "GG Unity Click To Move",
+    "description": "Click to move strategy",
+    "unity": "2022.3"
+}

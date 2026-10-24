@@ -1,0 +1,20 @@
+
+{
+  "name": "com.golderagames.advertisement",
+  "version": "1.0.0",
+  "displayName": "GG Unity Advertisement",
+  "description": "Advertisement solutions for Unity.",
+  "unity": "6000.0",
+  "samples": [
+    {
+      "LevelPlay": "Levelplay implementation",
+      "description": "An implementation of the Advertisement package for Levelplay.",
+      "path": "Samples~/LevelPlay"
+    },
+    {
+      "UIToolkitImplementation": "A UIToolkit implementation",
+      "description": "A UIToolkit implementation - requires LevelPlay sample and GG.Unity.UserInterface package.",
+      "path": "Samples~/UIToolkitImplementation"
+    }
+  ]
+}

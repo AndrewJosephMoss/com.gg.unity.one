@@ -1,0 +1,7 @@
+{
+    "name": "com.golderagames.iap",
+    "version": "1.0.0",
+    "displayName": "GG Unity IAP",
+    "description": "Unity IAP general strategy",
+    "unity": "2022.3"
+}

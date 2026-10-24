@@ -1,0 +1,6 @@
+{
+    "name": "com.golderagames.serialization",
+    "version": "1.0.0",
+    "displayName": "GG Unity Serialization",
+    "unity": "2022.3"
+}
