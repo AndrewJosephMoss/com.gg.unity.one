@@ -8,7 +8,7 @@ namespace GG.Unity.UserInterface.Panels
         public const string ModalClass = "panel-host--modal";
         public const string CloseButtonClass = "panel-close";
 
-        private readonly PanelManager manager;
+        private readonly PanelManagingService manager;
 
         public PanelDefinition Definition { get; }
 
@@ -19,7 +19,7 @@ namespace GG.Unity.UserInterface.Panels
 
         internal Focusable PreviousFocus { get; set; }
 
-        internal Panel(PanelDefinition definition, PanelManager manager)
+        internal Panel(PanelDefinition definition, PanelManagingService manager)
         {
             Definition = definition;
             this.manager = manager;

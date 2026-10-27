@@ -4,13 +4,13 @@ namespace GG.Unity.UserInterface.Panels
 {
     public class PanelOpener : MonoBehaviour
     {
-        [SerializeField] private PanelService service;
+        [SerializeField] private PanelManager service;
         [SerializeField] private PanelDefinition panelDefinition;
 
         private void Awake()
         {
             if (service == null)
-                service = GetComponentInParent<PanelService>();
+                service = GetComponentInParent<PanelManager>();
         }
 
         public void OpenPanel() => OpenPanel(panelDefinition);
@@ -39,7 +39,7 @@ namespace GG.Unity.UserInterface.Panels
                 return;
 
             if (service == null)
-                service = GetComponentInParent<PanelService>(true);
+                service = GetComponentInParent<PanelManager>(true);
 
             if (service == null)
                 Debug.LogWarning($"{name}: no PanelService assigned or found in parents.", this);
