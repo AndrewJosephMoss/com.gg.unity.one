@@ -8,7 +8,7 @@ namespace GG.Unity.Timers
     /// Runs a callback after an exponentially growing delay (with jitter).
     /// Call Schedule() after each failure, and Reset() after a success.
     /// </summary>
-    public class BackOffTimer
+    public class BackOffTimer : IBackOffTimer
     {
         private readonly MonoBehaviour anchor;
         private readonly Action onComplete;

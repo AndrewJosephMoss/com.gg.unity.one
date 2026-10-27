@@ -1,7 +1,10 @@
 {
-    "name": "com.golderagames.iap",
-    "version": "1.0.0",
-    "displayName": "GG Unity IAP",
-    "description": "Unity IAP general strategy",
-    "unity": "2022.3"
+  "name": "com.gg.unity.iap",
+  "displayName": "GG Unity IAP",
+  "version": "0.1.0",
+  "unity": "6000.0",
+  "description": "Thin async wrapper around Unity In-App Purchasing 5.",
+  "dependencies": {
+    "com.unity.purchasing": "5.0.0"
+  }
 }

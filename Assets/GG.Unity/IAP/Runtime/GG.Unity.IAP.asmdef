@@ -1,3 +1,17 @@
 {
-	"name": "GG.Unity.IAP"
+    "name": "GG.Unity.IAP",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8d56708ff9df9b94a900222478f4abfb",
+        "GUID:60bfecf5cb232594891bc622f40d6bed"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
