@@ -22,12 +22,12 @@ namespace GG.Unity.UserInterface.Panels
                 Debug.LogError($"{name}: no PanelDefinition to open.", this);
                 return;
             }
-            if (service == null || service.Manager == null)
+            if (service == null || service.Service == null)
             {
                 Debug.LogError($"{name}: PanelService not found or not initialised.", this);
                 return;
             }
-            service.Manager.Open(definition);
+            service.Service.Open(definition);
         }
 
 #if UNITY_EDITOR

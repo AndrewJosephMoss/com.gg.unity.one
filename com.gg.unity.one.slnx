@@ -1,7 +1,7 @@
 ﻿<Solution>
+  <Project Path="GG.Unity.UserInterface.csproj" />
   <Project Path="GG.Unity.Advertisement.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
-  <Project Path="GG.Unity.UserInterface.Buttons.Spinner.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="GG.Unity.ClickToMove.csproj" />
   <Project Path="GG.Unity.UserInterface.Panels.csproj" />
@@ -11,10 +11,9 @@
   <Project Path="GG.Unity.IAP.csproj" />
   <Project Path="GG.Unity.UserInterface.Buttons.csproj" />
   <Project Path="GG.Unity.Clickable.csproj" />
-  <Project Path="GG.Unity.UserInterface.Panels.Editor.csproj" />
   <Project Path="GG.Unity.UserInterface.Buttons.Editor.csproj" />
-  <Project Path="GG.Unity.UserInterface.Editor.csproj" />
+  <Project Path="GG.Unity.UserInterface.Panels.Editor.csproj" />
   <Project Path="GG.Unity.Serialization.csproj" />
   <Project Path="GG.Unity.Serialization.Editor.csproj" />
-  <Project Path="GG.Unity.UserInterface.csproj" />
+  <Project Path="GG.Unity.UserInterface.Editor.csproj" />
 </Solution>

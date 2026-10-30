@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using GG.Unity.UserInterface.Buttons;
+using JetBrains.Annotations;
 
 namespace GG.Unity.Advertisement.UIToolkit
 {
@@ -14,7 +15,8 @@ namespace GG.Unity.Advertisement.UIToolkit
         [SerializeField]
         private PanelRenderer panelRenderer;
 
-        private LoadingButton _button;
+        private StatusButton _button;
+        private int version;
 
         private void Awake()
         {
@@ -32,14 +34,18 @@ namespace GG.Unity.Advertisement.UIToolkit
         {
             base.OnDisable();
             // CancelWait() doesn't touch visuals, so clear the spinner explicitly.
-            _button?.SetLoading(false);
+            if (_button != null)
+                _button.Status = ButtonStatus.None;
         }
 
-        private void OnUIReload(PanelRenderer panelRenderer, VisualElement root)
+        private void OnUIReload(PanelRenderer panelRenderer, VisualElement root, int version)
         {
+            if (this.version != version)
+                return;
+
             Unbind();
 
-            _button = root.Q<LoadingButton>(buttonName);
+            _button = root.Q<StatusButton>(buttonName);
             if (_button == null)
             {
                 Debug.LogWarning($"LoadingButton '{buttonName}' not found in {panelRenderer.name}", this);
@@ -49,7 +55,7 @@ namespace GG.Unity.Advertisement.UIToolkit
             _button.clicked += ShowRewardAd;
 
             // The UI may reload while an ad request is in flight.
-            _button.SetLoading(IsWaitingForAd);
+            _button.Status = IsWaitingForAd ? ButtonStatus.Loading : ButtonStatus.None;
         }
 
         private void Unbind()
@@ -63,7 +69,7 @@ namespace GG.Unity.Advertisement.UIToolkit
 
         protected override void SetAdLoadingState(bool isLoading)
         {
-            _button?.SetLoading(isLoading);
+            _button.Status = isLoading ? ButtonStatus.Loading : ButtonStatus.None;
         }
 
         #region Validation

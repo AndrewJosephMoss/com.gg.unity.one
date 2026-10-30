@@ -1,0 +1,11 @@
+{
+  "name": "com.golderagames.iap.storefront",
+  "displayName": "GG Unity IAP Storefront",
+  "version": "0.1.0",
+  "unity": "6000.0",
+  "description": "Storefront UI strategry to be used with the GG Unity IAP and UI packages",
+  "dependencies": {
+    "com.golderagames.iap": "0.1.0",
+    "com.golderagame.userinterface": "1.0.0"
+  }
+}

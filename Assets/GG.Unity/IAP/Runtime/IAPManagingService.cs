@@ -7,16 +7,9 @@ using System.Threading.Tasks;
 namespace GG.Unity.IAP
 {
     /// <summary>
-    /// Plain C# purchase logic. No MonoBehaviour, no statics, so it can be unit tested with a fake
-    /// backend and an instant backoff. In the game, IAPService creates and owns one of these.
-    ///
-    /// Setup (via IAPService.Instance.Manager):
+    /// Setup (via IAPManager.Instance.Service):
     ///   1. Optionally set BeforeInitialise (e.g. UGS init + sign-in) and ReceiptValidator.
     ///   2. Call SetPurchaseHandler(...) before Initialise().
-    ///   3. Call Initialise() (or tick "Initialise On Start" on IAPService).
-    ///
-    /// Threading: use from the Unity main thread only. Backend events and timer callbacks are
-    /// expected to arrive on the main thread.
     /// </summary>
     public sealed class IAPManagingService : IDisposable
     {

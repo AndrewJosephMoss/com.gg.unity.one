@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 namespace GG.Unity.UserInterface.Panels
 {
     [CreateAssetMenu(fileName = "MessagePanelDefinition", menuName = "GG.Unity/UserInterface/MessagePanelDefinition")]
-    public class MessagePanelDefinition : PanelDefinition, IInitialisablePanel
+    public class MessagePanelDefinition : PanelDefinition, IPanelOpenHandler
     {
         private const string BodyName = "body";
         private const string TitleName = "title";
@@ -15,7 +15,7 @@ namespace GG.Unity.UserInterface.Panels
         [SerializeField, TextArea(2, 6)] private string message;
 
 
-        public void Initialise(Panel panel)
+        public void OnPanelOpened(Panel panel)
         {
             AssignText(panel, BodyName, message);
             AssignText(panel, TitleName, title);

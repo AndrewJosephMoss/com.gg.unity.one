@@ -11,11 +11,11 @@ namespace GG.Unity.UserInterface.Panels
 
         private int rendererVersion = 0;
 
-        public PanelManagingService Manager { get; private set; }
+        public PanelManagingService Service { get; private set; }
 
         private void Awake()
         {
-            Manager = new PanelManagingService();
+            Service = new PanelManagingService();
         }
 
         private void OnEnable()
@@ -31,24 +31,24 @@ namespace GG.Unity.UserInterface.Panels
                 Debug.LogError($"{name}: no PanelDefinition to open.", this);
                 return;
             }
-            if (Manager == null)
+            if (Service == null)
             {
                 Debug.LogError($"{name}: PanelService not found or not initialised.", this);
                 return;
             }
-            Manager.Open(definition);
+            Service.Open(definition);
         }
 
         private void OnDisable()
         {
             panelRenderer.UnregisterUIReloadCallback(OnUIReload);
-            Manager?.Detach();
+            Service?.Detach();
         }
 
         private void OnDestroy()
         {
-            Manager?.Dispose();
-            Manager = null;
+            Service?.Dispose();
+            Service = null;
         }
 
         private void OnUIReload(PanelRenderer renderer, VisualElement root, int version)
@@ -57,7 +57,7 @@ namespace GG.Unity.UserInterface.Panels
                 return;
 
             rendererVersion = version;
-            Manager.Attach(root);
+            Service.Attach(root);
         }
 
         #region Validation

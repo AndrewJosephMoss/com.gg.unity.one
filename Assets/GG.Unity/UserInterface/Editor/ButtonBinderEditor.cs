@@ -7,20 +7,19 @@ using GG.Unity.UserInterface;
 
 namespace GG.Unity.UserInterfacer.Editor
 {
-    [CustomEditor(typeof(PanelRendererBinder))]
-    public class PanelRendererBinderEditor : UnityEditor.Editor
+    [CustomEditor(typeof(ButtonBinder))]
+    public class ButtonBinderEditor : UnityEditor.Editor
     {
         private VisualTreeAsset _scannedAsset;
         private Hash128 _scannedHash;
         private readonly List<string> _uxmlButtons = new();
-        private readonly List<string> _uxmlToggles = new();
 
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
             EditorGUILayout.Space();
 
-            var binder = (PanelRendererBinder)target;
+            var binder = (ButtonBinder)target;
             var panel = binder.GetComponent<PanelRenderer>();
             var asset = panel != null ? panel.visualTreeAsset : null;
 
@@ -34,15 +33,12 @@ namespace GG.Unity.UserInterfacer.Editor
 
             RescanIfNeeded(asset);
 
-            var boundButtons = binder.ButtonBindings.Select(b => b.elementName).ToHashSet();
-            var boundToggles = binder.ToggleBindings.Select(b => b.elementName).ToHashSet();
+            var boundButtons = binder.bindings.Select(b => b.elementName).ToHashSet();
 
             // Bindings pointing at names that no longer exist in the UXML
             var stale = new List<string>();
             stale.AddRange(boundButtons.Where(n => !string.IsNullOrEmpty(n) && !_uxmlButtons.Contains(n))
                                        .Select(n => $"Button '{n}'"));
-            stale.AddRange(boundToggles.Where(n => !string.IsNullOrEmpty(n) && !_uxmlToggles.Contains(n))
-                                       .Select(n => $"Toggle '{n}'"));
             if (stale.Count > 0)
             {
                 EditorGUILayout.HelpBox(
@@ -51,8 +47,7 @@ namespace GG.Unity.UserInterfacer.Editor
             }
 
             var missingButtons = _uxmlButtons.Where(n => !boundButtons.Contains(n)).ToList();
-            var missingToggles = _uxmlToggles.Where(n => !boundToggles.Contains(n)).ToList();
-            int missing = missingButtons.Count + missingToggles.Count;
+            int missing = missingButtons.Count;
 
             using (new EditorGUI.DisabledScope(missing == 0))
             {
@@ -60,7 +55,6 @@ namespace GG.Unity.UserInterfacer.Editor
                 {
                     Undo.RecordObject(binder, "Add UXML bindings");
                     foreach (var n in missingButtons) binder.AddButtonBinding(n);
-                    foreach (var n in missingToggles) binder.AddToggleBinding(n);
                     PrefabUtility.RecordPrefabInstancePropertyModifications(binder);
                     EditorUtility.SetDirty(binder);
                 }
@@ -76,11 +70,10 @@ namespace GG.Unity.UserInterfacer.Editor
             _scannedAsset = asset;
             _scannedHash = hash;
             _uxmlButtons.Clear();
-            _uxmlToggles.Clear();
 
             var root = asset.Instantiate();
             Collect(root.Query<Button>().Where(b => b.GetType() == typeof(Button)).ToList(), _uxmlButtons);
-            Collect(root.Query<Toggle>().ToList(), _uxmlToggles);
+            //Collect(root.Query<Toggle>().ToList(), _uxmlToggles);
         }
 
         private static void Collect<T>(List<T> elements, List<string> names) where T : VisualElement

@@ -5,15 +5,15 @@ using UnityEngine.UIElements;
 namespace GG.Unity.UserInterface.Buttons
 {
     [RequireComponent(typeof(PanelRenderer))]
-    public class LoadingButtonBinder : MonoBehaviour
+    public class StatusButtonBinder : MonoBehaviour
     {
-        [SerializeField] private List<LoadingButtonBinding> bindings = new();
+        [SerializeField] private List<StatusButtonBinding> bindings = new();
 
-        public IReadOnlyList<LoadingButtonBinding> Bindings => bindings;
+        public IReadOnlyList<StatusButtonBinding> Bindings => bindings;
 
 #if UNITY_EDITOR
         public void AddBinding(string elementName) =>
-            bindings.Add(new LoadingButtonBinding { elementName = elementName });
+            bindings.Add(new StatusButtonBinding { elementName = elementName });
 #endif
 
         private PanelRenderer _panelRenderer;
@@ -31,7 +31,7 @@ namespace GG.Unity.UserInterface.Buttons
                 _panelRenderer.UnregisterUIReloadCallback(OnUIReload);
         }
 
-        private void OnUIReload(PanelRenderer panelRenderer, VisualElement root)
+        private void OnUIReload(PanelRenderer panelRenderer, VisualElement root, int version)
         {
             Unbind();
             foreach (var b in bindings) b.Bind(root, this);
@@ -42,7 +42,7 @@ namespace GG.Unity.UserInterface.Buttons
             foreach (var b in bindings) b.Unbind();
         }
 
-        public bool TryGetBinding(string elementName, out LoadingButtonBinding binding)
+        public bool TryGetBinding(string elementName, out StatusButtonBinding binding)
         {
             foreach (var b in bindings)
             {
@@ -56,12 +56,12 @@ namespace GG.Unity.UserInterface.Buttons
             return false;
         }
 
-        public void SetLoading(string elementName, bool loading)
+        public void SetStatus(string elementName, ButtonStatus status)
         {
             if (TryGetBinding(elementName, out var binding))
-                binding.SetLoading(loading);
+                binding.SetStatus(status);
             else
-                Debug.LogWarning($"No loading button binding named '{elementName}'", this);
+                Debug.LogWarning($"No status button binding named '{elementName}'", this);
         }
     }
 }

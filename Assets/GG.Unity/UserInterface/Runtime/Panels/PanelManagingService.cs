@@ -56,8 +56,8 @@ namespace GG.Unity.UserInterface.Panels
             if (def.Singleton)
                 singletons[def] = panel;
 
-            if (def is IInitialisablePanel initialisable)
-                initialisable.Initialise(panel);
+            if (def is IPanelOpenHandler initialisable)
+                initialisable.OnPanelOpened(panel);
 
             onOpened?.Invoke(panel);
             PanelOpened?.Invoke(panel);
@@ -75,6 +75,9 @@ namespace GG.Unity.UserInterface.Panels
 
             if (panel.Definition.Singleton)
                 singletons.Remove(panel.Definition);
+
+            if (panel.Definition is IPanelCloseHandler closable)
+                closable.OnPanelClosed(panel);
 
             panel.Root.RemoveFromHierarchy();
 

@@ -9,8 +9,6 @@ namespace GG.Unity.IAP
 {
     /// <summary>
     /// Adapter over Unity IAP 5 (IStoreService / IProductService / IPurchaseService).
-    /// This is the ONLY file that references UnityEngine.Purchasing types. If a future IAP
-    /// release changes an API, this is the only place that should need to change.
     /// </summary>
     internal sealed class UnityIapBackend : IIapBackend
     {

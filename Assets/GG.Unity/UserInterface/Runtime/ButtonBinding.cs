@@ -5,26 +5,24 @@ using UnityEngine.UIElements;
 namespace GG.Unity.UserInterface
 {
     [Serializable]
-    public abstract class ButtonBindingBase<T> : ElementBinding where T : Button
+    public class ButtonBinding : ElementBinding<Button>
     {
-        public UnityEvent onClick;
-        public T Element { get; private set; }
+        public UnityEvent Clicked;
 
         public override void Bind(VisualElement root, UnityEngine.Object context)
         {
-            Element = Find<T>(root, context);
-            if (Element != null) Element.clicked += OnClicked;
+            Element = Find(root, context);
+            if (Element != null) 
+                Element.clicked += OnClicked;
         }
 
         public override void Unbind()
         {
-            if (Element != null) Element.clicked -= OnClicked;
+            if (Element != null) 
+                Element.clicked -= OnClicked;
             Element = null;
         }
 
-        void OnClicked() => onClick?.Invoke();
+        void OnClicked() => Clicked?.Invoke();
     }
-
-    [Serializable]
-    public class ButtonBinding : ButtonBindingBase<Button> { }
 }
