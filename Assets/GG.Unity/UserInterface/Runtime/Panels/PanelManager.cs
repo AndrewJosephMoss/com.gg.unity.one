@@ -9,7 +9,7 @@ namespace GG.Unity.UserInterface.Panels
         [SerializeField]
         private PanelRenderer panelRenderer;
 
-        private int rendererVersion = 0;
+        private int rendererVersion = -1;
 
         public PanelManagingService Service { get; private set; }
 
@@ -22,6 +22,12 @@ namespace GG.Unity.UserInterface.Panels
         {
             // Fires immediately if the UI is already loaded, and again on every reload.
             panelRenderer.RegisterUIReloadCallback(OnUIReload);
+        }
+        
+        private void OnDisable()
+        {
+            panelRenderer.UnregisterUIReloadCallback(OnUIReload);
+            Service?.Detach();
         }
 
         public void OpenPanel(PanelDefinition definition)
@@ -39,12 +45,6 @@ namespace GG.Unity.UserInterface.Panels
             Service.Open(definition);
         }
 
-        private void OnDisable()
-        {
-            panelRenderer.UnregisterUIReloadCallback(OnUIReload);
-            Service?.Detach();
-        }
-
         private void OnDestroy()
         {
             Service?.Dispose();
@@ -53,7 +53,7 @@ namespace GG.Unity.UserInterface.Panels
 
         private void OnUIReload(PanelRenderer renderer, VisualElement root, int version)
         {
-            if (version == rendererVersion)
+            if (version == rendererVersion && Service.IsAttached)
                 return;
 
             rendererVersion = version;

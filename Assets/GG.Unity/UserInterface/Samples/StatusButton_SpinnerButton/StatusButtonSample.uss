@@ -1,0 +1,179 @@
+/* ---------------------------------------------------------------------------
+   Theme
+   --------------------------------------------------------------------------- */
+
+:root {
+    --color-background: rgb(22, 24, 29);
+    --color-card: rgb(34, 37, 44);
+    --color-card-border: rgb(48, 52, 61);
+    --color-text: rgb(232, 234, 238);
+    --color-text-muted: rgb(146, 152, 165);
+
+    --color-accent: rgb(76, 136, 255);
+    --color-accent-hover: rgb(102, 155, 255);
+    --color-accent-pressed: rgb(55, 110, 212);
+    --color-loading: rgb(58, 70, 98);
+    --color-focus: rgb(255, 255, 255);
+}
+
+/* ---------------------------------------------------------------------------
+   Layout
+   --------------------------------------------------------------------------- */
+
+.sample-root {
+    flex-grow: 1;
+    padding: 32px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-background);
+}
+
+.sample-title {
+    font-size: 28px;
+    -unity-font-style: bold;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+
+.sample-subtitle {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+}
+
+.card {
+    width: 640px;
+    max-width: 100%;
+    padding: 20px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: var(--color-card-border);
+    background-color: var(--color-card);
+}
+
+.card__title {
+    font-size: 16px;
+    -unity-font-style: bold;
+    color: var(--color-text);
+}
+
+.card__hint {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+    margin-bottom: 14px;
+    white-space: normal;
+}
+
+.card__row {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card__row > * {
+    margin-right: 12px;
+}
+
+.card__value {
+    font-size: 14px;
+    color: var(--color-text);
+    -unity-text-align: middle-left;
+}
+
+.card__toggle > .unity-label {
+    min-width: 0;
+    color: var(--color-text);
+}
+
+/* ---------------------------------------------------------------------------
+   StatusButton
+   Interaction states use UI Toolkit's pseudo-classes; app status uses
+   the status-button--{status} modifier classes.
+   --------------------------------------------------------------------------- */
+
+.status-button {
+    min-width: 150px;
+    height: 40px;
+    margin: 0;
+    padding: 0 18px;
+    border-width: 2px;
+    border-radius: 8px;
+    border-color: rgba(0, 0, 0, 0);
+    background-color: var(--color-accent);
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    -unity-font-style: bold;
+    transition-property: background-color, color, scale, opacity;
+    transition-duration: 0.12s;
+}
+
+.status-button:hover {
+    background-color: var(--color-accent-hover);
+}
+
+.status-button:active {
+    background-color: var(--color-accent-pressed);
+    scale: 0.97 0.97;
+}
+
+.status-button:focus {
+    border-color: var(--color-focus);
+}
+
+.status-button:disabled {
+    opacity: 0.35;
+}
+
+/* Loading: placed after the pseudo-class rules so it wins over :hover / :active */
+.status-button--loading,
+.status-button--loading:hover,
+.status-button--loading:active {
+    background-color: var(--color-loading);
+    color: var(--color-text-muted);
+    scale: 1 1;
+}
+
+/* ---------------------------------------------------------------------------
+   SpinnerStatusButton
+   --------------------------------------------------------------------------- */
+
+/* Hide the label while the spinner is showing */
+.spinner-status-button.status-button--loading {
+    color: rgba(0, 0, 0, 0);
+}
+
+.status-button__spinner {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    translate: -50% -50%;
+    border-width: 2px;
+    border-radius: 9px;
+    border-color: rgb(255, 255, 255);
+    border-top-color: rgba(255, 255, 255, 0);
+}
+
+.status-button--loading > .status-button__spinner {
+    display: flex;
+}
+
+/* ---------------------------------------------------------------------------
+   Misc
+   --------------------------------------------------------------------------- */
+
+.link-button {
+    margin: 0;
+    padding: 4px 8px;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--color-accent);
+}
+
+.link-button:hover {
+    color: var(--color-accent-hover);
+}

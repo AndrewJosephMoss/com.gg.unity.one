@@ -79,24 +79,37 @@ namespace GG.Unity.UserInterface.Panels
             if (panel.Definition is IPanelCloseHandler closable)
                 closable.OnPanelClosed(panel);
 
+
+            bool hasFocus = PanelIsFocus(panel);
             panel.Root.RemoveFromHierarchy();
 
-            // Restore focus only if the previous element is still in a panel.
-            if (panel.PreviousFocus is VisualElement prev && prev.panel != null)
-                prev.Focus();
+            if (hasFocus)
+                ReassignFocusOnPanelRemoval(panel);
 
             PanelClosed?.Invoke(panel);
+        }
+
+        private bool PanelIsFocus(Panel panel)
+        {
+            VisualElement currFocused = container.panel?.focusController?.focusedElement as VisualElement;
+            return currFocused != null && panel.Root.Contains(currFocused);
+        }
+
+        private void ReassignFocusOnPanelRemoval(Panel panel)
+        {
+            if (panel.PreviousFocus is VisualElement prev && prev.panel != null)
+                prev.Focus();
+            else if (stack.Count > 0)
+                FocusFirst(stack[^1].Root);
         }
 
         public bool CloseTopPanel()
         {
             for (int i = stack.Count - 1; i >= 0; i--)
             {
-                if (stack[i].Definition.CloseOnBack)
-                {
-                    Close(stack[i]);
-                    return true;
-                }
+                var p = stack[i];
+                if (p.Definition.CloseOnBack) { Close(p); return true; }
+                if (p.Definition.Modal) return true; // prevent close on Modal
             }
             return false;
         }

@@ -1,3 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xmlns:spinner="GG.Unity.UserInterface.Buttons.Spinner" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/GG.Unity/UserInterface/Panels/Sample/Panels.uss?fileID=7433441132597879392&amp;guid=66444261f3c2319459b60a6e53d8a4db&amp;type=3#Panels"/>
-</ui:UXML>

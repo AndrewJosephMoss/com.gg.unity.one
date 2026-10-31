@@ -1,0 +1,65 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         xmlns:gg="GG.Unity.UserInterface.Buttons"
+         xmlns:samples="GG.Unity.UserInterface.Samples"
+         editor-extension-mode="False">
+
+    <Style src="StatusButtonSample.uss" />
+
+    <ui:VisualElement name="sample-root" class="sample-root">
+        <ui:Label text="StatusButton" class="sample-title" />
+        <ui:Label text="Status classes come from data bindings; USS decides how they look." class="sample-subtitle" />
+
+        <!-- 1. Async action: status bound one-way from data, spinner subclass -->
+        <ui:VisualElement class="card">
+            <ui:Label text="Async action" class="card__title" />
+            <ui:Label text="Click to simulate a save. The button blocks input while loading." class="card__hint" />
+            <ui:VisualElement class="card__row">
+                <samples:SpinnerStatusButton name="save-button" text="Save game">
+                    <Bindings>
+                        <ui:DataBinding property="Status" data-source-path="SaveStatus" binding-mode="ToTarget" />
+                    </Bindings>
+                </samples:SpinnerStatusButton>
+                <ui:Label name="save-message" class="card__value">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="SaveMessage" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- 2. Blocking: a two-way Toggle drives the status; clicks stop counting while busy -->
+        <ui:VisualElement class="card">
+            <ui:Label text="Input blocking" class="card__title" />
+            <ui:Label text="Turn on Busy, then try clicking: the count stops changing." class="card__hint" />
+            <ui:VisualElement class="card__row">
+                <gg:StatusButton name="counter-button" text="Click me">
+                    <Bindings>
+                        <ui:DataBinding property="Status" data-source-path="CounterStatus" binding-mode="ToTarget" />
+                    </Bindings>
+                </gg:StatusButton>
+                <ui:Toggle name="busy-toggle" label="Busy" class="card__toggle">
+                    <Bindings>
+                        <ui:DataBinding property="value" data-source-path="CounterBusy" binding-mode="TwoWay" />
+                    </Bindings>
+                </ui:Toggle>
+                <ui:Label name="click-count" class="card__value">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="ClickCountText" binding-mode="ToTarget" />
+                    </Bindings>
+                </ui:Label>
+                <ui:Button name="reset-button" text="Reset" class="link-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- 3. Static comparison: status set in UXML vs UI Toolkit's own :disabled -->
+        <ui:VisualElement class="card">
+            <ui:Label text="Loading vs disabled" class="card__title" />
+            <ui:Label text="Status set in UXML (no binding) next to SetEnabled(false)." class="card__hint" />
+            <ui:VisualElement class="card__row">
+                <gg:StatusButton name="preview-button" text="Loading" status="Loading" />
+                <samples:SpinnerStatusButton name="preview-spinner-button" text="Loading" status="Loading" />
+                <gg:StatusButton name="disabled-button" text="Disabled" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

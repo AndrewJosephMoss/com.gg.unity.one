@@ -1,9 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/GG.Unity/UserInterface/Panels/Sample/MessagePanel.uss?fileID=7433441132597879392&amp;guid=af9c1b12d316fa7498be10a4d609a4bf&amp;type=3#MessagePanel"/>
-    <Style src="project://database/Assets/GG.Unity/UserInterface/Sample/UserInterfaceUSS.uss?fileID=7433441132597879392&amp;guid=4bee6a6bc64dc5e4d8a9b0638b060867&amp;type=3#UserInterfaceUSS"/>
-    <ui:VisualElement class="message" style="width: 80%;">
-        <ui:Label name="title" text="" class="message__title" style="white-space: pre; text-overflow: clip; -unity-text-align: upper-center;"/>
-        <ui:Label name="body" text="" class="message__body"/>
-        <ui:Button text="OK" class="panel-close button"/>
-    </ui:VisualElement>
-</ui:UXML>
