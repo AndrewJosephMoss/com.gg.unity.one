@@ -134,6 +134,8 @@ namespace GG.Unity.UserInterface.Panels
             try
             {
                 panel.Controller = definition.CreateController();
+                if (panel.Controller == null && args != null)
+                    panel.Root.dataSource = args;
                 panel.Controller?.OnOpen(panel);
             }
             catch (Exception e)
@@ -195,14 +197,13 @@ namespace GG.Unity.UserInterface.Panels
             bool wasTop = index == stack.Count - 1;
             bool hadFocus = IsInside(panel.Root, FocusedElement);
 
-            // 1. Bookkeeping: final before any callback runs.
             stack.RemoveAt(index);
             var definition = panel.Definition;
             if (definition.Singleton && singletons.TryGetValue(definition, out var single) && single == panel)
                 singletons.Remove(definition);
             panel.BeginClose(result);
 
-            // 2. Stop the panel taking input while it animates out.
+            // Stop the panel taking input while it animates out.
             panel.Root.pickingMode = PickingMode.Ignore;
             panel.Root.SetEnabled(false);
             panel.Root.RemoveFromClassList(Panel.VisibleClass);
@@ -210,7 +211,6 @@ namespace GG.Unity.UserInterface.Panels
             if (hadFocus || FocusedElement == null)
                 RestoreFocus(panel, wasTop);
 
-            // 3. Callbacks, each isolated.
             try
             {
                 panel.Controller?.OnClose(panel);
@@ -223,8 +223,8 @@ namespace GG.Unity.UserInterface.Panels
             panel.NotifyClosed();
             SafeInvoke(PanelClosed, panel);
 
-            // 4. Remove after the close transition. The scheduler is paused while detached,
-            //    so release immediately in that case.
+            // Remove after the close transition. The scheduler is paused while detached,
+            // so release immediately in that case.
             if (definition.CloseDuration <= 0f || !IsAttached)
             {
                 Release(panel);

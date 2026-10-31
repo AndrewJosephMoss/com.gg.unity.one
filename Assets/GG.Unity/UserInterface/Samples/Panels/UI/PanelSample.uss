@@ -46,6 +46,14 @@
 }
 
 /* Fallback centering in case PanelSystem.uss isn't assigned on the PanelManager. */
+.panel-host{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
 .panel-host--modal {
     align-items: center;
     justify-content: center;

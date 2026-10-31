@@ -7,10 +7,10 @@ namespace GG.Unity.UserInterface.Panels
 {
     public enum PanelState
     {
-        Opening,  // in the hierarchy, open transition pending
+        Opening, 
         Open,
-        Closing,  // logically closed, close transition playing
-        Closed    // removed from the hierarchy
+        Closing,
+        Closed
     }
 
     /// <summary>One open instance of a <see cref="PanelDefinition"/>.</summary>
@@ -29,27 +29,25 @@ namespace GG.Unity.UserInterface.Panels
 
         public PanelDefinition Definition { get; }
 
-        /// <summary>The service that owns this panel, so controllers can open child panels (dialogs, toasts).</summary>
+        //The service that owns this panel, so controllers can open child panels (dialogs, toasts)
         public IPanelService Service => owner;
 
-        /// <summary>The instantiated template (a TemplateContainer).</summary>
         public VisualElement Root { get; }
 
-        /// <summary>Runtime arguments passed to Open. Also set as <c>Root.dataSource</c> for runtime bindings.</summary>
+        //Runtime arguments passed to Open. Set as element dataSource if no controller
         public object Args { get; }
 
         public IPanelController Controller { get; internal set; }
         public PanelState State { get; internal set; } = PanelState.Opening;
 
-        /// <summary>The value passed to <see cref="Close"/>. Null when closed by Back, a close button or the backdrop.</summary>
+        //The value passed to <see cref="Close"/>. Null when closed by Back, a close button or the backdrop
         public object Result { get; private set; }
 
         public bool IsOpen => State == PanelState.Opening || State == PanelState.Open;
 
-        /// <summary>Completes with <see cref="Result"/> when the panel closes (including on service disposal).</summary>
+        //Completes with <see cref="Result"/> when the panel closes (including on service disposal)
         public Task<object> Completion => completion.Task;
 
-        /// <summary>Raised once when the panel closes.</summary>
         public event Action<Panel> Closed;
 
         internal Focusable PreviousFocus { get; set; }
@@ -63,10 +61,6 @@ namespace GG.Unity.UserInterface.Panels
             Root = definition.Tree.Instantiate();
             Root.name = $"{definition.name}-host";
             Root.AddToClassList(HostClass);
-            Stretch(Root);
-
-            if (args != null)
-                Root.dataSource = args;
 
             if (definition.Modal)
             {

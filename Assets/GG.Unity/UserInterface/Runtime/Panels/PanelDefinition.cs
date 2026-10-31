@@ -45,9 +45,7 @@ namespace GG.Unity.UserInterface.Panels
         public float CloseDuration => closeDuration;
         public bool FocusOnOpen => focusOnOpen;
 
-        /// <summary>
-        /// Create the behaviour for one open instance of this panel. Return null for purely static panels.
-        /// </summary>
+        // If null and Args passed to PanelManager.Open will be bound as the Panel Elements DataSource
         public virtual IPanelController CreateController() => null;
 
         protected virtual void OnValidate()
