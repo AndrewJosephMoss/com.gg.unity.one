@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="PanelSample.uss" />
+
+    <!-- Overlay toast. Picking is ignored so it never blocks clicks underneath. -->
+    <ui:VisualElement name="toast" class="sample-card sample-toast" picking-mode="Ignore">
+        <ui:Label name="text" class="sample-toast__text" picking-mode="Ignore" />
+    </ui:VisualElement>
+</ui:UXML>

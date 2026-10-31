@@ -1,0 +1,38 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="PanelSample.uss" />
+
+    <!-- Non-modal Window-layer panel. The launcher stays usable beside it. -->
+    <ui:VisualElement name="menu" class="sample-card sample-side-panel">
+        <ui:VisualElement class="sample-header">
+            <ui:Label text="Sample menu" class="sample-card__title" />
+            <!-- panel-close: the Panel wires this to Close() automatically. -->
+            <ui:Button name="close" text="Close" class="sample-button sample-icon-button panel-close" />
+        </ui:VisualElement>
+
+        <ui:Label text="ACTIONS" class="sample-section" />
+        <!-- panel-initial-focus: receives keyboard/gamepad focus when the panel opens. -->
+        <ui:Button name="play" text="Play" class="sample-button sample-button--primary panel-initial-focus" />
+        <ui:Button name="settings" text="Settings" class="sample-button" />
+        <ui:Button name="help" text="Help" class="sample-button" />
+
+        <ui:Label text="STATUS BUTTONS" class="sample-section" />
+        <ui:Label text="While Loading, a StatusButton ignores clicks and can't take focus." class="sample-card__text" />
+
+        <GG.Unity.UserInterface.Buttons.StatusButton name="save" text="Save" class="sample-button">
+            <Bindings>
+                <ui:DataBinding property="Status" data-source-path="SaveStatus" binding-mode="ToTarget" />
+                <ui:DataBinding property="text" data-source-path="SaveText" binding-mode="ToTarget" />
+            </Bindings>
+        </GG.Unity.UserInterface.Buttons.StatusButton>
+
+        <GG.Unity.UserInterface.Buttons.StatusButton name="sync" text="Sync to cloud" class="sample-button">
+            <Bindings>
+                <ui:DataBinding property="Status" data-source-path="SyncStatus" binding-mode="ToTarget" />
+                <ui:DataBinding property="text" data-source-path="SyncText" binding-mode="ToTarget" />
+            </Bindings>
+        </GG.Unity.UserInterface.Buttons.StatusButton>
+
+        <ui:Label text="DIALOGS" class="sample-section" />
+        <ui:Button name="delete-save" text="Delete save…" class="sample-button sample-button--danger" />
+    </ui:VisualElement>
+</ui:UXML>

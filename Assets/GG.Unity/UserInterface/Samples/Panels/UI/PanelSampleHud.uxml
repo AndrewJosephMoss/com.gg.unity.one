@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/GG.Unity/UserInterface/Samples/Panels/UI/PanelSample.uss?fileID=7433441132597879392&amp;guid=10286e520ca44f6449b5c330e9b6de2d&amp;type=3#PanelSample"/>
+    <ui:VisualElement name="hud" picking-mode="Ignore" class="sample-hud">
+        <ui:VisualElement name="launcher" class="sample-card sample-launcher">
+            <ui:Label text="Panel system sample" class="sample-card__title"/>
+            <ui:Label text="Esc / gamepad B is Back. Open a panel, then try Tab and arrow keys: modals keep focus inside." class="sample-card__text"/>
+            <ui:Label text="OPEN" class="sample-section"/>
+            <ui:Button name="open-menu" text="Menu (StatusButtons)" class="sample-button sample-button--primary"/>
+            <ui:Button name="show-message" text="Message (asset text)" class="sample-button"/>
+            <ui:Button name="show-message-args" text="Message (runtime args)" class="sample-button"/>
+            <ui:Button name="ask-confirm" text="Confirm (awaited result)" class="sample-button"/>
+            <ui:Button name="show-toast" text="Toast (overlay layer)" class="sample-button"/>
+            <ui:Label text="STACK" class="sample-section"/>
+            <ui:Button name="back" text="Back" class="sample-button"/>
+            <ui:Button name="close-all" text="Close all" class="sample-button"/>
+            <ui:Label name="last-result" text="Results appear here and in the Console." class="sample-card__text sample-result"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

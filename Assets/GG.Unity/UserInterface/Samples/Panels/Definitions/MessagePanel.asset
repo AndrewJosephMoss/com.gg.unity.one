@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def3e8a93e0d8204ab3afda78f8bd182, type: 3}
+  m_Name: MessagePanel
+  m_EditorClassIdentifier: GG.Unity.UserInterface.Panels::GG.Unity.UserInterface.Panels.MessagePanelDefinition
+  tree: {fileID: 9197481963319205126, guid: f7ade0a9bb760c048b65576364d1949e, type: 3}
+  layer: 200
+  singleton: 1
+  modal: 1
+  closeOnBack: 1
+  closeOnBackdropClick: 1
+  closeDuration: 0.15
+  focusOnOpen: 1
+  title: Hello from an asset
+  message: This text lives on the MessagePanelDefinition asset. Click the backdrop, press Esc or OK to close.

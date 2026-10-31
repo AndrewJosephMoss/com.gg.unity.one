@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3c55d98339c6a4d84b698206719959, type: 3}
+  m_Name: SampleMenuPanel
+  m_EditorClassIdentifier: Assembly-CSharp::GG.Unity.UserInterface.Samples.SampleMenuPanelDefinition
+  tree: {fileID: 9197481963319205126, guid: 8bec22c6049ba374ab3251d029c5846f, type: 3}
+  layer: 100
+  singleton: 1
+  modal: 0
+  closeOnBack: 1
+  closeOnBackdropClick: 0
+  closeDuration: 0.15
+  focusOnOpen: 1
+  confirmPanel: {fileID: 11400000, guid: 9228735e14dbb6f48b1fac03dc1dd4cf, type: 2}
+  toastPanel: {fileID: 11400000, guid: a6c406b331b318148b3f7bb4d8b2533b, type: 2}
+  saveDuration: 2
+  syncDuration: 3.5
