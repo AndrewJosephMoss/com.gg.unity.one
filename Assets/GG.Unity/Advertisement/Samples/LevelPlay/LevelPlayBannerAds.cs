@@ -14,11 +14,17 @@ namespace GG.Unity.Advertisement.LevelPlay
 
         public override void InitialiseBannerAds()
         {
+            if (topBanner != null || bottomBanner != null)
+                return; // already initialised
+
             Debug.Log("LevelPlay: BannerAds initialisation");
             string topBannerId = bannerIdsProvider.Ref.TopBannerAdUnitId;
             string bottomBannerId = bannerIdsProvider.Ref.BottomBannerAdUnitId;
             topBanner = InitialiseBanner(topBannerId, LevelPlayAdSize.BANNER, LevelPlayBannerPosition.TopCenter);
             bottomBanner = InitialiseBanner(bottomBannerId, LevelPlayAdSize.BANNER, LevelPlayBannerPosition.BottomCenter);
+
+            // Show any banners whose opportunities were declared before init (e.g. during the consent popup).
+            RefreshBanners();
         }
 
         private ILevelPlayBannerAd InitialiseBanner(string bannerId, LevelPlayAdSize size, LevelPlayBannerPosition position)
@@ -61,10 +67,14 @@ namespace GG.Unity.Advertisement.LevelPlay
             }
         }
 
-        private void OnDestroy()
+        // Replaces the old OnDestroy, which hid Unity's call to the base class guard
+        // and so hid the live banners whenever a duplicate was destroyed.
+        protected override void DisposeBanners()
         {
-            HideBanner(Placement.Top);
-            HideBanner(Placement.Bottom);
+            topBanner?.DestroyAd();
+            bottomBanner?.DestroyAd();
+            topBanner = null;
+            bottomBanner = null;
         }
     }
 }

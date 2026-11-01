@@ -6,7 +6,7 @@ namespace GG.Unity.Advertisement.LevelPlay
 {
     public class LevelPlayRewardAds : RewardAds
     {
-        public InterfaceRef<ILevelPlayRewardedAdUnitIdProvider> interstitialIdsProvider;
+        public InterfaceRef<ILevelPlayRewardedAdUnitIdProvider> rewardAdIdsProvider;
         public override bool IsReady => rewardAd != null && rewardAd.IsAdReady();
 
         private ILevelPlayRewardedAd rewardAd;
@@ -14,7 +14,7 @@ namespace GG.Unity.Advertisement.LevelPlay
         protected override void InitialiseProvider()
         {
             UnityEngine.Debug.Log($"{this.GetType()}:Initialise Provider");
-            string rewardAdId = interstitialIdsProvider.Ref.RewardedAdUnitId;
+            string rewardAdId = rewardAdIdsProvider.Ref.RewardedAdUnitId;
             var config = new LevelPlayRewardedAd.Config.Builder()
                 .SetBidFloor(0.4)
                 .Build();

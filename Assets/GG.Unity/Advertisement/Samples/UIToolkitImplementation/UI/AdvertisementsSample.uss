@@ -10,8 +10,10 @@
     --side-panel-min-width: 800px;
     --toast-width: 40%;
     --toast-min-width: 550px;
-    --dialog-width: 80%;
+    --dialog-width: 90%;
     --dialog-min-width: 800px;
+    --v-padding: 6px;
+    --h-padding: 8px;
 }
 
 /* ---- Layout -------------------------------------------------------------- */
@@ -93,7 +95,7 @@
     -unity-font-style: bold;
     color: rgb(236, 239, 244);
     margin: 0 0 6px 0;
-    padding: 0;
+    padding: var(--v-padding) var(--h-padding);
 }
 
 .sample-card__text {

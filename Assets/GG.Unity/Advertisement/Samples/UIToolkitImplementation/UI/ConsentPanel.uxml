@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/GG.Unity/Advertisement/Samples/UIToolkitImplementation/UI/AdvertisementsSample.uss?fileID=7433441132597879392&amp;guid=5985fe400bc89e54f8895fae5dbe61ba&amp;type=3#AdvertisementsSample"/>
+
+    <!-- Text here is used unless the ConsentPanelDefinition asset overrides it.
+         PLACEHOLDER COPY: have the final wording reviewed before release. -->
+    <ui:VisualElement name="consent-card" class="sample-card sample-dialog" style="max-height: 90%;">
+        <ui:Label name="title" text="Your privacy matters" class="sample-card__title"/>
+
+        <ui:ScrollView name="body-scroll" mode="Vertical" horizontal-scroller-visibility="Hidden" style="flex-shrink: 1;">
+            <ui:Label name="body" class="sample-card__text" text="We show ads to keep this game free to play.&#10;&#10;With your permission, we and our advertising partners will use your device's advertising identifier and information about how you use the app to show you ads that are more relevant to you and to measure how they perform.&#10;&#10;If you decline, you will still see ads, but they will not be personalised and we will not share your advertising identifier with our partners for that purpose.&#10;&#10;You can change your choice at any time from Settings &gt; Privacy."/>
+        </ui:ScrollView>
+
+        <ui:Button name="privacy-policy" text="Read our Privacy Policy" class="sample-button"/>
+
+        <!-- Accept and Decline share the same style and size on purpose: an
+             equally prominent choice is what regulators expect. -->
+        <ui:VisualElement name="actions" class="sample-row">
+            <ui:Button name="decline" text="Decline" class="sample-button" style="flex-grow: 1; flex-basis: 0;"/>
+            <ui:Button name="accept" text="Accept" class="sample-button panel-initial-focus" style="flex-grow: 1; flex-basis: 0;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

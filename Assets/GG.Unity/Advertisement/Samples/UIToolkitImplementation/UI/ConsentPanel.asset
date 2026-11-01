@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474410946fa6c58429d0491e2514de65, type: 3}
+  m_Name: ConsentPanel
+  m_EditorClassIdentifier: GG.Unity.Advertisement.UIToolkit::GG.Unity.Advertisement.UIToolkit.ConsentPanelDefinition
+  tree: {fileID: 9197481963319205126, guid: 222e2102b51d3be48ab7eeef0a6dc2a7, type: 3}
+  layer: 100
+  singleton: 1
+  modal: 1
+  closeOnBack: 1
+  closeOnBackdropClick: 0
+  closeDuration: 0.15
+  focusOnOpen: 1
+  title: Your privacy matters
+  message: 'We show ads to keep this game free to play.
+
+
+    With your permission, we and our advertising partners will use your device''s advertising identifier and information about how you use the app to show you ads that are more relevant to you and to measure how they perform.
+
+
+    If you decline, you will still see ads, but they will not be personalised and we will not share your advertising identifier with our partners for that purpose.
+
+
+    You can change your choice at any time from Settings > Privacy.'
+  acceptText: Accept
+  declineText: Decline
+  privacyPolicyText: Read our Privacy Policy
+  privacyPolicyUrl: https://example.com/privacy

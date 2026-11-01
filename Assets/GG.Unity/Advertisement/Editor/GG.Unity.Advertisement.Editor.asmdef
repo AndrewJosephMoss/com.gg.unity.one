@@ -1,0 +1,18 @@
+{
+    "name": "GG.Unity.Advertisement.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:47b55f24b0996da4f91d759a03331c30"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

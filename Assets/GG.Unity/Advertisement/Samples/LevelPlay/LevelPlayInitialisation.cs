@@ -15,29 +15,41 @@ namespace GG.Unity.Advertisement.LevelPlay
         [SerializeField]
         private bool isTest = false;
 
+        protected override void ApplyConsent(AdConsent consent)
+        {
+            // Called before the first Init() and again whenever the player changes their choice.
+            Debug.Log($"LevelPlay applying {consent}");
+
+            // GDPR: true = the player consented to personalised ads.
+            LevelPlayPrivacySettings.SetGDPRConsent(consent.PersonalisedAdsAllowed);
+
+            // US privacy laws: true = the player opted OUT of the sale/sharing of their data.
+            LevelPlayPrivacySettings.SetCCPA(!consent.PersonalisedAdsAllowed);
+
+            // COPPA: true = treat the player as a child. Must be set before Init().
+            LevelPlayPrivacySettings.SetCOPPA(consent.IsChildDirected);
+        }
+
         protected override void InitialiseProvider()
         {
             // Subscribed once - retries only call Initialise(), so this never double-subscribes.
             LP.LevelPlay.OnInitSuccess += OnInitialisationComplete;
             LP.LevelPlay.OnInitFailed += OnInitialisationFailed;
+
+            if (isTest)
+                LP.LevelPlay.SetMetaData("is_test_suite", "enable");
         }
 
         protected override void Initialise()
         {
-            LevelPlayPrivacySettings.SetGDPRConsent(false);
-            LevelPlayPrivacySettings.SetCOPPA(false);
-            LevelPlayPrivacySettings.SetCCPA(false);
-
+            // Privacy settings are no longer hard-coded here: ApplyConsent has already run.
             string appId = appIdProvider.Ref.AppId;
             Debug.Log($"LevelPlay Initialising with appId: {appId}");
 
-            if (isTest)
-            {
-                LP.LevelPlay.SetMetaData("is_test_suite", "enable");
-            }
-
             LP.LevelPlay.Init(appId);
-            LP.LevelPlay.ValidateIntegration();
+
+            if (isTest)
+                LP.LevelPlay.ValidateIntegration();
         }
 
         private void OnInitialisationComplete(LP.LevelPlayConfiguration configuration)

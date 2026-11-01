@@ -3,11 +3,16 @@ using UnityEngine;
 namespace GG.Unity.Advertisement
 {
     /// <summary>
-    /// Singleton for access to advertisement scripts
-    /// There should be a single instance of each advertisement script in existence.
+    /// Singleton for access to advertisement scripts.
+    /// Owns the initialisation order: consent → SDK init → ad formats.
+    /// Nothing initialises until <see cref="SetConsent"/> is called (normally by <see cref="ConsentFlow"/>).
     /// </summary>
     public class AdsManager : MonoBehaviour
     {
+        [SerializeField]
+        private AdvertisementInitialisation initialisation;
+        public AdvertisementInitialisation Initialisation => initialisation;
+
         [SerializeField]
         private BannerAds bannerAds;
         public BannerAds BannerAds => bannerAds;
@@ -24,6 +29,11 @@ namespace GG.Unity.Advertisement
         private RewardAds rewardAds;
         public RewardAds RewardAds => rewardAds;
 
+        private bool formatsInitialised;
+
+        /// <summary>The consent the SDK was last configured with. Restrictive until <see cref="SetConsent"/> runs.</summary>
+        public AdConsent Consent { get; private set; } = AdConsent.Restrictive();
+        public bool HasConsent { get; private set; }
 
         private static AdsManager _instance;
         public static AdsManager Instance
@@ -46,11 +56,64 @@ namespace GG.Unity.Advertisement
 
             _instance = this;
             DontDestroyOnLoad(gameObject);
+
+            // Wired in code, not the inspector, so a missed drag-and-drop can't silently
+            // leave an ad format uninitialised. Remove any inspector listeners that call
+            // InitialiseBannerAds / InitialiseInterstitialAds / InitialiseRewardAds.
+            if (initialisation != null)
+                initialisation.InitialisationComplete.AddListener(OnSdkInitialised);
+        }
+
+        private void OnDestroy()
+        {
+            if (_instance != this)
+                return;
+
+            if (initialisation != null)
+                initialisation.InitialisationComplete.RemoveListener(OnSdkInitialised);
+            _instance = null;
+        }
+
+        /// <summary>
+        /// Configure the SDK's privacy settings. The first call starts SDK initialisation;
+        /// later calls (the player changed their choice) only update the privacy settings.
+        /// </summary>
+        public void SetConsent(AdConsent consent)
+        {
+            Consent = consent;
+            HasConsent = true;
+
+            if (initialisation == null)
+            {
+                Debug.LogError($"{gameObject.name}:{GetType().Name} has no AdvertisementInitialisation; ads will not initialise.", this);
+                return;
+            }
+
+            initialisation.BeginInitialisation(consent);
+        }
+
+        private void OnSdkInitialised(AdvertisementInitialisation _)
+        {
+            if (formatsInitialised)
+                return;
+            formatsInitialised = true;
+
+            if (rewardAds != null)
+                rewardAds.InitialiseRewardAds();
+            if (interstitialAds != null)
+                interstitialAds.InitialiseInterstitialAds();
+            if (bannerAds != null)
+                bannerAds.InitialiseBannerAds();
         }
 
         #region Validation
         private void OnValidate()
         {
+            if (initialisation == null)
+            {
+                Debug.LogWarning($"{gameObject.name}:{GetType()} has null initialisation, attempting to assign it.", this);
+                initialisation = GetComponent<AdvertisementInitialisation>();
+            }
             if (bannerAds == null)
             {
                 Debug.LogWarning($"{gameObject.name}:{GetType()} has null bannerAds, attempting to assign it.", this);

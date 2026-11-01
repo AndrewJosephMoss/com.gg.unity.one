@@ -45,6 +45,7 @@ namespace GG.Unity.Advertisement.LevelPlay
             interstitialAd.OnAdLoadFailed -= HandleAdLoadFailed;
             interstitialAd.OnAdDisplayFailed -= HandleAdDisplayFailed;
             interstitialAd.OnAdClosed -= HandleAdClosed;
+            interstitialAd.OnAdDisplayed -= HandleAdDisplayed; // was missing
             interstitialAd.DestroyAd();
         }
     }

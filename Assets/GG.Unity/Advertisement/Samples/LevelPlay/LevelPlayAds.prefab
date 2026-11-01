@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 6833211533745578458}
   - component: {fileID: 2506788223778239022}
   - component: {fileID: 7736148947964106939}
+  - component: {fileID: 8570223536908625095}
+  - component: {fileID: 4176152871354450754}
   m_Layer: 0
   m_Name: LevelPlayAds
   m_TagString: Untagged
@@ -49,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c99596dc7e5aab4392d39cfaf09220a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GG.Unity.Advertisement::AdsManager
+  initialisation: {fileID: 1902046962944526367}
   bannerAds: {fileID: 3604596694260189581}
   interstitialAds: {fileID: 6833211533745578458}
   interstitialAdsController: {fileID: 7736148947964106939}
@@ -69,8 +72,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3604596694260189581}
-        m_TargetAssemblyTypeName: GG.Unity.Advertisement.LevelPlay.LevelPlayBannerAds,
-          GG.Unity.Advertisement.LevelPlay
+        m_TargetAssemblyTypeName: GG.Unity.Advertisement.LevelPlay.LevelPlayBannerAds, GG.Unity.Advertisement.LevelPlay
         m_MethodName: InitialiseBannerAds
         m_Mode: 1
         m_Arguments:
@@ -82,8 +84,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 6833211533745578458}
-        m_TargetAssemblyTypeName: GG.Unity.Advertisement.LevelPlay.LevelPlayInterstitialAds,
-          GG.Unity.Advertisement.LevelPlay
+        m_TargetAssemblyTypeName: GG.Unity.Advertisement.LevelPlay.LevelPlayInterstitialAds, GG.Unity.Advertisement.LevelPlay
         m_MethodName: InitialiseInterstitialAds
         m_Mode: 1
         m_Arguments:
@@ -95,8 +96,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2506788223778239022}
-        m_TargetAssemblyTypeName: GG.Unity.Advertisement.LevelPlay.LevelPlayRewardAds,
-          GG.Unity.Advertisement.LevelPlay
+        m_TargetAssemblyTypeName: GG.Unity.Advertisement.LevelPlay.LevelPlayRewardAds, GG.Unity.Advertisement.LevelPlay
         m_MethodName: InitialiseRewardAds
         m_Mode: 1
         m_Arguments:
@@ -165,7 +165,7 @@ MonoBehaviour:
   baseRetryDelaySeconds: 2
   maxRetryDelaySeconds: 45
   jitterFraction: 0.2
-  interstitialIdsProvider:
+  rewardAdIdsProvider:
     _target: {fileID: 11400000, guid: 36a875e7c6d68dc4f9fa92ece4a9e5b1, type: 2}
 --- !u!114 &7736148947964106939
 MonoBehaviour:
@@ -181,3 +181,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: GG.Unity.Advertisement::GG.Unity.Advertisement.InterstitialAdsController
   interstitialAds: {fileID: 6833211533745578458}
   minSecondsBetweenAds: 960
+--- !u!114 &8570223536908625095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2678538451728397894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c7c3310bb6d0f44a3950e3124d76b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GG.Unity.Advertisement::GG.Unity.Advertisement.ConsentFlow
+  provider: {fileID: 4176152871354450754}
+  policyVersion: 1
+  reaskAfterDays: 365
+  childDirected: 0
+  requestIosTrackingAuthorisation: 1
+  resolveOnStart: 1
+--- !u!114 &4176152871354450754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2678538451728397894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c44dc8b5a4215945b04b9fc9ff71955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GG.Unity.Advertisement.UIToolkit::GG.Unity.Advertisement.UIToolkit.PanelConsentProvider
+  panelManager: {fileID: 0}
+  consentPanel: {fileID: 11400000, guid: e6f0804f042998841b71a6e78b0c853d, type: 2}

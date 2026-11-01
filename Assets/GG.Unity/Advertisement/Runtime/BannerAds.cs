@@ -54,10 +54,31 @@ namespace GG.Unity.Advertisement
                 HideBanner(Placement.Bottom);
         }
 
+        /// <summary>
+        /// Shows or hides each banner to match the currently declared opportunities.
+        /// Call at the end of <see cref="InitialiseBannerAds"/>: opportunities declared while
+        /// the SDK was waiting for consent were recorded but couldn't be shown yet.
+        /// </summary>
+        protected void RefreshBanners()
+        {
+            if (TopOpportunities.Count > 0) 
+                ShowBanner(Placement.Top); 
+            else HideBanner(Placement.Top);
+
+            if (BottomOpportunities.Count > 0) 
+                ShowBanner(Placement.Bottom); 
+            else HideBanner(Placement.Bottom);
+        }
+
         public abstract void ShowBanner(Placement placement);
 
         public abstract void HideBanner(Placement placement);
 
+        /// <summary>Release the SDK's banner objects. Called once, on the live instance only.</summary>
+        protected virtual void DisposeBanners() { }
+
+        // Subclasses must not declare their own OnDestroy: Unity would call only theirs,
+        // skipping the duplicate-instance guard below. Override DisposeBanners instead.
         private void OnDestroy()
         {
             if (Instance != this)
@@ -65,6 +86,7 @@ namespace GG.Unity.Advertisement
 
             HideBanner(Placement.Top);
             HideBanner(Placement.Bottom);
+            DisposeBanners();
             Instance = null;
         }
     }
