@@ -1,0 +1,20 @@
+
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         xmlns:gg="GG.Unity.UserInterface.Buttons"
+         editor-extension-mode="False">
+    <Style src="project://database/Assets/GG.Unity/Advertisement/Samples/UIToolkitImplementation/UI/AdvertisementsSample.uss?fileID=7433441132597879392&amp;guid=5985fe400bc89e54f8895fae5dbe61ba&amp;type=3#AdvertisementsSample"/>
+    <ui:VisualElement name="hud" picking-mode="Ignore" class="sample-hud">
+        <ui:VisualElement name="launcher" class="sample-card sample-launcher">
+            <ui:Label text="Advertisements sample" class="sample-card__title"/>
+            <ui:Toggle label="Top Banner Opportunity" name="top-banner-opportunity" class="sample-toggle"/>
+            <ui:Toggle label="Bottom Banner Opportunity" name="bottom-banner-opportunity" class="sample-toggle"/>
+            <ui:Toggle label="Both Banner Opportunity" name="both-banner-opportunity" class="sample-toggle"/>
+            <ui:Button name="show-interstitial" text="Show Interstitial Ad" class="sample-button"/>
+            <gg:StatusButton name="show-rewardAd" text="Show Reward Ad" class="sample-button">
+<!-- 				<Bindings> // Binding done in RewardAdUIToolkit.cs
+					<ui:DataBinding property="Status" data-source-path="CounterStatus" binding-mode="ToTarget" />
+				</Bindings>
+ -->			</gg:StatusButton>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

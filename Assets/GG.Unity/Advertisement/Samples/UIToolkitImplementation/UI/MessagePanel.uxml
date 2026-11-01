@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="PanelSample.uss" />
+
+    <!-- Modal Popup. Text comes from MessagePanelDefinition, or MessageArgs at runtime. -->
+    <ui:VisualElement name="dialog" class="sample-card sample-dialog">
+        <ui:Label name="title" class="sample-card__title" />
+        <ui:Label name="body" class="sample-card__text" />
+        <ui:VisualElement class="sample-row">
+            <ui:Button name="ok" text="OK" class="sample-button sample-button--primary panel-close panel-initial-focus" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,248 @@
+:root{
+	--title-font-size: 84px;
+	--font-size: 48px;
+    --control-font-size: 60px;
+    --control-vertical-padding: 48px;
+    --control-horizontal-padding: 48px;
+    --panel-min-width: 600px;
+    --panel-width: 95%;
+    --side-panel-width: 50%;
+    --side-panel-min-width: 800px;
+    --toast-width: 40%;
+    --toast-min-width: 550px;
+    --dialog-width: 80%;
+    --dialog-min-width: 800px;
+}
+
+/* ---- Layout -------------------------------------------------------------- */
+
+.sample-hud {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 24px;
+    align-items: center;
+    justify-content: center;
+}
+
+.sample-launcher {
+    min-width: var(--panel-min-width);
+    width: var(--panel-width);
+}
+
+.sample-side-panel {
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    bottom: 24px;
+    width: var(--side-panel-width);
+    min-width: var(--side-panel-min-width);
+}
+
+.sample-dialog {
+    width: var(--dialog-width);
+    min-width: var(--dialog-min-width);
+}
+
+/* Fallback centering in case PanelSystem.uss isn't assigned on the PanelManager. */
+.panel-host{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.panel-host--modal {
+    align-items: center;
+    justify-content: center;
+}
+
+.sample-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.sample-row {
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.sample-row > .sample-button {
+    margin-left: 8px;
+    min-width: 110px;
+}
+
+/* ---- Cards and text ------------------------------------------------------ */
+
+.sample-card {
+    background-color: rgb(30, 34, 42);
+    border-width: 1px;
+    border-color: rgb(58, 64, 78);
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.sample-card__title {
+    font-size: var(--title-font-size);
+    -unity-font-style: bold;
+    color: rgb(236, 239, 244);
+    margin: 0 0 6px 0;
+    padding: 0;
+}
+
+.sample-card__text {
+    color: rgb(184, 191, 203);
+    white-space: normal;
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-size: var(--font-size);
+}
+
+.sample-section {
+    margin: 14px 0 4px 0;
+    padding: 0;
+    font-size: var(--font-size);
+    -unity-font-style: bold;
+    color: rgb(130, 140, 158);
+    letter-spacing: 1px;
+}
+
+.sample-result {
+    margin-top: 12px;
+    color: rgb(150, 200, 160);
+}
+
+/* ---- Buttons ------------------------------------------------------------- */
+
+.sample-button {
+    margin: 3px 0;
+    padding: var(--control-vertical-padding) 24px;
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 6px;
+    background-color: rgb(50, 57, 70);
+    color: rgb(232, 236, 242);
+    -unity-text-align: middle-center;
+    transition-property: background-color, opacity;
+    transition-duration: 0.12s;
+    font-size: var(--control-font-size);
+}
+
+.sample-button:hover {
+    background-color: rgb(64, 73, 90);
+}
+
+.sample-button:active {
+    background-color: rgb(40, 46, 56);
+}
+
+.sample-button:focus {
+    border-color: rgb(110, 160, 255);
+}
+
+.sample-button--primary {
+    background-color: rgb(48, 98, 196);
+}
+
+.sample-button--primary:hover {
+    background-color: rgb(62, 114, 214);
+}
+
+.sample-button--danger {
+    background-color: rgb(160, 58, 58);
+}
+
+.sample-button--danger:hover {
+    background-color: rgb(182, 70, 70);
+}
+
+.sample-icon-button {
+    height: 28px;
+    margin: 0;
+    padding: 0 10px;
+    font-size: var(--font-size);
+}
+
+/* StatusButton: Loading blocks input (no clickable, not focusable), so mute it visually. */
+.status-button--loading,
+.status-button--loading:hover {
+    opacity: 0.6;
+    background-color: rgb(44, 50, 62);
+    -unity-font-style: italic;
+}
+
+/* ---- Toggle --------------------------------------------------------------- */
+
+.sample-toggle {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 3px 0;
+    padding: var(--control-vertical-padding) 24px;
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 6px;
+    background-color: rgb(50, 57, 70);
+    color: rgb(232, 236, 242);
+    -unity-text-align: middle-center;
+    transition-property: background-color, opacity;
+    transition-duration: 0.12s;
+    font-size: var(--control-font-size);
+}
+
+.sample-toggle > .unity-toggle__label {
+    font-size: var(--control-font-size);
+}
+
+.sample-toggle > .unity-toggle__input {
+    position: absolute;
+    left: var(--control-horizontal-padding);
+    min-height: var(--control-font-size);
+    min-width: var(--control-font-size);
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.sample-toggle > .unity-toggle__label {
+    font-size: var(--control-font-size);
+    flex-grow: 0;
+}
+
+.sample-toggle > .unity-toggle__input > .unity-toggle__checkmark {
+    height: 100%;
+    width: 100%;
+}
+
+.sample-toggle:hover {
+    background-color: rgb(64, 73, 90);
+}
+
+.sample-toggle:active {
+    background-color: rgb(40, 46, 56);
+}
+
+.sample-toggle:focus {
+    border-color: rgb(110, 160, 255);
+}
+
+.sample-toggle--primary {
+    background-color: rgb(48, 98, 196);
+}
+
+.sample-toggle--primary:hover {
+    background-color: rgb(62, 114, 214);
+}
+
+.sample-toggle--danger {
+    background-color: rgb(160, 58, 58);
+}
+
+.sample-toggle--danger:hover {
+    background-color: rgb(182, 70, 70);
+}

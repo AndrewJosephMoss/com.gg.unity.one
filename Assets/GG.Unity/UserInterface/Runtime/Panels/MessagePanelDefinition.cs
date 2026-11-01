@@ -6,7 +6,7 @@ namespace GG.Unity.UserInterface.Panels
     /// A simple title + body message panel. Default text comes from the asset and can be
     /// overridden per open by passing <see cref="MessageArgs"/>.
     /// </summary>
-    [CreateAssetMenu(fileName = "MessagePanelDefinition", menuName = "GG.Unity/UserInterface/MessagePanelDefinition")]
+    [CreateAssetMenu(fileName = "MessagePanelDefinition", menuName = "GG.Unity/UserInterface/Panel Definitions/Message Panel")]
     public class MessagePanelDefinition : PanelDefinition
     {
         [SerializeField] private string title;

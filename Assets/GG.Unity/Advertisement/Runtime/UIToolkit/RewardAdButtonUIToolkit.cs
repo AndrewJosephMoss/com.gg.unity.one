@@ -1,27 +1,37 @@
+using System;
+using GG.Unity.UserInterface.Buttons;
+using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UIElements;
-using GG.Unity.UserInterface.Buttons;
-using JetBrains.Annotations;
 
 namespace GG.Unity.Advertisement.UIToolkit
 {
     [RequireComponent(typeof(PanelRenderer))]
-    public class PanelRendererRewardAdButton : RewardAdButton
+    public class PanelRendererRewardAdButton : RewardAdButton, INotifyBindablePropertyChanged
     {
-        [Tooltip("The 'name' attribute of the LoadingButton in your UXML")]
-        [SerializeField]
-        private string buttonName;
+        public event EventHandler<BindablePropertyChangedEventArgs> propertyChanged;
 
-        [SerializeField]
-        private PanelRenderer panelRenderer;
+        [Tooltip("The 'name' attribute of the StatusButton in your UXML")]
+        [SerializeField] private string buttonName;
+        [SerializeField] private PanelRenderer panelRenderer;
 
-        private StatusButton _button;
-        private int version;
+        private StatusButton button;
 
-        private void Awake()
+        private ButtonStatus rewardButtonStatus;
+        [CreateProperty]
+        public ButtonStatus RewardButtonStatus
         {
-            panelRenderer.RegisterUIReloadCallback(OnUIReload);
+            get => rewardButtonStatus;
+            private set
+            {
+                if (value == rewardButtonStatus)
+                    return;
+                rewardButtonStatus = value;
+                Notify(nameof(RewardButtonStatus));
+            }
         }
+
+        private void Awake() => panelRenderer.RegisterUIReloadCallback(OnUIReload);
 
         private void OnDestroy()
         {
@@ -33,54 +43,50 @@ namespace GG.Unity.Advertisement.UIToolkit
         protected override void OnDisable()
         {
             base.OnDisable();
-            // CancelWait() doesn't touch visuals, so clear the spinner explicitly.
-            if (_button != null)
-                _button.Status = ButtonStatus.None;
+            RewardButtonStatus = ButtonStatus.None;
         }
 
-        private void OnUIReload(PanelRenderer panelRenderer, VisualElement root, int version)
+        private void OnUIReload(PanelRenderer _, VisualElement root, int version)
         {
-            if (this.version != version)
-                return;
-
             Unbind();
 
-            _button = root.Q<StatusButton>(buttonName);
-            if (_button == null)
+            button = root.Q<StatusButton>(buttonName);
+            if (button == null)
             {
-                Debug.LogWarning($"LoadingButton '{buttonName}' not found in {panelRenderer.name}", this);
+                Debug.LogWarning($"StatusButton '{buttonName}' not found in {panelRenderer.name}", this);
                 return;
             }
 
-            _button.clicked += ShowRewardAd;
-
-            // The UI may reload while an ad request is in flight.
-            _button.Status = IsWaitingForAd ? ButtonStatus.Loading : ButtonStatus.None;
+            button.dataSource = this;
+            button.SetBinding(StatusButton.StatusProperty, new DataBinding
+            {
+                dataSourcePath = new PropertyPath(nameof(RewardButtonStatus)),
+                bindingMode = BindingMode.ToTarget
+            });
+            button.clicked += ShowRewardAd;
         }
 
         private void Unbind()
         {
-            if (_button == null)
+            if (button == null)
                 return;
 
-            _button.clicked -= ShowRewardAd;
-            _button = null;
+            button.clicked -= ShowRewardAd;
+            button.ClearBinding(StatusButton.StatusProperty);
+            button.dataSource = null;
+            button = null;
         }
 
-        protected override void SetAdLoadingState(bool isLoading)
-        {
-            _button.Status = isLoading ? ButtonStatus.Loading : ButtonStatus.None;
-        }
+        protected override void SetAdLoadingState(bool isLoading) =>
+            RewardButtonStatus = isLoading ? ButtonStatus.Loading : ButtonStatus.None;
 
-        #region Validation
+        private void Notify(string property) =>
+            propertyChanged?.Invoke(this, new BindablePropertyChangedEventArgs(property));
+
         private void OnValidate()
         {
-            if (panelRenderer == null)
-            {
-                if (gameObject.TryGetComponent<PanelRenderer>(out var renderer))
-                    panelRenderer = renderer; 
-            }
+            if (panelRenderer == null && TryGetComponent<PanelRenderer>(out var renderer))
+                panelRenderer = renderer;
         }
-        #endregion
     }
 }

@@ -7,7 +7,7 @@ namespace GG.Unity.UserInterface.Panels
     /// Data describing a panel. Shared by every instance, so it must not hold runtime state;
     /// put per-instance behaviour in an <see cref="IPanelController"/> via <see cref="CreateController"/>.
     /// </summary>
-    [CreateAssetMenu(fileName = "PanelDefinition", menuName = "GG.Unity/UserInterface/PanelDefinition")]
+    [CreateAssetMenu(fileName = "PanelDefinition", menuName = "GG.Unity/UserInterface/Panel Definitions/Panel Definition")]
     public class PanelDefinition : ScriptableObject
     {
         [SerializeField] private VisualTreeAsset tree;

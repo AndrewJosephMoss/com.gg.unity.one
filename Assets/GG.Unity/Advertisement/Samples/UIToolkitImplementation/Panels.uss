@@ -1,8 +1,0 @@
-.panel-host {
-	align-items: center;
-	justify-content: center;
-}
-
-.panel-host--modal{
-	background-color: rgba(0, 0, 0, 0.5);
-}
