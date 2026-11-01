@@ -24,7 +24,7 @@ namespace GG.Unity.Advertisement
         [SerializeField]
         private string attemptsBasePath = "attempts_";
 
-        protected bool IsWaitingForAd {  get; private set; }
+        protected bool IsWaitingForAd { get; private set; }
         private Coroutine waitTimeoutCoroutine;
 
         private string AttemptsPath
@@ -59,12 +59,11 @@ namespace GG.Unity.Advertisement
 
         private void AttachToRewardAdEvents()
         {
-            Debug.Log($"{AdsManager.Instance}");
             if (AdsManager.Instance == null)
                 return;
 
             AdsManager.Instance.RewardAds.AdLoaded += OnAdLoaded;
-            AdsManager.Instance.RewardAds.ShowFailed += OnAdShowFailed; 
+            AdsManager.Instance.RewardAds.ShowFailed += OnAdShowFailed;
             AdsManager.Instance.RewardAds.AdRewarded += OnAdRewarded;
             AdsManager.Instance.RewardAds.AdClosed += OnAdClosed;
         }
@@ -75,7 +74,7 @@ namespace GG.Unity.Advertisement
                 return;
 
             AdsManager.Instance.RewardAds.AdLoaded -= OnAdLoaded;
-            AdsManager.Instance.RewardAds.ShowFailed -= OnAdShowFailed; 
+            AdsManager.Instance.RewardAds.ShowFailed -= OnAdShowFailed;
             AdsManager.Instance.RewardAds.AdRewarded -= OnAdRewarded;
             AdsManager.Instance.RewardAds.AdClosed -= OnAdClosed;
         }
@@ -101,16 +100,22 @@ namespace GG.Unity.Advertisement
             IsWaitingForAd = true;
             SetAdLoadingState(true);
 
-            bool shownImmediately = AdsManager.Instance.RewardAds.ShowRewardAd();
-            if (shownImmediately)
-            {
-                ResetAttemptsIfNeeded();
-                SetAdLoadingState(false);
+            if (TryShowAd())
                 return;
-            }
 
             waitTimeoutCoroutine = StartCoroutine(WaitForAdOrTimeout());
+        }
 
+        private bool TryShowAd()
+        {
+            bool shown = AdsManager.Instance != null && AdsManager.Instance.RewardAds.ShowRewardAd(this);
+            if (shown)
+            {
+                CancelWait();
+                SetAdLoadingState(false);
+                ResetAttemptsIfNeeded();
+            }
+            return shown;
         }
 
         private IEnumerator WaitForAdOrTimeout()
@@ -161,47 +166,44 @@ namespace GG.Unity.Advertisement
             }
         }
 
+        private bool IsMine(object requester) => ReferenceEquals(requester, this);
+
         protected virtual void OnAdLoaded()
         {
             Debug.Log($"{name}:{GetType()}:OnAdLoaded");
             if (!IsWaitingForAd)
                 return;
 
-            bool shown = AdsManager.Instance != null && AdsManager.Instance.RewardAds.ShowRewardAd();
-            if (shown)
-            {
-                CancelWait();
-                SetAdLoadingState(false);
-                ResetAttemptsIfNeeded();
-            }
-            else
-            {
-                // Rare race: became unready again between events. Let the timeout
-                // keep running rather than failing early on one bad tick.
-            }
+            // If this returns false we hit a rare race (became unready again between events).
+            TryShowAd();
         }
-        
-        protected virtual void OnAdShowFailed()
+
+        protected virtual void OnAdShowFailed(object requester)
         {
             Debug.Log($"{name}:{GetType()}:OnAdShowFailed");
-            if (!IsWaitingForAd)
+            if (!IsMine(requester))
                 return;
 
             HandleAdUnavailable();
         }
 
-        protected virtual void OnAdRewarded()
+        protected virtual void OnAdRewarded(object requester)
         {
             Debug.Log($"{name}:{GetType()}:OnAdRewarded");
+            if (!IsMine(requester))
+                return;
+
             CancelWait();
             RewardGranted?.Invoke();
         }
 
-        protected virtual void OnAdClosed()
+        protected virtual void OnAdClosed(object requester)
         {
             Debug.Log($"{name}:{GetType()}:OnAdClosed");
-            if (IsWaitingForAd)
-                CancelWait();
+            if (!IsMine(requester))
+                return;
+
+            CancelWait();
             SetAdLoadingState(false);
         }
 

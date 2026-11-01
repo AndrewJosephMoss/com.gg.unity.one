@@ -13,13 +13,18 @@ namespace GG.Unity.Advertisement
 
         public event Action AdLoaded;
         public event Action LoadFailed;
-        public event Action ShowFailed;
-        public event Action AdClosed;
-        public event Action AdRewarded;
+
+        // ShowRewardAd(requester), so only the object that started the ad reacts to its outcome.
+        public event Action<object> ShowFailed;
+        public event Action<object> AdClosed;
+        public event Action<object> AdRewarded;
 
         private BackOffTimer loadRetryTimer;
         private bool isLoading;
         private bool isInitialised;
+
+        private object activeRequester;
+        public object ActiveRequester => activeRequester;
 
         public abstract bool IsReady { get; }
 
@@ -53,13 +58,19 @@ namespace GG.Unity.Advertisement
             LoadAd();
         }
 
-        public bool ShowRewardAd()
+        /// <summary>
+        /// Shows the ad if ready. The requester is passed back in ShowFailed, AdClosed and
+        /// AdRewarded so listeners can tell whether the outcome belongs to them.
+        /// </summary>
+        public bool ShowRewardAd(object requester)
         {
             if (!isInitialised)
                 return false;
 
             if (IsReady)
             {
+                // Set before ShowAd(): some SDKs can call back synchronously.
+                activeRequester = requester;
                 ShowAd();
                 return true;
             }
@@ -97,9 +108,11 @@ namespace GG.Unity.Advertisement
         protected void NotifyShowFailed()
         {
             Debug.Log($"{GetType()}:NotifyShowFailed");
+            object requester = activeRequester;
+            activeRequester = null;
             isLoading = false;
             LoadRewardAd();
-            SafeInvoke(ShowFailed);
+            SafeInvoke(ShowFailed, requester);
         }
 
         protected void NotifyAdClosed()
@@ -107,13 +120,15 @@ namespace GG.Unity.Advertisement
             Debug.Log($"{GetType()}:NotifyAdClosed");
             loadRetryTimer.Reset();
             LoadRewardAd();
-            SafeInvoke(AdClosed);
+            SafeInvoke(AdClosed, activeRequester);
         }
 
         protected void NotifyAdRewarded()
         {
             Debug.Log($"{GetType()}:NotifyAdRewarded");
-            SafeInvoke(AdRewarded);
+            object requester = activeRequester;
+            activeRequester = null;
+            SafeInvoke(AdRewarded, requester);
         }
 
         private static void SafeInvoke(Action handlers)
@@ -128,12 +143,25 @@ namespace GG.Unity.Advertisement
             }
         }
 
+        private static void SafeInvoke(Action<object> handlers, object requester)
+        {
+            if (handlers == null)
+                return;
+
+            foreach (Delegate handler in handlers.GetInvocationList())
+            {
+                try { ((Action<object>)handler)(requester); }
+                catch (Exception e) { Debug.LogException(e); }
+            }
+        }
+
         private void OnDestroy()
         {
             loadRetryTimer?.Cancel();
             if (isInitialised)
                 DisposeProvider();
 
+            activeRequester = null;
             AdLoaded = null;
             LoadFailed = null;
             ShowFailed = null;

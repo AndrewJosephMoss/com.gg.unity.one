@@ -2,9 +2,9 @@
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="GG.Unity.Advertisement.csproj" />
   <Project Path="GG.Unity.UserInterface.Panels.csproj" />
+  <Project Path="GG.Unity.Advertisement.UIToolkit.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="GG.Unity.ClickToMove.csproj" />
-  <Project Path="GG.Unity.Advertisement.UIToolkit.csproj" />
   <Project Path="GG.Unity.Advertisement.LevelPlay.csproj" />
   <Project Path="GG.Unity.Timers.csproj" />
   <Project Path="GG.Unity.IAP.csproj" />

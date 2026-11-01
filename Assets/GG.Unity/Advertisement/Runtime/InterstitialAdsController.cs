@@ -36,8 +36,14 @@ namespace GG.Unity.Advertisement
         }
 
         private TimeSpan SpanSinceLastAd => DateTime.UtcNow - LastAdShowTimeUtc;
-
-        private bool MinTimeHasPassed => SpanSinceLastAd > MinTimeSpan;
+        private bool MinTimeHasPassed
+        {
+            get
+            {
+                TimeSpan span = SpanSinceLastAd;
+                return span < TimeSpan.Zero || span > MinTimeSpan;
+            }
+        }
 
         private void OnEnable()
         {

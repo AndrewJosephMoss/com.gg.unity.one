@@ -18,7 +18,7 @@ namespace GG.Unity.Advertisement
 
         [SerializeField]
         private InterstitialAdsController interstitialAdsController;
-        public InterstitialAdsController InterstitialAdsController => InterstitialAdsController;
+        public InterstitialAdsController InterstitialAdsController => interstitialAdsController;
 
         [SerializeField]
         private RewardAds rewardAds;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GG.Unity.Advertisement
 {
-    public abstract class BannerAds: MonoBehaviour
+    public abstract class BannerAds : MonoBehaviour
     {
         public enum Placement { Top, Bottom };
 
@@ -40,7 +40,7 @@ namespace GG.Unity.Advertisement
             if (BottomOpportunities.Count > 0)
                 ShowBanner(Placement.Bottom);
         }
-        
+
         public void RescindOpportunity(BannerAdOpportunity opportunity)
         {
             if (opportunity.Placements.Contains(Placement.Top))
@@ -60,8 +60,12 @@ namespace GG.Unity.Advertisement
 
         private void OnDestroy()
         {
+            if (Instance != this)
+                return;
+
             HideBanner(Placement.Top);
             HideBanner(Placement.Bottom);
+            Instance = null;
         }
     }
 }

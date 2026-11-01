@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 namespace GG.Unity.Advertisement.UIToolkit
 {
     [RequireComponent(typeof(PanelRenderer))]
-    public class PanelRendererRewardAdButton : RewardAdButton, INotifyBindablePropertyChanged
+    public class RewardAdButtonPanelRenderer : RewardAdButton, INotifyBindablePropertyChanged
     {
         public event EventHandler<BindablePropertyChangedEventArgs> propertyChanged;
 
