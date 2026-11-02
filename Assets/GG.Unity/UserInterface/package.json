@@ -7,12 +7,12 @@
   "unity": "6000.0",
   "samples": [
     {
-      "BasicPanels": "Basic Example",
+      "displayName": "Basic Panels Example",
       "description": "Demonstrates of basic panels implementation.",
-      "path": "Samples~/BasicPanels"
+      "path": "Samples~/Panels"
     },
     {
-      "SpinnerLoadingButtonUSS": "Spinner loading button USS",
+      "displayName": "Spinner loading button USS",
       "description": "Demonstrates of basic spinner loading button USS.",
       "path": "Samples~/SpinnerLoadingButtonUSS"
     }

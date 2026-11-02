@@ -370,7 +370,7 @@ namespace GG.Unity.IAP
             }
             catch (Exception e)
             {
-                IAPLog.Error($"Exception while processing order {order.TransactionId}: {e}");
+                IAPLog.Error($"Exception while processing order {order.TransactionId} (order is not confirmed): {e}");
                 CompleteInFlightFor(key, new PurchaseResult(
                     PurchaseStatus.Failed, FirstId(order), order.TransactionId, e.Message));
             }

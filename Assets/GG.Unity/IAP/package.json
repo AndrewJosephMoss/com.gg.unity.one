@@ -6,5 +6,12 @@
   "description": "Thin async wrapper around Unity In-App Purchasing 5.",
   "dependencies": {
     "com.unity.purchasing": "5.0.0"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "Editor Driven Test Scene",
+      "description": "Editor driven test scene for IAP",
+      "path": "Samples~/EditorDrivenTestScene"
+    }
+  ]
 }

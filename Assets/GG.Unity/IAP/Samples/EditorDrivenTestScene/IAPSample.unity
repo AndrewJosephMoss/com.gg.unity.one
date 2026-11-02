@@ -119,55 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &310806770
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 310806772}
-  - component: {fileID: 310806771}
-  m_Layer: 0
-  m_Name: IAP Sample Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &310806771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310806770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6072d51db1f9a864aa39cdcf31759234, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GG.Unity.IAP.Samples::GG.Unity.IAP.Samples.IAPSampleController
-  manager: {fileID: 992078859}
-  grantHandler: {fileID: 992078858}
-  rejectReceipts: 0
-  unknownProductId: does_not_exist
-  mirrorToConsole: 1
---- !u!4 &310806772
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310806770}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &761128268
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +222,7 @@ GameObject:
   - component: {fileID: 992078860}
   - component: {fileID: 992078858}
   - component: {fileID: 992078859}
+  - component: {fileID: 992078861}
   m_Layer: 0
   m_Name: IAPManager
   m_TagString: Untagged
@@ -327,6 +279,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &992078861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992078857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072d51db1f9a864aa39cdcf31759234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GG.Unity.IAP.Samples::GG.Unity.IAP.Samples.IAPSampleController
+  manager: {fileID: 992078859}
+  grantHandler: {fileID: 992078858}
+  rejectReceipts: 0
+  unknownProductId: does_not_exist
+  mirrorToConsole: 1
 --- !u!1 &1358205642
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,4 +430,3 @@ SceneRoots:
   - {fileID: 761128271}
   - {fileID: 1358205645}
   - {fileID: 992078860}
-  - {fileID: 310806772}

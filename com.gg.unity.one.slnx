@@ -2,6 +2,7 @@
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="GG.Unity.Advertisement.csproj" />
   <Project Path="GG.Unity.UserInterface.Panels.csproj" />
+  <Project Path="GG.Unity.IAP.Samples.Editor.csproj" />
   <Project Path="GG.Unity.Advertisement.UIToolkit.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="GG.Unity.ClickToMove.csproj" />
@@ -9,7 +10,6 @@
   <Project Path="GG.Unity.Timers.csproj" />
   <Project Path="GG.Unity.IAP.Storefront.csproj" />
   <Project Path="GG.Unity.IAP.csproj" />
-  <Project Path="GG.Unity.IAP.Samples.Editor.csproj" />
   <Project Path="GG.Unity.Clickable.csproj" />
   <Project Path="GG.Unity.UserInterface.Panels.Editor.csproj" />
   <Project Path="GG.Unity.IAP.Samples.csproj" />
