@@ -17,7 +17,6 @@ namespace GG.Unity.Advertisement.LevelPlay
 
         protected override void ApplyConsent(AdConsent consent)
         {
-            // Called before the first Init() and again whenever the player changes their choice.
             Debug.Log($"LevelPlay applying {consent}");
 
             // GDPR: true = the player consented to personalised ads.
@@ -32,7 +31,6 @@ namespace GG.Unity.Advertisement.LevelPlay
 
         protected override void InitialiseProvider()
         {
-            // Subscribed once - retries only call Initialise(), so this never double-subscribes.
             LP.LevelPlay.OnInitSuccess += OnInitialisationComplete;
             LP.LevelPlay.OnInitFailed += OnInitialisationFailed;
 
@@ -42,7 +40,6 @@ namespace GG.Unity.Advertisement.LevelPlay
 
         protected override void Initialise()
         {
-            // Privacy settings are no longer hard-coded here: ApplyConsent has already run.
             string appId = appIdProvider.Ref.AppId;
             Debug.Log($"LevelPlay Initialising with appId: {appId}");
 

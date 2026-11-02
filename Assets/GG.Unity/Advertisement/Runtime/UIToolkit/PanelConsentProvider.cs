@@ -18,8 +18,6 @@ namespace GG.Unity.Advertisement.UIToolkit
 
         public override async Task<bool?> RequestConsentAsync(CancellationToken cancellationToken)
         {
-            // This component usually lives on the persistent ads object, while each scene has
-            // its own PanelManager, so look it up again if the assigned one has gone.
             if (panelManager == null)
                 panelManager = FindAnyObjectByType<PanelManager>();
 
@@ -29,8 +27,6 @@ namespace GG.Unity.Advertisement.UIToolkit
                 return null;
             }
 
-            // Ask for object rather than bool?: the panel closes with a boxed bool, or null
-            // when dismissed, and we need to tell "declined" apart from "no choice".
             object result = await panelManager.OpenPanelAsync<object>(consentPanel, null, cancellationToken);
             return result is bool choice ? choice : (bool?)null;
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace GG.Unity.Advertisement
 {
+    [DefaultExecutionOrder(-50)]
     public abstract class BannerAds : MonoBehaviour
     {
         public enum Placement { Top, Bottom };

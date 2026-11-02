@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace GG.Unity.Advertisement
 {
-    /// <summary>Persists the player's consent decision together with the policy version it was given for.</summary>
     public static class ConsentStore
     {
         private const string DecisionKey = "gg_ads_consent_personalised";
@@ -44,7 +43,7 @@ namespace GG.Unity.Advertisement
             PlayerPrefs.SetInt(DecisionKey, personalisedAdsAllowed ? 1 : 0);
             PlayerPrefs.SetInt(VersionKey, policyVersion);
             PlayerPrefs.SetString(DecidedAtKey, DateTime.UtcNow.Ticks.ToString());
-            PlayerPrefs.Save(); // a consent record must survive a crash or force-quit
+            PlayerPrefs.Save();
         }
 
         public static void Clear()

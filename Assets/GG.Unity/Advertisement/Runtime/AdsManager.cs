@@ -7,6 +7,7 @@ namespace GG.Unity.Advertisement
     /// Owns the initialisation order: consent → SDK init → ad formats.
     /// Nothing initialises until <see cref="SetConsent"/> is called (normally by <see cref="ConsentFlow"/>).
     /// </summary>
+    [DefaultExecutionOrder(-50)]
     public class AdsManager : MonoBehaviour
     {
         [SerializeField]
@@ -57,9 +58,6 @@ namespace GG.Unity.Advertisement
             _instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // Wired in code, not the inspector, so a missed drag-and-drop can't silently
-            // leave an ad format uninitialised. Remove any inspector listeners that call
-            // InitialiseBannerAds / InitialiseInterstitialAds / InitialiseRewardAds.
             if (initialisation != null)
                 initialisation.InitialisationComplete.AddListener(OnSdkInitialised);
         }
