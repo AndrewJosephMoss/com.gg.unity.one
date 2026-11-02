@@ -21,6 +21,12 @@ namespace GG.Unity.IAP
         /// <summary>Product ids of already-confirmed orders returned by a purchases fetch or restore.</summary>
         event Action<IReadOnlyList<string>> OwnedProductsFetched;
 
+        /// <summary>
+        /// Raised when a FetchPurchases call finishes, whether it succeeded or failed. Pending orders
+        /// it found have been raised through PurchasePending by then.
+        /// </summary>
+        event Action PurchasesFetchCompleted;
+
         IReadOnlyList<ProductInfo> Products { get; }
 
         /// <summary>Connects to the store. Throws if the connection fails.</summary>
@@ -30,6 +36,8 @@ namespace GG.Unity.IAP
         Task FetchProductsAsync(float timeoutSeconds);
 
         void FetchPurchases();
+
+        bool CheckProductExists(string productId);
 
         void Purchase(string productId);
 

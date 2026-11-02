@@ -54,17 +54,28 @@ namespace GG.Unity.IAP
         private bool attemptRunning;
         private bool disposed;
 
-        // Only set by PurchaseAsync, for the current session's user-initiated purchase.
+        // ---- The current session's user-initiated purchase (set only by PurchaseAsync).
         private TaskCompletionSource<PurchaseResult> inFlight;
         private string inFlightProductId;
 
+        // Key of the order that answered the in-flight purchase, once one has. After that,
+        // only events for this exact order may resolve it.
+        private string inFlightOrderKey;
+
         //TODO inFlight state event for UI to hook on to?
 
-        // Transactions currently being validated/granted/confirmed. Guards against re-delivery.
-        private readonly HashSet<string> inProgress = new HashSet<string>();
+        // Orders currently being validated/granted/confirmed, keyed by KeyOf(order), with their
+        // product ids. Guards against re-delivery and blocks a new purchase of the same product.
+        private readonly Dictionary<string, IReadOnlyList<string>> inProgress =
+            new Dictionary<string, IReadOnlyList<string>>();
 
         // Pending orders that arrived before a grant handler was set.
         private readonly List<BackendOrder> awaitingHandler = new List<BackendOrder>();
+
+        // Closed while existing orders are being fetched after (re)connecting, so an old order
+        // cannot be mistaken for the answer to a new purchase.
+        private bool purchasesFetched;
+        private int purchasesFetchGeneration;
 
         /// <param name="backOffFactory">
         /// Builds the retry timer around the callback to run when a retry is due. Production passes
@@ -87,6 +98,7 @@ namespace GG.Unity.IAP
             backend.PurchaseFailed += OnBackendFailed;
             backend.PurchaseDeferred += OnBackendDeferred;
             backend.OwnedProductsFetched += OnBackendOwnedProducts;
+            backend.PurchasesFetchCompleted += OnBackendPurchasesFetchCompleted;
         }
 
         public void Dispose()
@@ -105,6 +117,7 @@ namespace GG.Unity.IAP
             backend.PurchaseFailed -= OnBackendFailed;
             backend.PurchaseDeferred -= OnBackendDeferred;
             backend.OwnedProductsFetched -= OnBackendOwnedProducts;
+            backend.PurchasesFetchCompleted -= OnBackendPurchasesFetchCompleted;
             backend.Dispose();
 
             FailInFlight("IAPManager disposed.");
@@ -163,8 +176,35 @@ namespace GG.Unity.IAP
             SetState(IAPState.Ready);
             ProductsUpdated?.Invoke();
 
-            // Deliver existing/pending orders. Pending ones arrive via OnPurchasePending.
+            // Deliver existing/pending orders. Pending ones arrive via OnBackendPending.
+            FetchPurchases();
+        }
+
+        private void FetchPurchases()
+        {
+            purchasesFetched = false;
+            var generation = ++purchasesFetchGeneration;
+
             backend.FetchPurchases();
+
+            // Never leave purchasing blocked if the store does not report back.
+            _ = OpenPurchaseGateAfterTimeoutAsync(generation);
+        }
+
+        private async Task OpenPurchaseGateAfterTimeoutAsync(int generation)
+        {
+            await Task.Delay(TimeSpan.FromSeconds(settings.ProductFetchTimeoutSeconds));
+
+            if (disposed || purchasesFetched || generation != purchasesFetchGeneration)
+                return;
+
+            IAPLog.Warn("Fetching existing purchases did not complete in time. Allowing purchases anyway.");
+            purchasesFetched = true;
+        }
+
+        private void OnBackendPurchasesFetchCompleted()
+        {
+            purchasesFetched = true;
         }
 
         private void OnBackendDisconnected(string reason)
@@ -212,6 +252,8 @@ namespace GG.Unity.IAP
         /// Starts a purchase and completes when it succeeds (granted AND confirmed), fails, is
         /// cancelled, or is deferred. Orders that arrive without a PurchaseAsync call (restored,
         /// interrupted, approved later) go through the same handler and PurchaseConfirmed event.
+        /// Returns Busy while another purchase is in flight, while existing orders are still being
+        /// fetched after connecting, or while an earlier order for the same product is being processed.
         /// </summary>
         public Task<PurchaseResult> PurchaseAsync(string productId)
         {
@@ -226,6 +268,14 @@ namespace GG.Unity.IAP
             if (inFlight != null)
                 return Task.FromResult(new PurchaseResult(PurchaseStatus.Busy, productId));
 
+            if (!purchasesFetched)
+                return Task.FromResult(new PurchaseResult(
+                    PurchaseStatus.Busy, productId, error: "Still delivering existing orders. Try again shortly."));
+
+            if (IsProductInProgress(productId))
+                return Task.FromResult(new PurchaseResult(
+                    PurchaseStatus.Busy, productId, error: "An earlier order for this product is still being processed."));
+
             // Check the product BEFORE touching inFlight, so there is nothing to undo.
             if (!TryGetProduct(productId, out _))
                 return Task.FromResult(new PurchaseResult(PurchaseStatus.UnknownProduct, productId));
@@ -234,8 +284,22 @@ namespace GG.Unity.IAP
             var tcs = new TaskCompletionSource<PurchaseResult>(TaskCreationOptions.RunContinuationsAsynchronously);
             inFlight = tcs;
             inFlightProductId = productId;
+            inFlightOrderKey = null;
 
-            backend.Purchase(productId);
+            try
+            {
+                backend.Purchase(productId);
+            }
+            catch (Exception e)
+            {
+                IAPLog.Error($"Starting purchase of {productId} failed: {e}");
+
+                // Clear only our own state: a synchronous store event may already have resolved it.
+                if (inFlight == tcs)
+                    ClearInFlight();
+
+                tcs.TrySetResult(new PurchaseResult(PurchaseStatus.Failed, productId, error: e.Message));
+            }
 
             return tcs.Task;
         }
@@ -260,8 +324,10 @@ namespace GG.Unity.IAP
         private async Task HandlePendingAsync(BackendOrder order)
         {
             var key = KeyOf(order);
-            if (!inProgress.Add(key))
+            if (inProgress.ContainsKey(key))
                 return; // Already being handled: Unity re-delivers pending orders on every fetch until confirmed.
+
+            inProgress[key] = order.ProductIds;
 
             bool confirmRequested = false;
 
@@ -274,12 +340,13 @@ namespace GG.Unity.IAP
                     return;
                 }
 
-                var context = ToContext(order);
+                bool userInitiated = TryClaimInFlight(order, key);
+                var context = ToContext(order, userInitiated);
 
                 if (!await receiptValidator.ValidateAsync(context))
                 {
                     IAPLog.Warn($"Receipt validation rejected order {order.TransactionId}. Not granting or confirming.");
-                    CompleteInFlight(order.ProductIds, new PurchaseResult(
+                    CompleteInFlightFor(key, new PurchaseResult(
                         PurchaseStatus.Failed, FirstId(order), order.TransactionId, "Receipt validation failed."));
                     return;
                 }
@@ -290,7 +357,7 @@ namespace GG.Unity.IAP
                 if (!await grantHandler(context))
                 {
                     IAPLog.Warn($"Purchase handler declined order {order.TransactionId}. Leaving it unconfirmed.");
-                    CompleteInFlight(order.ProductIds, new PurchaseResult(
+                    CompleteInFlightFor(key, new PurchaseResult(
                         PurchaseStatus.Failed, FirstId(order), order.TransactionId, "Purchase handler declined."));
                     return;
                 }
@@ -304,7 +371,7 @@ namespace GG.Unity.IAP
             catch (Exception e)
             {
                 IAPLog.Error($"Exception while processing order {order.TransactionId}: {e}");
-                CompleteInFlight(order.ProductIds, new PurchaseResult(
+                CompleteInFlightFor(key, new PurchaseResult(
                     PurchaseStatus.Failed, FirstId(order), order.TransactionId, e.Message));
             }
             finally
@@ -316,28 +383,44 @@ namespace GG.Unity.IAP
 
         private void OnBackendConfirmed(BackendOrder order)
         {
-            inProgress.Remove(KeyOf(order));
+            var key = KeyOf(order);
+            inProgress.Remove(key);
 
-            PurchaseConfirmed?.Invoke(ToContext(order));
+            bool ours = IsClaimedBy(key);
 
-            CompleteInFlight(order.ProductIds, new PurchaseResult(
-                PurchaseStatus.Success, FirstId(order), order.TransactionId));
+            PurchaseConfirmed?.Invoke(ToContext(order, ours));
+
+            if (ours)
+                ResolveInFlight(new PurchaseResult(PurchaseStatus.Success, FirstId(order), order.TransactionId));
         }
 
         private void OnBackendFailed(BackendOrder order)
         {
-            inProgress.Remove(KeyOf(order));
+            var key = KeyOf(order);
 
-            CompleteInFlight(order.ProductIds, new PurchaseResult(
-                order.FailureStatus, FirstId(order), order.TransactionId, order.Error));
+            // True when this is a confirmation failure for an order we granted.
+            bool wasConfirming = inProgress.Remove(key);
+
+            var result = new PurchaseResult(order.FailureStatus, FirstId(order), order.TransactionId, order.Error);
+
+            if (IsClaimedBy(key))
+            {
+                ResolveInFlight(result);
+                return;
+            }
+
+            // A failure before any pending order answered us (e.g. the user cancelled) belongs to the
+            // in-flight purchase. A confirmation failure for some other order does not.
+            if (!wasConfirming && IsUnclaimedMatch(order))
+                ResolveInFlight(result);
         }
 
         private void OnBackendDeferred(BackendOrder order)
         {
             IAPLog.Info($"Purchase deferred for {FirstId(order)} (e.g. awaiting approval).");
 
-            CompleteInFlight(order.ProductIds, new PurchaseResult(
-                PurchaseStatus.Deferred, FirstId(order), order.TransactionId));
+            if (IsClaimedBy(KeyOf(order)) || IsUnclaimedMatch(order))
+                ResolveInFlight(new PurchaseResult(PurchaseStatus.Deferred, FirstId(order), order.TransactionId));
         }
 
         private void OnBackendOwnedProducts(IReadOnlyList<string> productIds)
@@ -345,20 +428,58 @@ namespace GG.Unity.IAP
             OwnedProductsFetched?.Invoke(productIds);
         }
 
-        // ---------------------------------------------------------------- helpers
+        // ---------------------------------------------------------------- in-flight matching
 
-        private void CompleteInFlight(IReadOnlyList<string> productIds, PurchaseResult result)
+        /// <summary>
+        /// Binds the in-flight purchase to the first pending order for its product. Returns true if
+        /// this order is (or already was) the answer to the user's purchase.
+        /// </summary>
+        private bool TryClaimInFlight(BackendOrder order, string key)
+        {
+            if (inFlight == null)
+                return false;
+
+            if (inFlightOrderKey != null)
+                return inFlightOrderKey == key;
+
+            if (!order.ProductIds.Contains(inFlightProductId))
+                return false;
+
+            inFlightOrderKey = key;
+            return true;
+        }
+
+        private bool IsClaimedBy(string key) =>
+            inFlight != null && inFlightOrderKey != null && inFlightOrderKey == key;
+
+        /// <summary>The in-flight purchase has no order yet, and this one is for its product.</summary>
+        private bool IsUnclaimedMatch(BackendOrder order) =>
+            inFlight != null
+            && inFlightOrderKey == null
+            && (order.ProductIds.Count == 0 || order.ProductIds.Contains(inFlightProductId));
+
+        private bool IsProductInProgress(string productId)
+        {
+            foreach (var ids in inProgress.Values)
+                if (ids.Contains(productId))
+                    return true;
+
+            return false;
+        }
+
+        private void CompleteInFlightFor(string key, PurchaseResult result)
+        {
+            if (IsClaimedBy(key))
+                ResolveInFlight(result);
+        }
+
+        private void ResolveInFlight(PurchaseResult result)
         {
             if (inFlight == null)
                 return;
 
-            // If the order names products, it must include the one we are waiting for.
-            if (productIds != null && productIds.Count > 0 && !productIds.Contains(inFlightProductId))
-                return;
-
             var tcs = inFlight;
-            inFlight = null;
-            inFlightProductId = null;
+            ClearInFlight();
             tcs.TrySetResult(result);
         }
 
@@ -367,18 +488,21 @@ namespace GG.Unity.IAP
             if (inFlight == null)
                 return;
 
-            var tcs = inFlight;
             var productId = inFlightProductId;
-            inFlight = null;
-            inFlightProductId = null;
-            tcs.TrySetResult(new PurchaseResult(PurchaseStatus.Failed, productId, error: error));
+            ResolveInFlight(new PurchaseResult(PurchaseStatus.Failed, productId, error: error));
         }
 
-        private PurchaseContext ToContext(BackendOrder order)
+        private void ClearInFlight()
         {
-            bool userInitiated = inFlightProductId != null && order.ProductIds.Contains(inFlightProductId);
-            return new PurchaseContext(order.ProductIds, order.TransactionId, order.Receipt, userInitiated);
+            inFlight = null;
+            inFlightProductId = null;
+            inFlightOrderKey = null;
         }
+
+        // ---------------------------------------------------------------- helpers
+
+        private static PurchaseContext ToContext(BackendOrder order, bool userInitiated) =>
+            new PurchaseContext(order.ProductIds, order.TransactionId, order.Receipt, userInitiated);
 
         private static string KeyOf(BackendOrder order) =>
             !string.IsNullOrEmpty(order.TransactionId) ? order.TransactionId : string.Join("|", order.ProductIds);

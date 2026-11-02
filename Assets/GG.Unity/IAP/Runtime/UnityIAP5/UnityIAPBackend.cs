@@ -33,6 +33,7 @@ namespace GG.Unity.IAP
         public event Action<BackendOrder> PurchaseFailed;
         public event Action<BackendOrder> PurchaseDeferred;
         public event Action<IReadOnlyList<string>> OwnedProductsFetched;
+        public event Action PurchasesFetchCompleted;
 
         public IReadOnlyList<ProductInfo> Products => products;
 
@@ -82,9 +83,23 @@ namespace GG.Unity.IAP
 
         // ---------------------------------------------------------------- purchasing
 
-        public void Purchase(string productId)
+        public bool CheckProductExists(string productId)
         {
             var product = FindProduct(productId);
+            if (product == null)
+                return false;
+            return true;
+        }
+
+        public void Purchase(string productId)
+        {
+            if (purchaseService == null)
+                throw new InvalidOperationException("Purchase service not created. Connect first.");
+
+            // Fail loudly here rather than passing null into Unity IAP.
+            var product = FindProduct(productId)
+                          ?? throw new InvalidOperationException($"Product '{productId}' is not in the fetched catalog.");
+
             purchaseService.PurchaseProduct(product);
         }
 
@@ -221,11 +236,13 @@ namespace GG.Unity.IAP
                 .ToList();
 
             OwnedProductsFetched?.Invoke(owned);
+            PurchasesFetchCompleted?.Invoke();
         }
 
         private void HandlePurchasesFetchFailed(PurchasesFetchFailureDescription failure)
         {
             IAPLog.Warn("Fetching existing purchases failed: " + failure);
+            PurchasesFetchCompleted?.Invoke();
         }
 
         private void HandlePurchasePending(PendingOrder order)

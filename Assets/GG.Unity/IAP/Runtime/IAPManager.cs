@@ -90,14 +90,19 @@ namespace GG.Unity.IAP
         #region Validation
         private void OnValidate()
         {
-            if (grantHandler == null)
-            {
-                Debug.LogError($"{gameObject.name}:{GetType()} requires a grant handler to award IAP entitlements", this);
-            }
             if (grantHandler != null && grantHandler is not IPurchaseGrantHandler)
             {
                 Debug.LogError($"{grantHandler.GetType().Name} does not implement IPurchaseGrantHandler.", this);
                 grantHandler = null;
+            }
+
+            // Mirrors Awake: an unassigned field falls back to a handler on this GameObject.
+            if (grantHandler == null && GetComponent<IPurchaseGrantHandler>() == null)
+            {
+                Debug.LogError(
+                    $"{gameObject.name}:{GetType().Name} requires a grant handler to award IAP entitlements. " +
+                    "Assign one, or add a component implementing IPurchaseGrantHandler to this GameObject.",
+                    this);
             }
         }
         #endregion
