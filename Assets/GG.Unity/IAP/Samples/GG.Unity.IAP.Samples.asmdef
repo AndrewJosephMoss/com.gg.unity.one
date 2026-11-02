@@ -1,0 +1,16 @@
+{
+    "name": "GG.Unity.IAP.Samples",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e14ac790ccf25624b8f9aa9ff1859339"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

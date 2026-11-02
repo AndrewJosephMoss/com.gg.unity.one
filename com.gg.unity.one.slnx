@@ -7,9 +7,12 @@
   <Project Path="GG.Unity.ClickToMove.csproj" />
   <Project Path="GG.Unity.Advertisement.LevelPlay.csproj" />
   <Project Path="GG.Unity.Timers.csproj" />
+  <Project Path="GG.Unity.IAP.Storefront.csproj" />
   <Project Path="GG.Unity.IAP.csproj" />
+  <Project Path="GG.Unity.IAP.Samples.Editor.csproj" />
   <Project Path="GG.Unity.Clickable.csproj" />
   <Project Path="GG.Unity.UserInterface.Panels.Editor.csproj" />
+  <Project Path="GG.Unity.IAP.Samples.csproj" />
   <Project Path="GG.Unity.Advertisement.Editor.csproj" />
   <Project Path="GG.Unity.Serialization.csproj" />
   <Project Path="GG.Unity.Serialization.Editor.csproj" />

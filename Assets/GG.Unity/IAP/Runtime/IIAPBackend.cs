@@ -31,8 +31,6 @@ namespace GG.Unity.IAP
 
         void FetchPurchases();
 
-        bool CheckProductExists(string productId);
-
         void Purchase(string productId);
 
         void Confirm(BackendOrder order);

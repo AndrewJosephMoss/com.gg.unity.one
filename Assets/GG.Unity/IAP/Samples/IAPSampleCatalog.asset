@@ -10,6 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05e56f2211b4078488b0ca75d01fdef6, type: 3}
-  m_Name: IAPCatalogConfig
+  m_Name: IAPSampleCatalog
   m_EditorClassIdentifier: GG.Unity.IAP::GG.Unity.IAP.IAPCatalogConfig
-  products: []
+  products:
+  - id: sample.gems_100
+    kind: 0
+    googlePlayId: 
+    appleAppStoreId: 
+  - id: sample.remove_ads
+    kind: 1
+    googlePlayId: 
+    appleAppStoreId: 
+  - id: sample.vip_monthly
+    kind: 2
+    googlePlayId: 
+    appleAppStoreId: 

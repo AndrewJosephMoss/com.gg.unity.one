@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="storefront" class="storefront">
+        <ui:VisualElement class="storefront__header">
+            <ui:Label text="Shop" class="storefront__title" />
+            <ui:Button name="close" text="✕" class="storefront__close" />
+        </ui:VisualElement>
+        <ui:Label name="status" class="storefront__status" />
+        <ui:ScrollView name="sections" class="storefront__sections" />
+        <ui:Button name="restore" text="Restore Purchases" class="storefront__restore" />
+    </ui:VisualElement>
+</ui:UXML>

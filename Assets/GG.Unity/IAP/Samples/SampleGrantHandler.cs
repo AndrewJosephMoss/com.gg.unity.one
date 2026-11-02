@@ -1,80 +1,208 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
 namespace GG.Unity.IAP.Samples
 {
+    /// <summary>
+    /// Test-scene grant handler. Persists grants to PlayerPrefs (one JSON blob), is idempotent per
+    /// TransactionId, and can be told to decline, throw or stall the next order so the wrapper's
+    /// failure paths can be exercised from the IAPSampleController inspector.
+    /// </summary>
+    [DisallowMultipleComponent]
     public sealed class SampleGrantHandler : MonoBehaviour, IPurchaseGrantHandler
     {
-        private const string GrantedKeyPrefix = "GG.IAP.Sample.Granted.";
-        private const string OwnedKeyPrefix = "GG.IAP.Sample.Owned.";
-
-        public Task<bool> GrantAsync(PurchaseContext context)
+        public enum GrantBehaviour
         {
-            var key = GrantedKeyPrefix + TransactionKey(context);
+            Grant,
+            Decline,
+            Throw
+        }
 
-            if (PlayerPrefs.HasKey(key))
+        [Tooltip("Applies to the next order only, then resets to Grant.")]
+        [SerializeField] private GrantBehaviour nextOrder = GrantBehaviour.Grant;
+
+        [Tooltip("Simulates a slow save or server round trip before the grant completes.")]
+        [SerializeField, Min(0f)] private float grantDelaySeconds = 0.5f;
+
+        public GrantBehaviour NextOrder
+        {
+            get => nextOrder;
+            set => nextOrder = value;
+        }
+
+        public float GrantDelaySeconds
+        {
+            get => grantDelaySeconds;
+            set => grantDelaySeconds = Mathf.Max(0f, value);
+        }
+
+        /// <summary>Raised whenever the saved state changes.</summary>
+        public static event Action Changed;
+
+        // ---------------------------------------------------------------- IPurchaseGrantHandler
+
+        public async Task<bool> GrantAsync(PurchaseContext context)
+        {
+            // Consume the switch up front so a re-delivery of the same order behaves normally.
+            var behaviour = nextOrder;
+            nextOrder = GrantBehaviour.Grant;
+
+            if (grantDelaySeconds > 0f)
+                await Task.Delay(TimeSpan.FromSeconds(grantDelaySeconds));
+
+            switch (behaviour)
             {
-                // Already granted in an earlier session. Returning true lets the order be confirmed.
-                Debug.Log($"[SampleGrantHandler] Transaction {Describe(context)} was already granted. Skipping.");
-                return Task.FromResult(true);
+                case GrantBehaviour.Decline:
+                    Debug.Log($"[IAP Sample] Declining {Describe(context)} (test switch).");
+                    return false;
+
+                case GrantBehaviour.Throw:
+                    throw new InvalidOperationException("Grant handler threw (test switch).");
+            }
+
+            var save = SampleSave.Current;
+
+            if (!string.IsNullOrEmpty(context.TransactionId) && save.transactions.Contains(context.TransactionId))
+            {
+                Debug.Log($"[IAP Sample] Already granted {Describe(context)}. Acknowledging re-delivery.");
+                return true;
             }
 
             foreach (var productId in context.ProductIds)
-                Debug.Log($"[SampleGrantHandler] GRANT {productId} " +
-                          $"(transaction: {Describe(context)}, user initiated: {context.IsUserInitiated})");
+            {
+                save.AddGrant(productId);
 
-            // Record the grant and flush to disk BEFORE returning true, so it survives a crash
-            // between here and the store confirmation.
-            PlayerPrefs.SetString(key, System.DateTime.UtcNow.ToString("o"));
-            PlayerPrefs.Save();
+                if (IsDurable(productId))
+                    save.MarkOwned(productId);
+            }
 
-            return Task.FromResult(true);
+            if (!string.IsNullOrEmpty(context.TransactionId))
+                save.transactions.Add(context.TransactionId);
+            else
+                Debug.LogWarning("[IAP Sample] Order has no TransactionId, so it cannot be de-duplicated.");
+
+            // Persist BEFORE returning true: true means "safe to confirm with the store".
+            save.Save();
+
+            Debug.Log($"[IAP Sample] Granted {Describe(context)}.");
+            Changed?.Invoke();
+            return true;
         }
 
         public void OnOwnedProductsFetched(IReadOnlyList<string> productIds)
         {
-            // Called after a purchases fetch or a restore with products from already-confirmed orders.
-            // Treat these as the source of truth for non-consumables/subscriptions and (re)apply
-            // them idempotently. There is no transaction id here, so the key is the product id.
-            bool changed = false;
-
+            var save = SampleSave.Current;
             foreach (var productId in productIds)
-            {
-                var key = OwnedKeyPrefix + productId;
-                if (PlayerPrefs.HasKey(key))
-                {
-                    Debug.Log($"[SampleGrantHandler] Owned {productId} (already entitled).");
-                    continue;
-                }
+                save.MarkOwned(productId);
+            save.Save();
 
-                Debug.Log($"[SampleGrantHandler] RESTORE {productId}");
-                PlayerPrefs.SetInt(key, 1);
-                changed = true;
-            }
-
-            if (changed)
-                PlayerPrefs.Save();
+            Debug.Log($"[IAP Sample] Owned products fetched: [{string.Join(", ", productIds)}]");
+            Changed?.Invoke();
         }
 
-        // Mirrors IAPManagingService.KeyOf: fall back to product ids if the store gave no transaction id.
-        private static string TransactionKey(PurchaseContext context) =>
-            !string.IsNullOrEmpty(context.TransactionId)
-                ? context.TransactionId
-                : string.Join("|", context.ProductIds);
+        // ---------------------------------------------------------------- queries for the sample inspector
+
+        public static int GetGrantCount(string productId) => SampleSave.Current.GetCount(productId);
+
+        public static bool IsOwned(string productId) => SampleSave.Current.owned.Contains(productId);
+
+        public static int TransactionCount => SampleSave.Current.transactions.Count;
+
+        public static void ResetSave()
+        {
+            SampleSave.Delete();
+            Changed?.Invoke();
+        }
+
+        // ---------------------------------------------------------------- helpers
+
+        private static bool IsDurable(string productId)
+        {
+            var manager = IAPManager.Instance;
+            if (manager == null || manager.Service == null)
+                return false;
+
+            return manager.Service.TryGetProduct(productId, out var product)
+                   && product.Kind != IAPProductKind.Consumable;
+        }
 
         private static string Describe(PurchaseContext context) =>
-            string.IsNullOrEmpty(context.TransactionId) ? "<no transaction id>" : context.TransactionId;
+            $"[{string.Join(", ", context.ProductIds)}] txn {context.TransactionId ?? "-"} " +
+            $"(user-initiated: {context.IsUserInitiated})";
+    }
 
-#if UNITY_EDITOR
-        [ContextMenu("Clear Sample Grant Records")]
-        private void ClearRecords()
+    /// <summary>All sample state in one PlayerPrefs key, so it can be wiped in one go.</summary>
+    [Serializable]
+    internal sealed class SampleSave
+    {
+        private const string Key = "GG.IAP.Sample.Save";
+
+        [Serializable]
+        public sealed class GrantCount
         {
-            // PlayerPrefs can't enumerate keys, so this clears everything. Fine for a sample scene.
-            PlayerPrefs.DeleteAll();
-            PlayerPrefs.Save();
-            Debug.Log("[SampleGrantHandler] Cleared all PlayerPrefs.");
+            public string productId;
+            public int grants;
         }
-#endif
+
+        public List<string> transactions = new List<string>();
+        public List<GrantCount> counts = new List<GrantCount>();
+        public List<string> owned = new List<string>();
+
+        private static SampleSave cached;
+
+        public static SampleSave Current
+        {
+            get
+            {
+                if (cached != null)
+                    return cached;
+
+                var json = PlayerPrefs.GetString(Key, string.Empty);
+                cached = string.IsNullOrEmpty(json) ? new SampleSave() : JsonUtility.FromJson<SampleSave>(json);
+                return cached;
+            }
+        }
+
+        public static void Delete()
+        {
+            PlayerPrefs.DeleteKey(Key);
+            PlayerPrefs.Save();
+            cached = null;
+        }
+
+        public void Save()
+        {
+            PlayerPrefs.SetString(Key, JsonUtility.ToJson(this));
+            PlayerPrefs.Save();
+        }
+
+        public int GetCount(string productId)
+        {
+            foreach (var c in counts)
+                if (c.productId == productId)
+                    return c.grants;
+            return 0;
+        }
+
+        public void AddGrant(string productId)
+        {
+            foreach (var c in counts)
+            {
+                if (c.productId != productId)
+                    continue;
+                c.grants++;
+                return;
+            }
+
+            counts.Add(new GrantCount { productId = productId, grants = 1 });
+        }
+
+        public void MarkOwned(string productId)
+        {
+            if (!owned.Contains(productId))
+                owned.Add(productId);
+        }
     }
 }

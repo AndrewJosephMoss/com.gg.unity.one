@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:gg="GG.Unity.UserInterface.Buttons">
+    <ui:VisualElement class="store-item__card">
+        <ui:Label name="badge" class="store-item__badge" />
+        <ui:VisualElement name="icon" class="store-item__icon" />
+        <ui:Label name="title" class="store-item__title" />
+        <ui:Label name="description" class="store-item__description" />
+        <gg:StatusButton name="buy" class="store-item__buy" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -11,7 +11,7 @@ namespace GG.Unity.IAP
     ///   1. Optionally set BeforeInitialise (e.g. UGS init + sign-in) and ReceiptValidator.
     ///   2. Call SetPurchaseHandler(...) before Initialise().
     /// </summary>
-    public sealed class IAPManagingService : IDisposable
+    public sealed class IAPManagingService : IDisposable, IIAPService
     {
         public IAPState State { get; private set; } = IAPState.Uninitialised;
         public bool IsReady => State == IAPState.Ready;

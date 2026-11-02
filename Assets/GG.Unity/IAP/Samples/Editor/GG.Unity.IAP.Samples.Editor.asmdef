@@ -1,0 +1,17 @@
+{
+    "name": "GG.Unity.IAP.Samples.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e14ac790ccf25624b8f9aa9ff1859339",
+        "GUID:1a7f1060e468baf4cb76fb6ee3778e77"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -30,7 +30,7 @@ namespace GG.Unity.IAP
         {
             if (Instance != null && Instance != this)
             {
-                IAPLog.Warn("Duplicate IAPService found. Destroying it. Keep this on a dedicated GameObject.");
+                IAPLog.Warn("Duplicate IAPManager found. Destroying it. Keep this on a dedicated GameObject.");
                 Destroy(gameObject);
                 return;
             }
@@ -39,7 +39,7 @@ namespace GG.Unity.IAP
 
             if (transform.parent != null)
             {
-                IAPLog.Warn("IAPService must be a root object for DontDestroyOnLoad. Detaching from parent.");
+                IAPLog.Warn("IAPManager must be a root object for DontDestroyOnLoad. Detaching from parent.");
                 transform.SetParent(null);
             }
 
@@ -92,7 +92,7 @@ namespace GG.Unity.IAP
         {
             if (grantHandler == null)
             {
-                Debug.LogError($"{gameObject.name}:{GetType()} requires a grant handler to award IAP entitlements");
+                Debug.LogError($"{gameObject.name}:{GetType()} requires a grant handler to award IAP entitlements", this);
             }
             if (grantHandler != null && grantHandler is not IPurchaseGrantHandler)
             {

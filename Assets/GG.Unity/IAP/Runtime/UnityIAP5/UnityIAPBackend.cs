@@ -82,14 +82,6 @@ namespace GG.Unity.IAP
 
         // ---------------------------------------------------------------- purchasing
 
-        public bool CheckProductExists(string productId)
-        {
-            var product = FindProduct(productId);
-            if (product == null)
-                return false;
-            return true;
-        }
-
         public void Purchase(string productId)
         {
             var product = FindProduct(productId);
