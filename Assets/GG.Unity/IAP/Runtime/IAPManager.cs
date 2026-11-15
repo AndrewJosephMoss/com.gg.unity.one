@@ -18,7 +18,7 @@ namespace GG.Unity.IAP
 
         [SerializeField] private MonoBehaviour grantHandler;
 
-        public IAPManagingService Service { get; private set; }
+        public IAPService Service { get; private set; }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
@@ -54,7 +54,7 @@ namespace GG.Unity.IAP
             // Created in Awake so other scripts can call Manager.SetPurchaseHandler(...) from their Start.
             // TaskBackOffTimer captures the main-thread SynchronizationContext here, so it must be
             // constructed on the main thread (it is).
-            Service = new IAPManagingService(
+            Service = new IAPService(
                 new UnityIapBackend(catalog),
                 onRetryDue => new TaskBackOffTimer(
                     onRetryDue,

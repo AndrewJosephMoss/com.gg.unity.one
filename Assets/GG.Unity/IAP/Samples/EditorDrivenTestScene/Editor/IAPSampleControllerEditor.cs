@@ -57,7 +57,7 @@ namespace GG.Unity.IAP.Samples.Editor
 
         // ---------------------------------------------------------------- sections
 
-        private void DrawStatus(IAPManagingService service)
+        private void DrawStatus(IAPService service)
         {
             EditorGUILayout.LabelField("Service", EditorStyles.boldLabel);
 
@@ -87,7 +87,7 @@ namespace GG.Unity.IAP.Samples.Editor
             }
         }
 
-        private void DrawGrantSwitches(IAPManagingService service)
+        private void DrawGrantSwitches(IAPService service)
         {
             EditorGUILayout.LabelField("Grant handler", EditorStyles.boldLabel);
 
@@ -110,7 +110,7 @@ namespace GG.Unity.IAP.Samples.Editor
                 EditorGUIUtility.PingObject(handler);
         }
 
-        private void DrawProducts(IAPManagingService service)
+        private void DrawProducts(IAPService service)
         {
             EditorGUILayout.LabelField($"Products ({service.Products.Count})", EditorStyles.boldLabel);
 

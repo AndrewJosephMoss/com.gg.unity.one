@@ -17,6 +17,6 @@ namespace GG.Unity.IAP
         public float BaseRetryDelaySeconds => baseRetryDelaySeconds;
         public float MaxRetryDelaySeconds => maxRetryDelaySeconds;
         public float JitterFraction => jitterFraction;
-        public float ProductFetchTimeoutSeconds => productFetchTimeoutSeconds;
+        public float FetchTimeoutSeconds => productFetchTimeoutSeconds;
     }
 }

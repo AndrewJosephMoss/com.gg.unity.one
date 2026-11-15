@@ -11,7 +11,7 @@ namespace GG.Unity.IAP
     ///   1. Optionally set BeforeInitialise (e.g. UGS init + sign-in) and ReceiptValidator.
     ///   2. Call SetPurchaseHandler(...) before Initialise().
     /// </summary>
-    public sealed class IAPManagingService : IDisposable, IIAPService
+    public sealed class IAPService : IDisposable, IIAPService
     {
         public IAPState State { get; private set; } = IAPState.Uninitialised;
         public bool IsReady => State == IAPState.Ready;
@@ -81,7 +81,7 @@ namespace GG.Unity.IAP
         /// Builds the retry timer around the callback to run when a retry is due. Production passes
         /// a TaskBackOffTimer (or the coroutine BackOffTimer); tests pass a fake.
         /// </param>
-        internal IAPManagingService(IIapBackend backend, Func<Action, IBackOffTimer> backOffFactory, IAPSettings settings)
+        internal IAPService(IIapBackend backend, Func<Action, IBackOffTimer> backOffFactory, IAPSettings settings)
         {
             this.backend = backend ?? throw new ArgumentNullException(nameof(backend));
             this.settings = settings ?? throw new ArgumentNullException(nameof(settings));
@@ -97,8 +97,7 @@ namespace GG.Unity.IAP
             backend.PurchaseConfirmed += OnBackendConfirmed;
             backend.PurchaseFailed += OnBackendFailed;
             backend.PurchaseDeferred += OnBackendDeferred;
-            backend.OwnedProductsFetched += OnBackendOwnedProducts;
-            backend.PurchasesFetchCompleted += OnBackendPurchasesFetchCompleted;
+            backend.PurchasesFetched += OnBackendOwnedProducts;
         }
 
         public void Dispose()
@@ -116,8 +115,7 @@ namespace GG.Unity.IAP
             backend.PurchaseConfirmed -= OnBackendConfirmed;
             backend.PurchaseFailed -= OnBackendFailed;
             backend.PurchaseDeferred -= OnBackendDeferred;
-            backend.OwnedProductsFetched -= OnBackendOwnedProducts;
-            backend.PurchasesFetchCompleted -= OnBackendPurchasesFetchCompleted;
+            backend.PurchasesFetched -= OnBackendOwnedProducts;
             backend.Dispose();
 
             FailInFlight("IAPManager disposed.");
@@ -154,7 +152,8 @@ namespace GG.Unity.IAP
                     await BeforeInitialise();
 
                 await backend.ConnectAsync();
-                await backend.FetchProductsAsync(settings.ProductFetchTimeoutSeconds);
+                await backend.FetchProductsAsync(settings.FetchTimeoutSeconds);
+                await backend.FetchPurchasesAsync(settings.FetchTimeoutSeconds);
             }
             catch (Exception e)
             {
@@ -175,36 +174,6 @@ namespace GG.Unity.IAP
             initRetryTimer.Reset();
             SetState(IAPState.Ready);
             ProductsUpdated?.Invoke();
-
-            // Deliver existing/pending orders. Pending ones arrive via OnBackendPending.
-            FetchPurchases();
-        }
-
-        private void FetchPurchases()
-        {
-            purchasesFetched = false;
-            var generation = ++purchasesFetchGeneration;
-
-            backend.FetchPurchases();
-
-            // Never leave purchasing blocked if the store does not report back.
-            _ = OpenPurchaseGateAfterTimeoutAsync(generation);
-        }
-
-        private async Task OpenPurchaseGateAfterTimeoutAsync(int generation)
-        {
-            await Task.Delay(TimeSpan.FromSeconds(settings.ProductFetchTimeoutSeconds));
-
-            if (disposed || purchasesFetched || generation != purchasesFetchGeneration)
-                return;
-
-            IAPLog.Warn("Fetching existing purchases did not complete in time. Allowing purchases anyway.");
-            purchasesFetched = true;
-        }
-
-        private void OnBackendPurchasesFetchCompleted()
-        {
-            purchasesFetched = true;
         }
 
         private void OnBackendDisconnected(string reason)

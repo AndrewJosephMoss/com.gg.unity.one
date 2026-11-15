@@ -31,13 +31,13 @@ namespace GG.Unity.IAP.Samples
         [SerializeField] private bool mirrorToConsole = true;
 
         private readonly List<string> log = new List<string>();
-        private IAPManagingService subscribed;
+        private IAPService subscribed;
         private bool appliedRejectReceipts;
 
         public IReadOnlyList<string> LogLines => log;
         public int PendingCalls { get; private set; }
 
-        public IAPManagingService Service
+        public IAPService Service
         {
             get
             {
@@ -189,7 +189,7 @@ namespace GG.Unity.IAP.Samples
 
         // ---------------------------------------------------------------- service events
 
-        private void Attach(IAPManagingService service)
+        private void Attach(IAPService service)
         {
             Detach();
             if (service == null)

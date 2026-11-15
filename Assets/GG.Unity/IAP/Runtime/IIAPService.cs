@@ -4,15 +4,6 @@ using System.Threading.Tasks;
 
 namespace GG.Unity.IAP
 {
-    /// <summary>
-    /// Public surface of the IAP service that UI layers (e.g. the Storefront) depend on.
-    /// Implemented by IAPManagingService; tests and editor tooling can supply a fake.
-    /// </summary>
-    /// <remarks>
-    /// Only change needed in existing code:
-    ///     public sealed class IAPManagingService : IIAPService, IDisposable
-    /// Every member below already exists on IAPManagingService with this exact signature.
-    /// </remarks>
     public interface IIAPService
     {
         IAPState State { get; }

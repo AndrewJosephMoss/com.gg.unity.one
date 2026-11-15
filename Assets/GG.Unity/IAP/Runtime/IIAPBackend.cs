@@ -4,28 +4,16 @@ using System.Threading.Tasks;
 
 namespace GG.Unity.IAP
 {
-    /// <summary>
-    /// Everything IAPManager needs from the underlying IAP package, expressed in our own types.
-    /// UnityIapBackend is the only implementation that touches UnityEngine.Purchasing.
-    /// </summary>
     internal interface IIapBackend : IDisposable
     {
-        /// <summary>Raised when the store connection drops. Argument is a human-readable reason.</summary>
         event Action<string> Disconnected;
-
         event Action<BackendOrder> PurchasePending;
         event Action<BackendOrder> PurchaseConfirmed;
         event Action<BackendOrder> PurchaseFailed;
         event Action<BackendOrder> PurchaseDeferred;
 
         /// <summary>Product ids of already-confirmed orders returned by a purchases fetch or restore.</summary>
-        event Action<IReadOnlyList<string>> OwnedProductsFetched;
-
-        /// <summary>
-        /// Raised when a FetchPurchases call finishes, whether it succeeded or failed. Pending orders
-        /// it found have been raised through PurchasePending by then.
-        /// </summary>
-        event Action PurchasesFetchCompleted;
+        event Action<IReadOnlyList<string>> PurchasesFetched;
 
         IReadOnlyList<ProductInfo> Products { get; }
 
@@ -35,9 +23,8 @@ namespace GG.Unity.IAP
         /// <summary>Fetches the configured catalog. Throws on failure or timeout.</summary>
         Task FetchProductsAsync(float timeoutSeconds);
 
-        void FetchPurchases();
-
-        bool CheckProductExists(string productId);
+        /// <summary>Fetches the purchases to be restored. Throws on failure or timeout.</summary>
+        Task FetchPurchasesAsync(float timeoutSecounds);
 
         void Purchase(string productId);
 
